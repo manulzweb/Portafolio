@@ -1,0 +1,51 @@
+/* PALETA DE COLORES
+    Carbon: #212922
+    Pine teal: #294936
+    Granite: #3e6259
+    Jungle teal: #5b8266
+    Celandon: #AEF6C7
+*/
+
+:root{
+    --dark: #212922;
+    --normal-green: #3e6259;
+    --light-green: #5b8266;
+    --superlight-green: #AEF6C7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Nunito';
+}
+
+.w-50{
+    width: 50%;
+}
+
+.fullvp {
+    width: 100%;
+    height: 70vh;
+    min-height: max-content;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark);
+}
+
+article {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    
+}
+
