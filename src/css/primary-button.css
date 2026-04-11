@@ -1,0 +1,16 @@
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    filter: brightness(110%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}

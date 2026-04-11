@@ -1,59 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel Vasquez | Desarrollador Web Full-Stack</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Vasquez | Desarrollador Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/big-card.css">
     <link rel="stylesheet" href="src/css/navbar.css">
-    <meta name="description" content="Portafolio de Manuel Vasquez. Entra y conoce mis proyectos, mi experencia y el por qué me destaco.">
+    <link rel="stylesheet" href="src/css/big-card.css">
+    <link rel="stylesheet" href="src/css/primary-button.css">
+    <meta name="description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
 </head>
 <body>
     <header class="sticky">
-        <nav class="navbar">
-            <span class="navbar-title w-50">Portafolio</span>
-            <div class="w-50">
-                <ul class="navbar-items">
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="">Home</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="">Proyectos</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="">Services</a>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link">Contacto</button></li>
-                </ul>
-            </div>
+        <nav class="navbar" aria-label="Navegación principal">
+            <span class="navbar__title">Portafolio</span>
+            <ul class="navbar__items">
+                <li><a class="navbar__link" href="#inicio">Inicio</a></li>
+                <li><a class="navbar__link" href="#proyectos">Proyectos</a></li>
+                <li><a class="navbar__link" href="#servicios">Servicios</a></li>
+                <li><a class="navbar__link btn-contacto" href="#contacto">Contacto</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
-        <section class=" hero">
-            <article class="fullvp">
-                <div class="big-card ">
-                    <header>
-                        <h2>
-                            Hola, soy
-                        </h2>
-                        <h1>
-                            Manuel Vasquez
-                        </h1>
-                    </header>
-                    <p>Desarrollador junior full-stack. Con conocimientos solidos en HTML, CSS, Y JS nativos, principiante en Java con springboot, React con Vue.js y con proxima formacion a arquitectura de software.</p>
-                </div>
-                <figure>
 
+    <main>
+        <section id="inicio" class="hero-section">
+            <article class="hero">
+                <div class="big-card">
+                    <header>
+                        <h1 class="big-card__name">Manuel Vasquez</h1>
+                        <p class="big-card__subtitle">Hola, soy Desarrollador Junior Full-Stack</p>
+                    </header>
+                    <p class="big-card__description">
+                        Especialista en <strong>HTML, CSS y JavaScript nativo</strong>. 
+                        Actualmente potenciando mis habilidades en Java con Spring Boot, React y Vue.js, 
+                        con un enfoque sólido hacia la arquitectura de software.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+                    </div>
+                </div>
+                <figure class="img__container">
+                    <img 
+                        class="imgManuel" 
+                        src="public/img/ManuelVasquezPhoto.webp" 
+                        alt="Fotografía profesional de Manuel Vasquez"
+                        fetchpriority="high">
                 </figure>
             </article>
         </section>
-        <section class="fullvp"></section>
-        <section></section>
+
+        <section id="proyectos" class="full__vp">
+            </section>
     </main>
 </body>
 </html>

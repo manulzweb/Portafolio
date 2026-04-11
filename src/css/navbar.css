@@ -2,53 +2,66 @@
 .sticky {
     position: sticky;
     top: 0;
+    z-index: 100;
+}
+
+.btn-contacto {
+    background-color: var(--accent) !important;
+    color: var(--dark-navy) !important;
+    font-weight: 800 !important;
+}
+
+.btn-contacto:hover {
+    filter: brightness(110%);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4) !important;
 }
 
 .navbar {
-    background: var(--dark);
-    background: linear-gradient(343deg, rgba(33, 41, 34, 1) 0%, rgba(62, 98, 89, 1) 72%, rgba(91, 130, 102, 1) 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
     display: flex;
-    padding: 1rem 3rem;
+    align-items: center;
+    padding: 0.8rem 3vw;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.7); /* Línea sutil cian */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
-.navbar-title {
-    display: flex;
-    justify-content: center;
+.navbar__title {
+    flex: 1;
     font-size: 1.5rem;
-    font-weight: 600;
-    color: whitesmoke;
+    font-weight: 800;
+    color: var(--accent); /* El título ahora resalta en cian */
 }
 
-.navbar-items {
+.navbar__items {
     display: flex;
-    justify-content:center;
-    gap: 2rem;
-    height: 100%;
-    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar-item {
-    height: 100%;
-}
-
-.navbar-link {
-    scale: 1;
-    border: 0;
+.navbar__link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #CBD5E1; 
+    background-color: var(--glass-white);
+    padding: 0.6rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all ease 0.25s;
     width: 5rem;
-    height: 100%;
-    color:whitesmoke;
-    background-color: var(--normal-green);
     border-radius: 1rem;
-    transition: scale ease 0.25s;
 }
 
-.navbar-link:hover {
-    scale: 1.05;
-    background-color: var(--normal-green);
-    outline: 2px solid var(--light-green);
-    box-shadow: 0px 5px 10px var(--dark) ;
+.navbar__link:hover {
+    transform: translateY(-2px);
+    color: var(--text-main);
+    outline: 1px solid var(--accent);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
