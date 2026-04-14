@@ -1,0 +1,48 @@
+
+.hero-section {
+    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
+    padding: 4rem 4rem;
+}
+
+.hero {
+    display: flex;
+    width: 90%;
+    min-height: 420px;
+    gap: 4rem;
+
+}
+
+.img__container {
+    min-width: 180px;
+    max-width: 100%;
+    min-height: 180px;
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 24px;
+    outline: 2px solid var(--accent);
+}
+
+
+.imgManuel {
+    object-fit: cover;
+    width: 100%;
+    transition: all 0.25s ease;
+}
+
+.imgManuel:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+@media (max-width: 720px) {
+    .hero-section {
+    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
+    padding: 1rem 1rem 4rem 1rem;
+}
+    .hero {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

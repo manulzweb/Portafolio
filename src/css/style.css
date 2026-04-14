@@ -1,10 +1,9 @@
 :root {
-    --bg-card: #1E293B;      /* Color de la tarjeta */
-    --accent: #38BDF8;       /* Cian brillante para resaltar */
-    --text-main: #F8FAFC;    /* Blanco casi puro */
-    --text-muted: #94A3B8;   /* Gris para textos secundarios */
-    --dark-navy: #0F172A;      /* Fondo base */
-    --deep-blue: #1E293B;      /* Azul intermedio */
+    --bg-card: #000000; 
+    --accent: #7100c2;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    --dark: #000000;
     --glass-white: rgba(255, 255, 255, 0.05); /* Blanco translúcido para efectos de vidrio */
 }
 
@@ -20,7 +19,10 @@
 }
 
 strong {
-    color: var(--accent);
+    background: linear-gradient(135deg, #963896 0%, #7f2ac1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .w-50{
@@ -33,46 +35,6 @@ section {
     align-items: center;
     width: 100%;
     min-height: 60vh;
-    background-color: var(--dark-navy);
+    background-color: var(--dark);
     color: var(--text-main);
 }
-
-.hero-section {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    padding: 4rem 0;
-}
-
-.hero {
-    display: flex;
-    min-width: 300px;
-    width: 70%;
-    gap: 3rem;
-    max-width: 1024px;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: space-evenly;
-    flex-wrap: wrap;
-
-}
-
-.img__container {
-    min-width: 20rem;
-    height: 25rem;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 30px;
-    outline: 2px solid var(--accent);
-}
-
-
-.imgManuel {
-    width: 100%;
-    transition: all 0.25s ease;
-}
-
-.imgManuel:hover {
-    cursor: pointer;
-    scale: 1.05;
-}
-

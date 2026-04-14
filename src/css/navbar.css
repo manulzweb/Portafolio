@@ -1,48 +1,41 @@
-
+/* Estilo para el contenedor sticky */
 .sticky {
-    position: sticky;
+    position: sticky !important;
     top: 0;
-    z-index: 100;
+    z-index: 100; 
+    /* bug para mobile, el header no es sticky */
 }
 
-.btn-contacto {
-    background-color: var(--accent) !important;
-    color: var(--dark-navy) !important;
-    font-weight: 800 !important;
-}
-
-.btn-contacto:hover {
-    filter: brightness(110%);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4) !important;
-}
-
+/* Estilo para la barra de navegación */
 .navbar {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    background: linear-gradient(180deg, #0F172A 0%, #340e3e 100%);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0.8rem 3vw;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.7); /* Línea sutil cian */
+    border-bottom: 1px solid var(--accent); /* Línea sutil cian */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
+/* Estilo para el título del navbar */
 .navbar__title {
     flex: 1;
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--accent); /* El título ahora resalta en cian */
+    color: var(--text-main); /* El título ahora resalta en cian */
 }
-
+/* Estilo para los elementos de la navegación */
 .navbar__items {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     gap: 1.2rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
+/* Estilo para los enlaces de la navegación */
 .navbar__link {
+    min-width: 100px;
+    max-width: 100px;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -55,13 +48,84 @@
     align-items: center;
     justify-content: center;
     transition: all ease 0.25s;
-    width: 5rem;
-    border-radius: 1rem;
+    border-radius: 14px;
 }
 
+/* Estilo para el enlace al pasar el mouse por encima */
 .navbar__link:hover {
     transform: translateY(-2px);
     color: var(--text-main);
     outline: 1px solid var(--accent);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 15px var(--accent);
+    filter: brightness(110%);
+}
+
+/* Ocultar el checkbox real */
+.nav-toggle-check {
+    display: none;
+}
+
+/* Estilo básico del botón hamburguesa */
+.nav-toggle-btn {
+    display: none; /* Se oculta en pantallas grandes */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-toggle-btn span {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff; /* Cambia al color de tu fuente */
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 720px) {
+
+    /* Mostramos el botón hamburguesa */
+    .nav-toggle-btn {
+        display: flex;
+        z-index: 101; /* Por encima del menú */
+    }
+
+    /* Transformamos la lista en una Card flotante */
+    .navbar__items {
+        flex-direction: column;
+        position: absolute;
+        
+        /* Posicionamiento de la Card */
+        top: 80px; 
+        right: 3vw;
+        width: 220px;
+        gap: 0.5rem;
+        padding: 1rem;
+        
+        /* Estilo de la Card */
+        background: linear-gradient(145deg, #0F172A, #340e3e);
+        border: 1px solid var(--accent);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        
+        /* Estado inicial oculto con animación */
+        opacity: 0;
+        transform: translateX(100%) scale(0.95);
+        transition: all 0.3s ease-in;
+    }
+
+    /* Busca si nav toggle está checked y en dado caso muestra la Card */
+    .nav-toggle-check:checked ~ .navbar__items {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    /* Animación de la hamburguesa a "X" */
+    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 5px);
+    }
+    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -5px);
+    }
 }

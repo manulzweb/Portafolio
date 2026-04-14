@@ -12,35 +12,60 @@
     <link rel="stylesheet" href="src/css/navbar.css">
     <link rel="stylesheet" href="src/css/big-card.css">
     <link rel="stylesheet" href="src/css/primary-button.css">
+    <link rel="stylesheet" href="src/css/hero-section.css">
+    <link rel="stylesheet" href="src/css/proyectos-section.css">
     <meta name="description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
+    <meta property="og:description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta property="og:image" content="public/img/ManuelVasquezPhoto.webp">
+    <meta property="og:url" content="https://manulzweb.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
+    <meta name="twitter:description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta name="twitter:image" content="public/img/ManuelVasquezPhoto.webp">
+    <meta name="twitter:creator" content="@manulzweb">
 </head>
 <body>
     <header class="sticky">
         <nav class="navbar" aria-label="Navegación principal">
-            <span class="navbar__title">Portafolio</span>
+            <!-- Logo o título del sitio -->
+            <span class="navbar__title">ManulzWeb</span>
+            <!-- Botón de menú hamburgusa para pantallas pequeñas -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle-check">
+            <label for="nav-toggle" class="nav-toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <!-- Elementos de la navegación -->
             <ul class="navbar__items">
                 <li><a class="navbar__link" href="#inicio">Inicio</a></li>
                 <li><a class="navbar__link" href="#proyectos">Proyectos</a></li>
                 <li><a class="navbar__link" href="#servicios">Servicios</a></li>
-                <li><a class="navbar__link btn-contacto" href="#contacto">Contacto</a></li>
+                <li><a class="navbar__link btn-contact" href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
-
+    <!-- Contenido principal -->
     <main>
+        <!-- Sección de inicio -->
         <section id="inicio" class="hero-section">
             <article class="hero">
                 <div class="big-card">
                     <header>
-                        <h1 class="big-card__name">Manuel Vasquez</h1>
-                        <p class="big-card__subtitle">Hola, soy Desarrollador Junior Full-Stack</p>
+                        <p class="big-card__subtitle">Hola, soy</p>
+                        <h1 class="big-card__name">Manuel Vasquez Mendoza</h1>
+                        <p class="big-card__subtitle">Desarrollador Full-Stack</p>
                     </header>
                     <p class="big-card__description">
                         Especialista en <strong>HTML, CSS y JavaScript nativo</strong>. 
                         Actualmente potenciando mis habilidades en Java con Spring Boot, React y Vue.js, 
                         con un enfoque sólido hacia la arquitectura de software.
                     </p>
-                    <div class="hero__actions">
+                    <div>
                         <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
                     </div>
                 </div>
@@ -54,8 +79,50 @@
             </article>
         </section>
 
-        <section id="proyectos" class="full__vp">
-            </section>
+        <section id="proyectos" class="proyectos-section">
+            <article class="proyectos__intro">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="section-description">
+                    A continuación, se presentan algunos de mis proyectos más recientes, 
+                    que reflejan mi experiencia y habilidades en el desarrollo web full-stack.
+                </p>
+            </article>
+            <div class="proyectos__grid">
+                <!-- Proyecto 1 -->
+                <article class="proyecto-card">
+                    <header>
+                        <h3 class="proyecto-card__title">Proyecto 1: Portafolio Personal</h3>
+                    </header>
+                    <p class="proyecto-card__description">
+                        Un portafolio personal desarrollado con HTML, CSS y JavaScript nativo, 
+                        diseñado para mostrar mis habilidades y proyectos de manera profesional.
+                    </p>
+                    <a href="#" class="btn-primary">Ver Detalles</a>
+                </article>
+                <!-- Proyecto 2 -->
+                <article class="proyecto-card">
+                    <header>
+                        <h3 class="proyecto-card__title">Proyecto 2: Aplicación de Tareas</h3>
+                    </header>
+                    <p class="proyecto-card__description">
+                        Una aplicación de gestión de tareas desarrollada con React, 
+                        que permite a los usuarios organizar sus actividades diarias de manera eficiente.
+                    </p>
+                    <a href="#" class="btn-primary">Ver Detalles</a>
+                </article>
+                <!-- Proyecto 3 -->
+                <article class="proyecto-card">
+                    <header>
+                        <h3 class="proyecto-card__title">Proyecto 3: API REST con Spring Boot</h3>
+                    </header>
+                    <p class="proyecto-card__description">
+                        Una API RESTful desarrollada con Java Spring Boot, diseñada para gestionar datos de usuarios 
+                        y proporcionar servicios de backend para aplicaciones web y móviles.
+                    </p>
+                    <a href="#" class="btn-primary">Ver Detalles</a>
+                </article>
+            </div>
+        </section>
     </main>
 </body>
 </html>

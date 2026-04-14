@@ -12,5 +12,15 @@
 .btn-primary:hover {
     filter: brightness(110%);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 5px 15px var(--accent);
+}
+
+.btn-contact {
+    background-color: var(--accent) !important;
+    color: var(--text-main) !important;
+    font-weight: 800 !important;
+}
+
+.btn-contact:hover {
+    box-shadow: 0 0 20px var(--accent) !important;
 }

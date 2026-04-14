@@ -1,20 +1,21 @@
+/* --- BIG CARD --- */
 .big-card {
-    max-width: 20rem;
-    padding: 2rem 2rem;
-    background-color: white;
-    border-radius: 30px;
-}
-
-.big-card {
-    background-color: var(--bg-card);
+    width: 100%;
     padding: 2rem;
+    background: rgba(255, 253, 254, 0.035);
     border-radius: 16px;
-    outline: 1px solid var(--accent);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid var(--accent);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
 }
 
 .big-card__name {
-    color: var(--accent);
+    background: linear-gradient(to right, #7100c2 0%, #ff00c8 100%);
+    background-clip: text;
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 2rem;
     margin: 0;
 }
@@ -23,4 +24,16 @@
     font-size: 1.5rem;
     font-weight: 300;
     color: var(--text-muted);
+}
+
+.big-card__description {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-main);
+}
+
+.big-card header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
