@@ -1,10 +1,15 @@
 .proyectos-section {
-    padding: 4rem 0;
+    padding: 4rem 4rem;
+}
+
+.proyectos {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    min-height: 420px;
     gap: 4rem;
+
 }
 
 .proyectos__intro {
@@ -27,6 +32,14 @@
     padding: 2rem;
 }
 
+.section-description {
+    font-size: 1.2rem;
+    text-align: left;
+    min-width: 200px;
+    max-width: 400px;
+
+}
+
 .proyecto-card {
     max-width: 300px;
     background: rgba(255, 253, 254, 0.035);
@@ -46,11 +59,10 @@
 
 .proyecto-card__description {
     font-size: 1rem;
-    margin-bottom: 1rem;
 }
 
 @media (max-width: 720px) {
-    .proyectos-section {
+    .proyectos {
         flex-direction: column;
         gap: 2rem;
     }

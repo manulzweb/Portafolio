@@ -91,13 +91,16 @@
 
     /* Transformamos la lista en una Card flotante */
     .navbar__items {
+        display: flex;
+        z-index: -1;
         flex-direction: column;
         position: absolute;
         
+        
         /* Posicionamiento de la Card */
         top: 80px; 
-        right: 3vw;
-        width: 220px;
+        right: 2rem;
+        width: fit-content;
         gap: 0.5rem;
         padding: 1rem;
         
@@ -109,14 +112,17 @@
         
         /* Estado inicial oculto con animación */
         opacity: 0;
-        transform: translateX(100%) scale(0.95);
+        pointer-events: none;
+        transform: scale(0.95);
         transition: all 0.3s ease-in;
     }
 
     /* Busca si nav toggle está checked y en dado caso muestra la Card */
     .nav-toggle-check:checked ~ .navbar__items {
+        pointer-events: auto;
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: scale(1);
+        z-index: 100;
     }
     /* Animación de la hamburguesa a "X" */
     .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(1) {
