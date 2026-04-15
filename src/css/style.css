@@ -5,6 +5,12 @@
     --text-muted: #94A3B8;
     --dark: #000000;
     --glass-white: rgba(255, 255, 255, 0.05); /* Blanco translúcido para efectos de vidrio */
+    --cursor-pc: url('/public/img/cursorPC.png'), auto;
+    --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), auto;
+}
+
+html {
+    cursor: var(--cursor-pc);
 }
 
 * {

@@ -1,15 +1,17 @@
 
 .hero-section {
     background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
-    padding: 4rem 4rem;
+    padding: 4rem 0rem;
 }
 
 .hero {
-    display: flex;
+    display: grid;
     width: 90%;
-    min-height: 420px;
+    grid-template-columns: 420px 1fr;
     gap: 4rem;
-
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .img__container {
@@ -36,13 +38,22 @@
     scale: 1.05;
 }
 
-@media (max-width: 720px) {
-    .hero-section {
-    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
-    padding: 1rem 1rem 4rem 1rem;
-}
+
+@media (max-width: 960px) {
     .hero {
-        flex-direction: column;
+        grid-template-columns: 320px 1fr;
         gap: 2rem;
     }
 }
+
+@media (max-width: 720px) {
+    .hero-section {
+    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
+    padding: 2rem;
+}
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+

@@ -34,6 +34,7 @@
 
 /* Estilo para los enlaces de la navegación */
 .navbar__link {
+    cursor: var(--cursor-pala);
     min-width: 100px;
     max-width: 100px;
     text-decoration: none;
@@ -43,7 +44,6 @@
     background-color: var(--glass-white);
     padding: 0.6rem 1.1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,6 +53,7 @@
 
 /* Estilo para el enlace al pasar el mouse por encima */
 .navbar__link:hover {
+    cursor: var(--cursor-pala);
     transform: translateY(-2px);
     color: var(--text-main);
     outline: 1px solid var(--accent);
@@ -114,7 +115,11 @@
         opacity: 0;
         pointer-events: none;
         transform: scale(0.95);
-        transition: all 0.3s ease-in;
+        transition: all 0.25s ease-in;
+    }
+
+    .nav-toggle-check {
+        transition: all 0.25s ease-in;
     }
 
     /* Busca si nav toggle está checked y en dado caso muestra la Card */

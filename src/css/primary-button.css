@@ -1,9 +1,10 @@
 .btn-primary {
+    cursor: var(--cursor-pala);
     display: inline-block;
     background-color: var(--accent);
     color: var(--bg-dark);
     padding: 0.8rem 1.5rem;
-    border-radius: 8px;
+    border-radius: 14px;
     font-weight: bold;
     margin-top: 1rem;
     transition: transform 0.2s;
@@ -15,7 +16,13 @@
     box-shadow: 0 5px 15px var(--accent);
 }
 
+.btn-primary:active {
+    transform: translateY(0);
+    outline: 3px solid var(--text-main);
+}
+
 .btn-contact {
+    cursor: var(--cursor-pala);
     background-color: var(--accent) !important;
     color: var(--text-main) !important;
     font-weight: 800 !important;
@@ -23,4 +30,31 @@
 
 .btn-contact:hover {
     box-shadow: 0 0 20px var(--accent) !important;
+}
+
+.btn-contact:active {
+    transform: translateY(0);
+    outline: 3px solid var(--text-main) !important;
+}
+
+.btn-secundary {
+    cursor: var(--cursor-pala);
+    font-weight: bold;
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #CBD5E1; 
+    background-color: var(--glass-white);
+    padding: 0.8rem 1.5rem;
+    margin: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all ease 0.25s;
+    border-radius: 14px;
+}
+
+.btn-secundary:hover {
+    transform: translateY(-3px);
+    color: var(--text-main);
+    outline: 1px solid var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+    filter: brightness(110%);
 }
