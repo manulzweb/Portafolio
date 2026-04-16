@@ -1,7 +1,6 @@
 
-.hero-section {
+.hero-section-bg {
     background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
-    padding: 4rem 0rem;
 }
 
 .hero {
@@ -15,29 +14,67 @@
 }
 
 .img__container {
+    z-index: 0;
+    position: relative;
     min-width: 180px;
     max-width: 100%;
     min-height: 180px;
     max-height: 500px;
     display: flex;
     justify-content: center;
-    overflow: hidden;
+    transition: transform 0.25s ease;
+    transition: translate 0.5s ease;
+    /* background: 
+        linear-gradient(#121212, #121212) padding-box, 
+        conic-gradient(in hsl shorter hue, var(--accent), var(--accent-superlight), var(--accent)) border-box; */
+}
+
+.img__container:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    translate: 0px -10px;
+}
+
+@property --angulo {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.img__container::after, .img__container::before {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
     border-radius: 24px;
-    outline: 2px solid var(--accent);
+    background: conic-gradient(from var(--angulo) in hsl shorter hue, var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700));
+    animation: spinningborder 4s linear infinite;
+}
+
+@keyframes spinningborder {
+    from {
+        --angulo:0deg;
+    }
+    to {
+        --angulo:360deg;
+    }
+}
+
+.img__container::before {
+    filter: blur(1rem);
 }
 
 
 .imgManuel {
     object-fit: cover;
+    border-radius: 19px;
     width: 100%;
-    transition: all 0.25s ease;
 }
-
-.imgManuel:hover {
-    cursor: pointer;
-    scale: 1.05;
-}
-
 
 @media (max-width: 960px) {
     .hero {

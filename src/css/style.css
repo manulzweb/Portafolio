@@ -1,16 +1,45 @@
 :root {
-    --bg-card: #000000; 
+    /* --- TUS COLORES ORIGINALES --- */
+    --bg-dark: #000000; 
     --accent: #7100c2;
+    --accent-light: #a846f3;
+    --accent-superlight: #db8dfa;
+    
+    /* --- ESCALA DE ACENTOS --- */
+    --accent-900: #2d004d; /* Ultra-Deep (Sombra/Fondo) */
+    --accent-800: #4a0080; /* Deep */
+    --accent-700: #7100c2; /* MID-BASE */
+    --accent-600: #8c25db; /* Mid-Light */
+    --accent-500: #a846f3; /* LIGHT */
+    --accent-400: #c269f7; /* Light-Bright */
+    --accent-300: #db8dfa; /* SUPER-LIGHT */
+    --accent-200: #ebbafe; /* Ultra-Light */
+    --accent-100: #f7e6ff; /* Glint (Casi blanco, ideal para brillo) */
+
+    /* --- SUPERFICIES Y ELEVACIÓN --- */
+    /* Para diferenciar el fondo de la card del fondo de la página */
+    --bg-body: #080808; 
+    /* Para inputs, dividers o bordes sutiles */
+    --surface-light: #1a1a1a; 
+
+    /* --- TIPOGRAFÍA (Escala de Grises) --- */
     --text-main: #F8FAFC;
-    --text-muted: #94A3B8;
-    --dark: #000000;
-    --glass-white: rgba(255, 255, 255, 0.05); /* Blanco translúcido para efectos de vidrio */
+    --text-muted: #94A3B8; /* Gris suave que no compite con el púrpura */
+    --text-disabled: #4d4d4d;
+
+    /* --- ESTADOS SEMÁNTICOS (Adaptados al tono neón) --- */
+    --success: #00ff88; /* Verde neón que vibra bien con el púrpura */
+    --error: #ff3366;   /* Rosa/Rojo eléctrico */
+    --warning: #ffcc00; /* Oro vibrante */
+
+    /* --- EFECTOS DE PROFUNDIDAD --- */
+    --glass-white: rgba(4, 4, 4, 0.05); /* Blanco translúcido para efectos de vidrio */
+    --glow-shadow: rgba(113, 0, 194, 0.35); /* Tu accent con transparencia para sombras */
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Efecto cristal sobre negro */
+
+    /* --- EFECTO CURSOR --- */
     --cursor-pc: url('/public/img/cursorPC.png'), auto;
     --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), auto;
-}
-
-html {
-    cursor: var(--cursor-pc);
 }
 
 * {
@@ -22,6 +51,20 @@ html {
     text-decoration: none;
     font-family: 'Nunito';
     scroll-behavior: smooth;
+}
+
+html {
+    cursor: var(--cursor-pc);
+}
+
+.section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bg {
+    background-color: var(--bg-body);
 }
 
 strong {

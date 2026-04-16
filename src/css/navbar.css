@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem 3vw;
-    border-bottom: 1px solid var(--accent); /* Línea sutil cian */
+    border-bottom: 1px solid var(--accent-700); /* Línea sutil cian */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
@@ -56,8 +56,8 @@
     cursor: var(--cursor-pala);
     transform: translateY(-2px);
     color: var(--text-main);
-    outline: 1px solid var(--accent);
-    box-shadow: 0 0 15px var(--accent);
+    outline: 1px solid var(--accent-700);
+    box-shadow: 0 0 15px var(--accent-700);
     filter: brightness(110%);
 }
 
@@ -107,7 +107,7 @@
         
         /* Estilo de la Card */
         background: linear-gradient(145deg, #0F172A, #340e3e);
-        border: 1px solid var(--accent);
+        border: 1px solid var(--accent-700);
         border-radius: 16px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         

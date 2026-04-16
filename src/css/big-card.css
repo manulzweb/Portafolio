@@ -5,10 +5,15 @@
     padding:clamp(2vw, 2vw, 2rem);
     background: rgba(255, 253, 254, 0.035);
     border-radius: 16px;
-    border: 1px solid var(--accent);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    transition: all ease 0.25s;
+}
+
+.big-card:hover{
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+    scale: 1.02;
 }
 
 .big-card__name {
