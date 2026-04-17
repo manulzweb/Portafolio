@@ -4,13 +4,13 @@
     inherits: false;
 }
 
-.animated-border {
+.animated-border-5 {
     z-index: 0;
     position: relative;
 }
 
-.animated-border::after,
-.animated-border::before {
+.animated-border-5::after,
+.animated-border-5::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -25,6 +25,20 @@
     animation: spinningborder 4s linear infinite;
 }
 
+.animated-border-5::after {
+    --mask: linear-gradient(#000000 0 0);
+    -webkit-mask: var(--mask) content-box, var(--mask);
+    mask: var(--mask) content-box, var(--mask);
+
+    /* Restamos el centro para que solo quede el borde visible */
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.animated-border-5::before {
+    filter: blur(1rem);
+}
+
 @keyframes spinningborder {
     from {
         --angulo: 0deg;
@@ -33,4 +47,45 @@
     to {
         --angulo: 360deg;
     }
+}
+
+
+@media (max-width: 425px) {
+    
+
+.animated-border-2 {
+    z-index: 0;
+    position: relative;
+}
+
+.animated-border-2::after,
+.animated-border-2::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 2px;
+    border-radius: 24px;
+    background: conic-gradient(from var(--angulo) in hsl shorter hue, var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700));
+    animation: spinningborder 4s linear infinite;
+}
+
+.animated-border-2::after {
+    --mask: linear-gradient(#000000 0 0);
+    -webkit-mask: var(--mask) content-box, var(--mask);
+    mask: var(--mask) content-box, var(--mask);
+
+    /* Restamos el centro para que solo quede el borde visible */
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.animated-border-2::before {
+    filter: blur(1rem);
+}
+
 }

@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/navbar.css">
     <link rel="stylesheet" href="src/css/big-card.css">
     <link rel="stylesheet" href="src/css/primary-button.css">
     <link rel="stylesheet" href="src/css/animated-border.css">
@@ -18,6 +17,7 @@
     <link rel="stylesheet" href="src/css/proyectos-section.css">
     <link rel="stylesheet" href="src/css/servicios-section.css">
     <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
 
     <script src="https://kit.fontawesome.com/e2d97e417b.js" crossorigin="anonymous"></script>
 
@@ -37,7 +37,7 @@
     <meta name="twitter:creator" content="@manulzweb">
 </head>
 <body>
-    <header class="sticky">
+    <header class="sticky animated-border-5">
         <nav class="navbar" aria-label="Navegación principal">
             <!-- Logo o título del sitio -->
             <span class="navbar__title">ManulzWeb</span>
@@ -50,19 +50,20 @@
             </label>
             <!-- Elementos de la navegación -->
             <ul class="navbar__items">
-                <li><a class="navbar__link" href="#inicio">Inicio</a></li>
-                <li><a class="navbar__link" href="#proyectos">Proyectos</a></li>
-                <li><a class="navbar__link" href="#servicios">Servicios</a></li>
-                <li><a class="navbar__link btn-contact animated-border" href="#contacto">Contacto</a></li>
+                <li class="animated-border-2"><a class="navbar__link" href="#inicio">Inicio</a></li>
+                <li class="animated-border-2"><a class="navbar__link" href="#proyectos">Proyectos</a></li>
+                <li class="animated-border-2"><a class="navbar__link" href="#servicios">Servicios</a></li>
+                <li><a class="navbar__link btn-contact" href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <!-- Contenido principal -->
+     
     <main class="bg">
         <!-- Sección de inicio -->
         <section id="inicio" class="section hero-section-bg">
             <article class="hero">
-                <figure class="img__container animated-border">
+                <figure class="img__container animated-border-5">
                     <img 
                         class="imgManuel" 
                         src="public/img/ManuelVasquezPhoto.webp" 
@@ -81,7 +82,6 @@
                     </p>
                     <div>
                         <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
-                    </div>
                 </div>
             </article>
         </section>

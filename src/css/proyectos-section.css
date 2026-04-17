@@ -10,7 +10,7 @@
 
 .proyectos__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     width: 100%;
     justify-content: space-around;
@@ -23,7 +23,7 @@ padding: 1rem;
 }
 
 .section-title {
-font-size: 2.5rem;
+font-size: var(--big-title);
 text-transform: uppercase;
 color: var(--accent-700);
 padding: 1rem 0rem;
@@ -58,10 +58,23 @@ max-width: 650px;
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Solo mantienes media queries para cambios de alineación de texto, no para el grid */
+@media (max-width: 1024px) {
+    .proyectos__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
 @media (max-width: 720px) {
     .section-description {
         text-align: center;
         max-width: 100%;
     }
+}
+
+@media (max-width: 425px) {
+    .proyectos__grid {
+        grid-template-columns: 1fr;
+    }
+
 }

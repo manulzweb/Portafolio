@@ -2,8 +2,15 @@
 .sticky {
     position: sticky !important;
     top: 0;
-    z-index: 100; 
+    z-index: 2 !important;
     /* bug para mobile, el header no es sticky */
+}
+
+.sticky::after,
+.sticky::before {
+    border-radius: 0;
+    padding: 5px 0px;
+    background: conic-gradient(from var(--angulo) in hsl shorter hue, transparent 90%, var(--accent-700)) !important
 }
 
 /* Estilo para la barra de navegación */
@@ -13,8 +20,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem 3vw;
-    border-bottom: 1px solid var(--accent-700); /* Línea sutil cian */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 /* Estilo para el título del navbar */
@@ -22,8 +27,10 @@
     flex: 1;
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--text-main); /* El título ahora resalta en cian */
+    color: var(--text-main);
+    /* El título ahora resalta en cian */
 }
+
 /* Estilo para los elementos de la navegación */
 .navbar__items {
     display: flex;
@@ -40,7 +47,7 @@
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #CBD5E1; 
+    color: #CBD5E1;
     background-color: var(--glass-white);
     padding: 0.6rem 1.1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -56,10 +63,11 @@
     cursor: var(--cursor-pala);
     transform: translateY(-2px);
     color: var(--text-main);
-    outline: 1px solid var(--accent-700);
+    outline: 1px solid white;
     box-shadow: 0 0 15px var(--accent-700);
     filter: brightness(110%);
 }
+
 
 /* Ocultar el checkbox real */
 .nav-toggle-check {
@@ -68,7 +76,8 @@
 
 /* Estilo básico del botón hamburguesa */
 .nav-toggle-btn {
-    display: none; /* Se oculta en pantallas grandes */
+    display: none;
+    /* Se oculta en pantallas grandes */
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
@@ -77,45 +86,81 @@
 .nav-toggle-btn span {
     width: 30px;
     height: 3px;
-    background-color: #ffffff; /* Cambia al color de tu fuente */
+    background-color: #ffffff;
+    /* Cambia al color de tu fuente */
     transition: 0.3s;
 }
 
 /* --- RESPONSIVE (MOBILE) --- */
 @media (max-width: 720px) {
+    .navbar {
+        background: linear-gradient(180deg, var(--accent-600) 0%, var(--accent-900) 100%);
+    }
 
     /* Mostramos el botón hamburguesa */
     .nav-toggle-btn {
         display: flex;
-        z-index: 101; /* Por encima del menú */
+        z-index: 101;
+        /* Por encima del menú */
     }
 
-    /* Transformamos la lista en una Card flotante */
     .navbar__items {
         display: flex;
-        z-index: -1;
+        z-index: 10;
+
         flex-direction: column;
         position: absolute;
-        
-        
-        /* Posicionamiento de la Card */
-        top: 80px; 
+
+        top: 80px;
         right: 2rem;
         width: fit-content;
         gap: 0.5rem;
         padding: 1rem;
-        
-        /* Estilo de la Card */
-        background: linear-gradient(145deg, #0F172A, #340e3e);
-        border: 1px solid var(--accent-700);
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        
-        /* Estado inicial oculto con animación */
+
         opacity: 0;
         pointer-events: none;
         transform: scale(0.95);
         transition: all 0.25s ease-in;
+
+        /* Efecto Glass Purple aplicado */
+        background: rgba(110, 0, 255, 0.23);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 20px;
+        border: 1px solid rgba(200, 150, 255, 0.3);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(110, 0, 255, 0.1),
+            inset 0 0 30px 15px rgba(180, 100, 255, 0.15);
+        position: absolute;
+        overflow: hidden;
+    }
+
+    .navbar__items::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(200, 150, 255, 0.8),
+                transparent);
+    }
+
+    .navbar__items::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(180deg,
+                rgba(200, 150, 255, 0.8),
+                transparent,
+                rgba(110, 0, 255, 0.3));
     }
 
     .nav-toggle-check {
@@ -123,20 +168,23 @@
     }
 
     /* Busca si nav toggle está checked y en dado caso muestra la Card */
-    .nav-toggle-check:checked ~ .navbar__items {
+    .nav-toggle-check:checked~.navbar__items {
         pointer-events: auto;
         opacity: 1;
         transform: scale(1);
         z-index: 100;
     }
+
     /* Animación de la hamburguesa a "X" */
-    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(1) {
+    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 5px);
     }
-    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(2) {
+
+    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(2) {
         opacity: 0;
     }
-    .nav-toggle-check:checked + .nav-toggle-btn span:nth-child(3) {
+
+    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -5px);
     }
 }
