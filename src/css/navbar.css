@@ -2,14 +2,12 @@
 .sticky {
     position: sticky !important;
     top: 0;
-    z-index: 2 !important;
-    /* bug para mobile, el header no es sticky */
+    z-index: 1 !important;
 }
 
-.sticky::after,
-.sticky::before {
-    border-radius: 0;
-    padding: 5px 0px;
+.animated-border-custom-navbar::after,
+.animated-border-custom-navbar::before {
+    border-radius: 0 ;
     background: conic-gradient(from var(--angulo) in hsl shorter hue, transparent 90%, var(--accent-700)) !important
 }
 
@@ -50,22 +48,22 @@
     color: #CBD5E1;
     background-color: var(--glass-white);
     padding: 0.6rem 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all ease 0.25s;
-    border-radius: 14px;
 }
+
 
 /* Estilo para el enlace al pasar el mouse por encima */
 .navbar__link:hover {
     cursor: var(--cursor-pala);
-    transform: translateY(-2px);
-    color: var(--text-main);
-    outline: 1px solid white;
-    box-shadow: 0 0 15px var(--accent-700);
-    filter: brightness(110%);
+}
+
+.buttom-animation:hover{
+    transition: all ease 0.25s;
+    transform: translateY(-3px);
+    cursor: pointer;
 }
 
 
@@ -104,6 +102,23 @@
         /* Por encima del menú */
     }
 
+    .navbar {
+        background: rgba(110, 0, 255, 0.23);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 24px;
+        border: 1px solid rgba(200, 150, 255, 0.3);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(110, 0, 255, 0.1),
+            inset 0 0 30px 15px rgba(180, 100, 255, 0.15);
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        gap: 3rem;
+    }
+
     .navbar__items {
         display: flex;
         z-index: 10;
@@ -111,8 +126,8 @@
         flex-direction: column;
         position: absolute;
 
-        top: 80px;
-        right: 2rem;
+        top: 5rem;
+        right: 0rem;
         width: fit-content;
         gap: 0.5rem;
         padding: 1rem;

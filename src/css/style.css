@@ -1,11 +1,9 @@
 :root {
     /* --- TUS COLORES ORIGINALES --- */
     --bg-dark: #000000; 
-    --accent: #7100c2;
-    --accent-light: #a846f3;
-    --accent-superlight: #db8dfa;
-    
-    /* --- ESCALA DE ACENTOS --- */
+    --bg-body: #080808;
+
+    /* --- Escala purpura --- */
     --accent-900: #2d004d; /* Ultra-Deep (Sombra/Fondo) */
     --accent-800: #4a0080; /* Deep */
     --accent-700: #7100c2; /* MID-BASE */
@@ -16,45 +14,33 @@
     --accent-200: #ebbafe; /* Ultra-Light */
     --accent-100: #f7e6ff; /* Glint (Casi blanco, ideal para brillo) */
 
-    /* --- SUPERFICIES Y ELEVACIÓN --- */
-    /* Para diferenciar el fondo de la card del fondo de la página */
-    --bg-body: #080808; 
-    /* Para inputs, dividers o bordes sutiles */
-    --surface-light: #1a1a1a; 
-
     /* --- TIPOGRAFÍA (Escala de Grises) --- */
     --text-main: #F8FAFC;
     --text-muted: #94A3B8; /* Gris suave que no compite con el púrpura */
     --text-disabled: #4d4d4d;
-
-    /* --- ESTADOS SEMÁNTICOS (Adaptados al tono neón) --- */
-    --success: #00ff88; /* Verde neón que vibra bien con el púrpura */
-    --error: #ff3366;   /* Rosa/Rojo eléctrico */
-    --warning: #ffcc00; /* Oro vibrante */
 
     /* --- EFECTOS DE PROFUNDIDAD --- */
     --glass-white: rgba(4, 4, 4, 0.05); /* Blanco translúcido para efectos de vidrio */
     --glow-shadow: rgba(113, 0, 194, 0.35); /* Tu accent con transparencia para sombras */
     --glass-bg: rgba(255, 255, 255, 0.05); /* Efecto cristal sobre negro */
 
-    /* --- EFECTO CURSOR --- */
     --cursor-pc: url('/public/img/cursorPC.png'), auto;
-    --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), auto;
+    --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), pointer;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-style: normal;
-    list-style: none;
-    text-decoration: none;
     font-family: 'Nunito';
-    scroll-behavior: smooth;
+    text-decoration: none;
 }
 
 html {
+    scroll-behavior: smooth;
     cursor: var(--cursor-pc);
+    background-color: var(--bg-body);
+    color: var(--text-main);
 }
 
 .section {
@@ -143,6 +129,6 @@ section {
         font-size: 14px;
     }
     .section {
-        padding: 1rem 2rem 3rem 2rem;
+        padding: 5rem 2rem 3rem 2rem;
     }
 }
