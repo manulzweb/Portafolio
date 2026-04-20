@@ -1,0 +1,99 @@
+.tecnologias {
+    flex-direction: column;
+    width: 100%;
+}
+
+.tecnologias__intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tecnologias__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.tech-card {
+    background: rgba(255, 253, 254, 0.035);
+    border-radius: 20px;
+    padding: 1.8rem 1.2rem; /* Padding reducido para tarjetas más pequeñas */
+    outline: 2px dotted var(--accent-700);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    animation: appearance linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+}
+
+.tech-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 253, 254, 0.08);
+    outline: 2px solid var(--accent-500);
+}
+
+.tech-card__icon {
+    font-size: 3.5rem !important;
+    background: linear-gradient(135deg, var(--accent-300), var(--accent-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(219, 141, 250, 0.5));
+}
+
+.tech-card__title {
+    color: var(--accent-400);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.tech-card__list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    color: var(--text-main);
+}
+
+.tech-card__list li {
+    font-size: 1.1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+}
+
+.tech-card__list li:last-child {
+    border-bottom: none;
+}
+
+.tech-card__learning {
+    color: var(--accent-300);
+    font-size: 0.8em;
+    font-weight: normal;
+    background: rgba(219, 141, 250, 0.15);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+@media (max-width: 1024px) {
+    .tecnologias__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .tecnologias__grid {
+        grid-template-columns: 1fr;
+    }
+}

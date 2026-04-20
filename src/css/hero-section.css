@@ -1,6 +1,7 @@
 
 .hero-section-bg {
-    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
+    /* Fondo translúcido para revelar las orbes de fondo */
+    background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(31, 28, 107, 0.25) 100%);
 }
 
 .hero {
@@ -13,25 +14,22 @@
     height: 100% !important;
 }
 
-.img__container {
+.hero__img-container {
     max-width: 100%;
     max-height: 500px;
     display: flex;
     justify-content: center;
     transition: transform 0.25s ease;
     transition: translate 0.5s ease;
-    /* background: 
-        linear-gradient(#121212, #121212) padding-box, 
-        conic-gradient(in hsl shorter hue, var(--accent), var(--accent-superlight), var(--accent)) border-box; */
 }
 
-.img__container:hover {
+.hero__img-container:hover {
     cursor: pointer;
     transform: scale(1.05);
     translate: 0px -10px;
 }
 
-.imgManuel {
+.hero__img {
     object-fit: cover;
     border-radius: 19px;
     width: 100%;
@@ -46,8 +44,7 @@
 
 @media (max-width: 768px) {
     .hero-section-bg {
-    background: linear-gradient(135deg, #000000 0%, #1f1c6b 100%);
-
+        background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(31, 28, 107, 0.25) 100%);
     }
     .hero {
         grid-template-columns: 1fr;

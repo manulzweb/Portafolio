@@ -5,12 +5,6 @@
     z-index: 1 !important;
 }
 
-.animated-border-custom-navbar::after,
-.animated-border-custom-navbar::before {
-    border-radius: 0 ;
-    background: conic-gradient(from var(--angulo) in hsl shorter hue, transparent 90%, var(--accent-700)) !important
-}
-
 /* Estilo para la barra de navegación */
 .navbar {
     background: linear-gradient(180deg, #0F172A 0%, #340e3e 100%);
@@ -60,7 +54,7 @@
     cursor: var(--cursor-pala);
 }
 
-.buttom-animation:hover{
+.button-animation:hover {
     transition: all ease 0.25s;
     transform: translateY(-3px);
     cursor: pointer;
@@ -68,12 +62,12 @@
 
 
 /* Ocultar el checkbox real */
-.nav-toggle-check {
+.navbar__toggle-check {
     display: none;
 }
 
 /* Estilo básico del botón hamburguesa */
-.nav-toggle-btn {
+.navbar__toggle-btn {
     display: none;
     /* Se oculta en pantallas grandes */
     cursor: pointer;
@@ -81,7 +75,7 @@
     gap: 5px;
 }
 
-.nav-toggle-btn span {
+.navbar__toggle-btn span {
     width: 30px;
     height: 3px;
     background-color: #ffffff;
@@ -89,11 +83,35 @@
     transition: 0.3s;
 }
 
+/* --- RESPONSIVE (TABLET) --- */
+@media (max-width: 768px) {
+    .navbar {
+        position: absolute;
+        margin: 0 auto;
+        top: 0.5rem;
+        background: rgba(110, 0, 255, 0.23);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 24px;
+        border: 1px solid rgba(200, 150, 255, 0.3);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(110, 0, 255, 0.1),
+            inset 0 0 30px 15px rgba(180, 100, 255, 0.15);
+    }
+
+    .navbar__items {
+        gap: 0.5rem;
+    }
+}
+
+
 /* --- RESPONSIVE (MOBILE) --- */
-@media (max-width: 720px) {
+@media (max-width: 425px) {
 
     /* Mostramos el botón hamburguesa */
-    .nav-toggle-btn {
+    .navbar__toggle-btn {
         display: flex;
         z-index: 101;
         /* Por encima del menú */
@@ -104,7 +122,7 @@
         position: absolute;
         right: 2rem;
         top: 1rem;
-        gap: 1rem 3rem;
+        gap: 0rem 1rem;
         max-width: 242px;
         background: rgba(110, 0, 255, 0.23);
         backdrop-filter: blur(5px);
@@ -116,7 +134,6 @@
             inset 0 1px 0 rgba(255, 255, 255, 0.3),
             inset 0 -1px 0 rgba(110, 0, 255, 0.1),
             inset 0 0 30px 15px rgba(180, 100, 255, 0.15);
-        transition: all 0.4s ease;
     }
 
     .navbar__items {
@@ -133,34 +150,35 @@
 
         /* Efecto Glass Purple aplicado */
     }
-    .nav-toggle-check:checked ~ .navbar__items {
+
+    .navbar__toggle-check:checked~.navbar__items {
         display: flex;
+        max-height: 500px;
+        /* Un valor lo suficientemente alto */
+        opacity: 1;
+        padding: 1.5rem;
+        /* El padding aparece al desplegar */
+        pointer-events: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Línea divisoria sutil */
+        margin-top: 0.5rem;
+        transform: scale(1) translateY(0);
     }
 
-    .nav-toggle-check {
+    .navbar__toggle-check {
         transition: all 0.25s ease-in;
     }
 
-    /* Busca si nav toggle está checked y en dado caso muestra la Card */
-    .nav-toggle-check:checked ~ .navbar .navbar__items {
-        max-height: 500px; /* Un valor lo suficientemente alto */
-        opacity: 1;
-        padding: 1.5rem; /* El padding aparece al desplegar */
-        pointer-events: auto;
-        border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
-        margin-top: 0.5rem;
-}
-
     /* Animación de la hamburguesa a "X" */
-    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(1) {
+    .navbar__toggle-check:checked+.navbar__toggle-btn span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 5px);
     }
 
-    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(2) {
+    .navbar__toggle-check:checked+.navbar__toggle-btn span:nth-child(2) {
         opacity: 0;
     }
 
-    .nav-toggle-check:checked+.nav-toggle-btn span:nth-child(3) {
+    .navbar__toggle-check:checked+.navbar__toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -5px);
     }
 }

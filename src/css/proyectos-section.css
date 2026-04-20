@@ -1,9 +1,11 @@
 .proyectos {
     display: flex;
-    flex-direction: column; /* Cambiado a columna por defecto para mejor control */
+    flex-direction: column;
+    /* Cambiado a columna por defecto para mejor control */
     align-items: center;
     width: 100%;
-    max-width: 1200px;      /* Evita que se estire demasiado en pantallas gigantes */
+    max-width: 1200px;
+    /* Evita que se estire demasiado en pantallas gigantes */
     min-height: 420px;
     gap: 3rem;
 }
@@ -17,45 +19,75 @@
 }
 
 .proyectos__intro {
-text-align: center;
-max-width: 100%;
-padding: 1rem;
-}
-
-.section-title {
-font-size: var(--big-title);
-text-transform: uppercase;
-color: var(--accent-700);
-padding: 1rem 0rem;
-}
-
-.section-description {
-text-align: center;
-font-size: 1.2rem;
-text-align: left;
-max-width: 650px;
+    text-align: center;
+    max-width: 100%;
+    padding: 1rem;
 }
 
 /* --- Animaciones y Cards --- */
 .proyecto-card {
     background: rgba(255, 253, 254, 0.035);
-    border-radius: 16px;
-    outline: 3px dotted var(--accent-700);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1px);
+    border-radius: 20px;
+    /* Igual que tech-card */
     padding: 1.5rem;
-    min-height: 300px;
-    
-    
-    /* Animación aplicada a todas las pantallas o solo móvil según prefieras */
-    animation: aparicion ease forwards;
+    outline: 2px dotted var(--accent-700);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, outline-color 0.3s ease, outline-style 0.1s ease, background 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    /* Animación aplicada a todas las pantallas */
+    animation: aparicion linear forwards;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% cover 25%;
+}
+
+.proyecto-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 253, 254, 0.08);
+    /* Brillo al hover igual que tech-card */
+    outline: 2px solid var(--accent-500);
+    /* Cambio de puntos a sólido */
+}
+
+/* Imagen del Proyecto */
+.proyecto-card__img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.proyecto-card__content {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Rellena el espacio sobrante para empujar los botones abajo */
+}
+
+.proyecto-card__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 @keyframes aparicion {
-    from { opacity: 0; transform: translateY(100px) scale(0); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 1024px) {

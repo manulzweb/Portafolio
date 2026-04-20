@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Vasquez | Desarrollador Web Full-Stack</title>
+    <title>Manuel Vasquez | Desarrollador Full-Stack & UI/UX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -14,61 +15,68 @@
     <link rel="stylesheet" href="src/css/botones.css">
     <link rel="stylesheet" href="src/css/animated-border.css">
     <link rel="stylesheet" href="src/css/hero-section.css">
+    <link rel="stylesheet" href="src/css/tecnologias-section.css">
     <link rel="stylesheet" href="src/css/proyectos-section.css">
     <link rel="stylesheet" href="src/css/servicios-section.css">
     <link rel="stylesheet" href="src/css/footer.css">
     <link rel="stylesheet" href="src/css/navbar.css">
 
-    <script src="https://kit.fontawesome.com/e2d97e417b.js" crossorigin="anonymous"></script>
-
-    <meta name="description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta name="description"
+        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta name="author" content="Manuel Vasquez">
+    <meta name="keywords"
+        content="Manuel Vasquez, Desarrollador Full-Stack, UI/UX, JavaScript, Java Spring Boot, Arquitecturas Modernas">
 
     <!-- OPEN GRAPH -->
     <meta property="og:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
-    <meta property="og:description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta property="og:description"
+        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
     <meta property="og:image" content="public/img/ManuelVasquezPhoto.webp">
     <meta property="og:url" content="https://manulzweb.github.io/">
     <meta property="og:type" content="website">
     <!-- OPEN GRAPH TWITTER -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
-    <meta name="twitter:description" content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+    <meta name="twitter:description"
+        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
     <meta name="twitter:image" content="public/img/ManuelVasquezPhoto.webp">
     <meta name="twitter:creator" content="@manulzweb">
 </head>
+
 <body>
-    <header class="sticky animated-border-5">
+    <!-- Puntos de luz ambientales para dar vida al Glassmorphism -->
+    <div class="glow-point glow-point--1"></div>
+    <div class="glow-point glow-point--2"></div>
+
+    <header class="sticky animated-border-bottom-5">
         <nav class="navbar" aria-label="Navegación principal">
-            <!-- Logo o título del sitio -->
+            <!-- Logo or tittle of the site -->
             <span class="navbar__title">ManulzWeb</span>
-            <!-- Botón de menú hamburgusa para pantallas pequeñas -->
-            <input type="checkbox" id="nav-toggle" class="nav-toggle-check">
-            <label for="nav-toggle" class="nav-toggle-btn">
+            <!-- Hamburger menu button for small screens -->
+            <input type="checkbox" id="nav-toggle" class="navbar__toggle-check">
+            <label for="nav-toggle" class="navbar__toggle-btn">
                 <span></span>
                 <span></span>
                 <span></span>
             </label>
-            <!-- Elementos de la navegación -->
             <ul class="navbar__items">
-                <li class=""><a class="navbar__link" href="#inicio">Inicio</a></li>
-                <li class=""><a class="navbar__link" href="#proyectos">Proyectos</a></li>
-                <li class=""><a class="navbar__link" href="#servicios">Servicios</a></li>
-                <li><a class="navbar__link btn-contact" href="#contacto">Contacto</a></li>
+                <li class=""><a class="navbar__link button-animation" href="#inicio">Inicio</a></li>
+                <li class=""><a class="navbar__link button-animation" href="#proyectos">Proyectos</a></li>
+                <li class=""><a class="navbar__link button-animation" href="#servicios">Servicios</a></li>
+                <li class=""><a class="navbar__link button-animation" href="mascotas.html">Mascotas</a></li>
+                <li><a class="navbar__link btn btn--contact button-animation" href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <!-- Contenido principal -->
-     
+
     <main class="bg">
         <!-- Sección de inicio -->
         <section id="inicio" class="section hero-section-bg">
             <article class="hero">
-                <figure class="img__container animated-border-5">
-                    <img 
-                        class="imgManuel" 
-                        src="public/img/ManuelVasquezPhoto.webp" 
-                        alt="Fotografía profesional de Manuel Vasquez"
-                        fetchpriority="high">
+                <figure class="hero__img-container animated-border-5">
+                    <img class="hero__img" src="public/img/ManuelVasquezPhoto.webp"
+                        alt="Fotografía profesional de Manuel Vasquez" fetchpriority="high">
                 </figure>
                 <div class="big-card">
                     <header>
@@ -77,125 +85,167 @@
                         <p class="big-card__subtitle">Desarrollador Full-Stack</p>
                     </header>
                     <p class="big-card__description">
-                        Especialista en <strong>HTML, CSS y JavaScript nativo</strong>. 
-                        Actualmente potenciando mis habilidades en Java con Spring Boot, React y Vue.js, Angular, Node.js y Express. 
+                        Construyo soluciones digitales de alto rendimiento. Me especializo en crear arquitecturas
+                        robustas y experiencias de usuario excepcionales combinando diseño moderno con código fluido y
+                        escalable.
                     </p>
                     <div>
-                        <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+                        <a href="#proyectos" class="btn btn--primary">Ver Proyectos</a>
+                    </div>
                 </div>
             </article>
         </section>
 
+        <!-- Nueva Sección: Tecnologías -->
+        <section id="tecnologias" class="section tecnologias">
+            <div class="tecnologias__intro">
+                <h2 class="section-title">Mi Stack Tecnológico</h2>
+                <p class="section-description">Herramientas y plataformas que utilizo para construir soluciones
+                    robustas, rápidas y escalables.</p>
+            </div>
+
+            <div class="tecnologias__grid">
+                <!-- Frontend -->
+                <article class="tech-card">
+                    <span class="material-icons tech-card__icon">desktop_windows</span>
+                    <h3 class="tech-card__title">Frontend</h3>
+                    <ul class="tech-card__list">
+                        <li>HTML5 & CSS</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React</li>
+                        <li>Vue.js</li>
+                        <li>Angular</li>
+                    </ul>
+                </article>
+
+                <!-- Backend -->
+                <article class="tech-card">
+                    <span class="material-icons tech-card__icon">dns</span>
+                    <h3 class="tech-card__title">Backend</h3>
+                    <ul class="tech-card__list">
+                        <li>Java Spring Boot</li>
+                        <li>Python</li>
+                        <li>Node.js & Express</li>
+                        <li>.NET <span class="tech-card__learning">Aprendiendo</span></li>
+                    </ul>
+                </article>
+
+                <!-- Nube y Otros -->
+                <article class="tech-card">
+                    <span class="material-icons tech-card__icon">cloud</span>
+                    <h3 class="tech-card__title">Infra & Herramientas</h3>
+                    <ul class="tech-card__list">
+                        <li>AWS (Amazon Web Services)</li>
+                        <li>Git & GitHub</li>
+                        <li>Bases de Datos (SQL / NoSQL)</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
         <section id="proyectos" class="section">
-            <main class="proyectos">
+            <div class="proyectos">
                 <article class="proyectos__intro">
                     <h2 class="section-title">Proyectos Destacados</h2>
                     <p class="section-description">
-                        A continuación, se presentan algunos de mis proyectos más recientes, 
+                        A continuación, se presentan algunos de mis proyectos más recientes,
                         que reflejan mi experiencia y habilidades en el desarrollo web full-stack.
                     </p>
                 </article>
                 <div class="proyectos__grid">
                     <!-- Proyecto 1 -->
                     <article class="proyecto-card">
-                        <header>
-                            <h3 class="proyecto-card__title">Proyecto 1: Portafolio Personal</h3>
-                        </header>
-                        <p class="proyecto-card__description">
-                            Un portafolio personal desarrollado con HTML, CSS y JavaScript nativo, 
-                            diseñado para mostrar mis habilidades y proyectos de manera profesional.
-                        </p>
-                        <a href="#" class="btn-primary">Ver Demo</a>
-                        <a href="#" class="btn-secundary">Sitio Web</a>
+                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 1">
+                        <div class="proyecto-card__content">
+                            <header>
+                                <h3 class="proyecto-card__title">Proyecto 1: Portafolio Personal</h3>
+                            </header>
+                            <p class="proyecto-card__description">
+                                Un portafolio personal desarrollado con HTML, CSS y JavaScript nativo,
+                                diseñado para mostrar mis habilidades y proyectos de manera profesional.
+                            </p>
+                        </div>
+                        <div class="proyecto-card__actions">
+                            <a href="#" class="btn btn--primary">Ver Demo</a>
+                            <a href="#" class="btn btn--secondary">Sitio Web</a>
+                        </div>
                     </article>
                     <!-- Proyecto 2 -->
                     <article class="proyecto-card">
-                        <header>
-                            <h3 class="proyecto-card__title">Proyecto 2: Aplicación de Tareas</h3>
-                        </header>
-                        <p class="proyecto-card__description">
-                            Una aplicación de gestión de tareas desarrollada con React, 
-                            que permite a los usuarios organizar sus actividades diarias de manera eficiente.
-                        </p>
-                        <a href="#" class="btn-primary">Ver Demo</a>
-                        <a href="#" class="btn-secundary">Sitio Web</a>
+                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 2">
+                        <div class="proyecto-card__content">
+                            <header>
+                                <h3 class="proyecto-card__title">Proyecto 2: Aplicación de Tareas</h3>
+                            </header>
+                            <p class="proyecto-card__description">
+                                Una aplicación de gestión de tareas desarrollada con React,
+                                que permite a los usuarios organizar sus actividades diarias de manera eficiente.
+                            </p>
+                        </div>
+                        <div class="proyecto-card__actions">
+                            <a href="#" class="btn btn--primary">Ver Demo</a>
+                            <a href="#" class="btn btn--secondary">Sitio Web</a>
+                        </div>
                     </article>
                     <!-- Proyecto 3 -->
                     <article class="proyecto-card">
-                        <header>
-                            <h3 class="proyecto-card__title">Proyecto 3: API REST con Spring Boot</h3>
-                        </header>
-                        <p class="proyecto-card__description">
-                            Una API RESTful desarrollada con Java Spring Boot, diseñada para gestionar datos de usuarios 
-                            y proporcionar servicios de backend para aplicaciones web y móviles.
-                        </p>
-                        <a href="#" class="btn-primary">Ver Demo</a>
-                        <a href="#" class="btn-secundary">Sitio Web</a>
-                    </article>
-                    <!-- Proyecto 4 -->
-                    <article class="proyecto-card">
-                        <header>
-                            <h3 class="proyecto-card__title">Proyecto 4: Tienda Online</h3>
-                        </header>
-                        <p class="proyecto-card__description">
-                            Una tienda online desarrollada con Vue.js y Node.js, 
-                            que permite a los usuarios navegar por productos y realizar compras de manera segura.
-                        </p>
-                        <a href="#" class="btn-primary">Ver Demo</a>
-                        <a href="#" class="btn-secundary">Sitio Web</a>
-                    </article>
-                    <!-- Proyecto 5 -->
-                    <article class="proyecto-card">
-                        <header>
-                            <h3 class="proyecto-card__title">Proyecto 5: Crud para restaurante</h3>
-                        </header>
-                        <p class="proyecto-card__description">
-                            Un crud para restaurante desarrollado con Angular y Express, que permite gestionar el menú, pedidos de manera eficiente.
-                        </p>
-                        <a href="#" class="btn-primary">Ver Demo</a>
-                        <a href="#" class="btn-secundary">Sitio Web</a>
+                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 3">
+                        <div class="proyecto-card__content">
+                            <header>
+                                <h3 class="proyecto-card__title">Proyecto 3: API REST con Spring Boot</h3>
+                            </header>
+                            <p class="proyecto-card__description">
+                                Una API RESTful desarrollada con Java Spring Boot, diseñada para gestionar datos de
+                                usuarios
+                                y proporcionar servicios de backend para aplicaciones web y móviles.
+                            </p>
+                        </div>
+                        <div class="proyecto-card__actions">
+                            <a href="#" class="btn btn--primary">Ver Demo</a>
+                            <a href="#" class="btn btn--secondary">Sitio Web</a>
+                        </div>
                     </article>
                 </div>
-            </main>
+            </div>
         </section>
-        <section id="servicios" class="section">
+        <section id="servicios" class="section servicios">
             <div class="servicios__intro">
-                <h1 class="section-title">Servicios Profesionales</h1>
+                <h2 class="section-title">Servicios Profesionales</h2>
                 <p class="section-description">Ofrezco soluciones integrales de desarrollo y diseño digital.</p>
             </div>
 
             <div class="servicios__grid">
                 <article class="servicio-card">
+                    <span class="material-icons servicio-card__icon">code</span>
                     <h2 class="servicio-card__subtitle">Desarrollo Full-Stack</h2>
-                    <figure>
-                        <img src="public/img/fullstack.webp" alt="Full-stack" class="servicios__img">
-                    </figure>
-                    <p>Creación de aplicaciones completas con React, Node.js y Spring Boot.</p>
+                    <p>Creación de aplicaciones completas y escalables desde la recolección de datos hasta la UI.</p>
                 </article>
 
                 <article class="servicio-card">
+                    <span class="material-icons servicio-card__icon">design_services</span>
                     <h2 class="servicio-card__subtitle">Diseño UI/UX</h2>
-                    <figure>
-                        <img src="public/img/ui-design.webp" alt="UI Design" class="servicios__img">
-                    </figure>
-                    <p>Interfaces funcionales y atractivas centradas en la experiencia del usuario.</p>
+                    <p>Interfaces y prototipos funcionales altamente atractivos centrados en la experiencia final del
+                        usuario.</p>
                 </article>
 
                 <article class="servicio-card">
-                    <h2 class="servicio-card__subtitle">Consultoría</h2>
-                    <figure>
-                        <img src="public/img/consultoria.webp" alt="Consultoría" class="servicios__img">
-                    </figure>
-                    <p>Asesoramiento en arquitectura de software y mejores prácticas modernas.</p>
+                    <span class="material-icons servicio-card__icon">support_agent</span>
+                    <h2 class="servicio-card__subtitle">Consultoría IT</h2>
+                    <p>Asesoramiento en arquitectura de sistemas empresariales, nubes genéricas y en mejores prácticas
+                        modernas.</p>
                 </article>
 
                 <article class="servicio-card">
+                    <span class="material-icons servicio-card__icon">speed</span>
                     <h2 class="servicio-card__subtitle">Optimización</h2>
-                    <figure>
-                        <img src="public/img/performance.webp" alt="Performance" class="servicios__img">
-                    </figure>
-                    <p>Mejora de velocidad y auditorías de rendimiento para web vitales.</p>
+                    <p>Mejora de velocidad en sitios heredados y auditorías de rendimiento integral para web vitales.
+                    </p>
                 </article>
+            </div>
+
+            <div class="servicios__action" style="text-align: center; margin-top: 3.5rem; width: 100%;">
+                <a href="#contacto" class="btn btn--primary button-animation"
+                    style="font-size: 1.1rem; padding: 1rem 2.5rem;">Solicitar Presupuesto Especializado</a>
             </div>
         </section>
     </main>
@@ -223,18 +273,21 @@
             <div class="footer__content">
                 <h4 class="footer__subtitle">Sígueme</h4>
                 <div class="footer__socials">
-                    <a href="" class="social-link"><span class="material-icons iconsize">code</span></a>
-                    <a href="" class="social-link"><span class="material-icons iconsize">public</span></a>
-                    <a href="https://github.com/manulzweb" class="social-link"><i class="fa-brands fa-square-github iconsize"></i></a>
-                    <a href="" class="social-link"><span class="material-icons iconsize"></span></a>
-                    <a href="" class="social-link"><span class="material-icons iconsize">terminal</span></a>
+                    <a href="" class="footer__social-link"><span class="material-icons icon--md">code</span></a>
+                    <a href="" class="footer__social-link"><span class="material-icons icon--md">public</span></a>
+                    <a href="https://github.com/manulzweb" class="footer__social-link"><i
+                            class="fa-brands fa-square-github icon--md"></i></a>
+                    <a href="" class="footer__social-link"><span class="material-icons icon--md"></span></a>
+                    <a href="" class="footer__social-link"><span class="material-icons icon--md">terminal</span></a>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer__bottom">
             <p>&copy; 2026 Diseñado por Manuel Vasquez</p>
         </div>
     </footer>
+    <script type="module" src="src/js/main.js"></script>
 </body>
+
 </html>

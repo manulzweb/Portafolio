@@ -1,31 +1,81 @@
 :root {
     /* --- TUS COLORES ORIGINALES --- */
-    --bg-dark: #000000; 
+    --bg-dark: #000000;
     --bg-body: #080808;
 
     /* --- Escala purpura --- */
-    --accent-900: #2d004d; /* Ultra-Deep (Sombra/Fondo) */
-    --accent-800: #4a0080; /* Deep */
-    --accent-700: #7100c2; /* MID-BASE */
-    --accent-600: #8c25db; /* Mid-Light */
-    --accent-500: #a846f3; /* LIGHT */
-    --accent-400: #c269f7; /* Light-Bright */
-    --accent-300: #db8dfa; /* SUPER-LIGHT */
-    --accent-200: #ebbafe; /* Ultra-Light */
-    --accent-100: #f7e6ff; /* Glint (Casi blanco, ideal para brillo) */
+    --accent-900: #2d004d;
+    /* Ultra-Deep (Sombra/Fondo) */
+    --accent-800: #4a0080;
+    /* Deep */
+    --accent-700: #7100c2;
+    /* MID-BASE */
+    --accent-600: #8c25db;
+    /* Mid-Light */
+    --accent-500: #a846f3;
+    /* LIGHT */
+    --accent-400: #c269f7;
+    /* Light-Bright */
+    --accent-300: #db8dfa;
+    /* SUPER-LIGHT */
+    --accent-200: #ebbafe;
+    /* Ultra-Light */
+    --accent-100: #f7e6ff;
+    /* Glint (Casi blanco, ideal para brillo) */
 
-    /* --- TIPOGRAFÍA (Escala de Grises) --- */
+    /* --- TIPOGRAFÍA --- */
     --text-main: #F8FAFC;
-    --text-muted: #94A3B8; /* Gris suave que no compite con el púrpura */
+    --text-muted: #94A3B8;
     --text-disabled: #4d4d4d;
 
-    /* --- EFECTOS DE PROFUNDIDAD --- */
-    --glass-white: rgba(4, 4, 4, 0.05); /* Blanco translúcido para efectos de vidrio */
-    --glow-shadow: rgba(113, 0, 194, 0.35); /* Tu accent con transparencia para sombras */
-    --glass-bg: rgba(255, 255, 255, 0.05); /* Efecto cristal sobre negro */
+    /* Variable faltante que rompía todos los títulos */
+    --big-title: 3.2rem;
 
+    /* --- EFECTOS DE PROFUNDIDAD --- */
+    --glass-white: rgba(4, 4, 4, 0.05);
+    /* Blanco translúcido para efectos de vidrio */
+    --glow-shadow: rgba(113, 0, 194, 0.35);
+    /* Tu accent con transparencia para sombras */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    /* Efecto cristal sobre negro */
     --cursor-pc: url('/public/img/cursorPC.png'), auto;
     --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), pointer;
+}
+
+/* --- ORBES LUMINOSAS AMBIENTALES --- */
+.glow-point {
+    position: fixed;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    opacity: 0.15;
+    animation: drift 15s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+.glow-point--1 {
+    top: -15%;
+    left: -10%;
+    background: var(--accent-700);
+}
+
+.glow-point--2 {
+    bottom: -15%;
+    right: -10%;
+    background: var(--accent-400);
+    animation-delay: -7.5s;
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(8%, 15%) scale(1.1);
+    }
 }
 
 * {
@@ -38,6 +88,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
     cursor: var(--cursor-pc);
     background-color: var(--bg-body);
     color: var(--text-main);
@@ -60,7 +111,7 @@ strong {
     -webkit-text-fill-color: transparent;
 }
 
-.w-50{
+.w-50 {
     width: 50%;
 }
 
@@ -75,60 +126,89 @@ section {
 }
 
 .glass-card {
-  --glass-bg: rgba(255, 255, 255, 0.23);
-  --glass-blur: 5px;
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --glass-width: auto;
-  --glass-height: auto;
+    --glass-bg: rgba(255, 255, 255, 0.23);
+    --glass-blur: 5px;
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-width: auto;
+    --glass-height: auto;
 
-  width: var(--glass-width);
-  height: var(--glass-height);
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border-radius: var(--glass-radius);
-  border: 1px solid var(--glass-border);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 30px 15px rgba(255, 255, 255, 0.15);
-  
-  position: relative;
-  overflow: hidden;
-  padding: 1.5rem; 
+    width: var(--glass-width);
+    height: var(--glass-height);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: var(--glass-radius);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 30px 15px rgba(255, 255, 255, 0.15);
+
+    position: relative;
+    overflow: hidden;
+    padding: 1.5rem;
 }
 
 /* Brillo superior ajustable */
 .glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
 }
 
 /* Brillo lateral ajustable */
 .glass-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent, rgba(255, 255, 255, 0.3));
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent, rgba(255, 255, 255, 0.3));
+}
+
+.section-title {
+    font-size: var(--big-title);
+    text-transform: uppercase;
+    color: var(--accent-400);
+    padding: 1rem 0rem;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.2rem;
+    text-align: left;
+    max-width: 650px;
 }
 
 @media (max-width: 768px) {
+    :root {
+        --big-title: 2.4rem;
+        /* Achicamos los títulos de sección paramóviles */
+    }
+
     .section {
-        padding: 0rem 2rem 3rem 2rem;
+        padding: 2rem 1.5rem 3rem 1.5rem;
+        /* Mejor padding que 0rem top */
     }
 }
 
 @media (max-width: 425px) {
     html {
-        font-size: 14px;
+        font-size: 15px;
+        /* De 14 a 15 para mejor lectura y que no encoja tanto */
     }
+
+    :root {
+        --big-title: 2rem;
+    }
+
     .section {
-        padding: 5rem 2rem 3rem 2rem;
+        padding: 3rem 1.2rem 3rem 1.2rem;
     }
 }

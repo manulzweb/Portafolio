@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Mascotas | ManulzWeb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/botones.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
+    <link rel="stylesheet" href="src/css/animated-border.css">
+    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/mascotas.css">
+</head>
+<body>
+    <header class="sticky animated-border-5">
+        <nav class="navbar" aria-label="Navegación principal">
+            <!-- Logo o título del sitio -->
+            <span class="navbar__title">ManulzWeb</span>
+            <!-- Botón de menú hamburguesa para pantallas pequeñas -->
+            <input type="checkbox" id="nav-toggle" class="navbar__toggle-check">
+            <label for="nav-toggle" class="navbar__toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <ul class="navbar__items">
+                <li class=""><a class="navbar__link button-animation" href="index.html#inicio">Inicio</a></li>
+                <li class=""><a class="navbar__link button-animation" href="index.html#proyectos">Proyectos</a></li>
+                <li class=""><a class="navbar__link button-animation" href="mascotas.html">Mascotas</a></li>
+                <li><a class="navbar__link btn btn--contact button-animation" href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="bg">
+        <section class="section mascotas">
+            <article class="mascotas__intro">
+                <h1 class="section-title">Mis Mascotas</h1>
+                <p class="section-description">Una galería de mis compañeros en un layout híbrido de CSS Grid y Flexbox bajo una estética Glassmorphism estricta.</p>
+                <div style="margin-top:2rem;">
+                    <button id="btn-toggle-gallery" class="btn btn--primary">Ocultar/Mostrar Galería</button>
+                    <button id="btn-saludo-mascotas" class="btn btn--secondary" style="margin-left:1rem;">Saludar</button>
+                </div>
+            </article>
+
+            <div id="mascotas-gallery" class="mascotas__grid">
+                <!-- Mascota 1 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/dog.png" alt="Max el Perro">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Max</h3>
+                        <p class="mascota-card__desc">Un perro muy juguetón y amigable.</p>
+                    </div>
+                </article>
+                <!-- Mascota 2 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/cat.png" alt="Luna la Gata">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Luna</h3>
+                        <p class="mascota-card__desc">Gata siamesa con mucha elegancia.</p>
+                    </div>
+                </article>
+                <!-- Mascota 3 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/rabbit.png" alt="Copo el Conejo">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Copo</h3>
+                        <p class="mascota-card__desc">Un conejo blanco amante de lo dulce.</p>
+                    </div>
+                </article>
+                <!-- Mascota 4 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/parrot.png" alt="Paco el Loro">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Paco</h3>
+                        <p class="mascota-card__desc">Loro muy hablador y colorido.</p>
+                    </div>
+                </article>
+                <!-- Mascota 5 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/turtle.png" alt="Flash la Tortuga">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Flash</h3>
+                        <p class="mascota-card__desc">Tortuga a la que le encanta tomar el sol.</p>
+                    </div>
+                </article>
+                <!-- Mascota 6 -->
+                <article class="mascota-card">
+                    <figure class="mascota-card__fig">
+                        <img class="mascota-card__img" src="public/img/mascotas/hamster.png" alt="Bola el Hámster">
+                    </figure>
+                    <div class="mascota-card__body">
+                        <h3 class="mascota-card__title">Bola</h3>
+                        <p class="mascota-card__desc">Siempre corriendo en su rueda con gran energía.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <h3 class="footer__title">Mi Portafolio</h3>
+                <p class="footer__text">Creando experiencias digitales únicas con código y diseño.</p>
+            </div>
+            <div class="footer__content">
+                <h4 class="footer__subtitle">Sígueme</h4>
+                <div class="footer__socials">
+                    <a href="https://github.com/manulzweb" class="social-link"><span class="material-icons iconsize">code</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Diseñado por Manuel Vasquez</p>
+        </div>
+    </footer>
+    
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

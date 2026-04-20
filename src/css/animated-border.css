@@ -4,13 +4,23 @@
     inherits: false;
 }
 
-.animated-border-2, .animated-border-5 {
+/* 
+ * ==========================================
+ * CENTRAL SYSTEM OF ANIMATED BORDERS (DRY)
+ * ==========================================
+ * We catch ANY class that starts with "animated-border-" 
+ * and we configure its physical laws only once.
+ */
+[class*="animated-border-"] {
     z-index: 0;
     position: relative;
+    /* Default values */
+    --border-padding: 0px;
+    --border-radius: 0px;
 }
 
-.animated-border-5::after,
-.animated-border-5::before {
+[class*="animated-border-"]::after,
+[class*="animated-border-"]::before {
     z-index: -1;
     content: "";
     position: absolute;
@@ -19,42 +29,82 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    padding: 5px;
-    border-radius: 24px;
+
+    /* We inject the dynamic variables */
+    padding: var(--border-padding);
+    border-radius: var(--border-radius);
+
     background: conic-gradient(from var(--angulo) in hsl shorter hue, var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700));
     animation: spinningborder 4s linear infinite;
-}
 
-.animated-border-2::after,
-.animated-border-2::before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    padding: 2px;
-    border-radius: 24px;
-    background: conic-gradient(from var(--angulo) in hsl shorter hue, var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700), var(--accent-600), var(--accent-500), var(--accent-400), var(--accent-300), var(--accent-200), var(--accent-100), var(--accent-700));
-    animation: spinningborder 4s linear infinite;
-}
-
-.animated-border-2, .animated-border-5::after {
+    /* Magia de enmascaramiento */
     --mask: linear-gradient(#000000 0 0);
     -webkit-mask: var(--mask) content-box, var(--mask);
     mask: var(--mask) content-box, var(--mask);
-
-    /* Restamos el centro para que solo quede el borde visible */
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
 
-.animated-border-2, .animated-border-5::after {
+/* Blur filter exclusive for after (Glow effect) */
+[class*="animated-border-"]::after {
     filter: blur(1rem);
 }
 
+/* ==========================================
+ * USEFUL CLASSES AND VARIANTS (The Dictionary)
+ * ========================================== */
+
+/* --- Full Borders (Rounded like a Card) --- */
+.animated-border-2 {
+    --border-padding: 2px;
+    --border-radius: 24px;
+}
+
+.animated-border-5 {
+    --border-padding: 5px;
+    --border-radius: 24px;
+}
+
+/* --- Top Borders (Flat) --- */
+.animated-border-top-2 {
+    --border-padding: 2px 0 0 0;
+}
+
+.animated-border-top-5 {
+    --border-padding: 5px 0 0 0;
+}
+
+/* --- Right Borders (Flat) --- */
+.animated-border-right-2 {
+    --border-padding: 0 2px 0 0;
+}
+
+.animated-border-right-5 {
+    --border-padding: 0 5px 0 0;
+}
+
+/* --- Bottom Borders (Flat) --- */
+.animated-border-bottom-2 {
+    --border-padding: 0 0 2px 0;
+}
+
+.animated-border-bottom-5 {
+    --border-padding: 0 0 5px 0;
+}
+
+/* --- Left Borders (Flat) --- */
+.animated-border-left-2 {
+    --border-padding: 0 0 0 2px;
+}
+
+.animated-border-left-5 {
+    --border-padding: 0 0 0 5px;
+}
+
+
+/* ==========================================
+ * ANIMADOR DE GIRO RADIAL
+ * ========================================== */
 @keyframes spinningborder {
     from {
         --angulo: 0deg;
@@ -63,9 +113,4 @@
     to {
         --angulo: 360deg;
     }
-}
-
-
-@media (max-width: 425px) {
-
 }
