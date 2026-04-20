@@ -51,10 +51,9 @@
 }
 
 /* ==========================================
- * USEFUL CLASSES AND VARIANTS (The Dictionary)
+ * USEFUL CLASSES AND VARIANTS
  * ========================================== */
 
-/* --- Full Borders (Rounded like a Card) --- */
 .animated-border-2 {
     --border-padding: 2px;
     --border-radius: 24px;

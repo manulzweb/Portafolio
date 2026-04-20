@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,9 @@
     <link rel="stylesheet" href="src/css/footer.css">
     <link rel="stylesheet" href="src/css/mascotas.css">
 </head>
+
 <body>
-    <header class="sticky animated-border-5">
+    <header class="sticky animated-border-bottom-2">
         <nav class="navbar" aria-label="Navegación principal">
             <!-- Logo o título del sitio -->
             <span class="navbar__title">ManulzWeb</span>
@@ -28,11 +30,51 @@
                 <span></span>
                 <span></span>
             </label>
+
             <ul class="navbar__items">
-                <li class=""><a class="navbar__link button-animation" href="index.html#inicio">Inicio</a></li>
-                <li class=""><a class="navbar__link button-animation" href="index.html#proyectos">Proyectos</a></li>
-                <li class=""><a class="navbar__link button-animation" href="mascotas.html">Mascotas</a></li>
-                <li><a class="navbar__link btn btn--contact button-animation" href="index.html#contacto">Contacto</a></li>
+
+                <li>
+                    <a class="navbar__link button-animation" href="index.html" aria-label="home">
+                        <span class="material-icons">home</span>
+                        <div class="navbar__link-text">
+                            Inicio
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="index.html#proyectos" aria-label="Proyectos">
+                        <span class="material-icons">folder</span>
+                        <div class="navbar__link-text">
+                            Proyectos
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="index.html#servicios" aria-label="Servicios">
+                        <span class="material-icons">logo_dev</span>
+                        <div class="navbar__link-text">
+                            Servicios
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="mascotas.html" aria-label="Mascotas">
+                        <span class="material-icons">pets</span>
+                        <div class="navbar__link-text">
+                            Mascotas
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link btn btn--contact" href="index.html#contacto" aria-label="Contacto">
+                        <span class="material-icons">connect_without_contact</span>
+                        <div class="navbar__link-text">
+                            Contacto
+                        </div>
+                    </a>
+                </li>
+
+
             </ul>
         </nav>
     </header>
@@ -41,10 +83,12 @@
         <section class="section mascotas">
             <article class="mascotas__intro">
                 <h1 class="section-title">Mis Mascotas</h1>
-                <p class="section-description">Una galería de mis compañeros en un layout híbrido de CSS Grid y Flexbox bajo una estética Glassmorphism estricta.</p>
+                <p class="section-description">Una galería de mis compañeros en un layout híbrido de CSS Grid y Flexbox
+                    bajo una estética Glassmorphism estricta.</p>
                 <div style="margin-top:2rem;">
                     <button id="btn-toggle-gallery" class="btn btn--primary">Ocultar/Mostrar Galería</button>
-                    <button id="btn-saludo-mascotas" class="btn btn--secondary" style="margin-left:1rem;">Saludar</button>
+                    <button id="btn-saludo-mascotas" class="btn btn--secondary"
+                        style="margin-left:1rem;">Saludar</button>
                 </div>
             </article>
 
@@ -122,7 +166,8 @@
             <div class="footer__content">
                 <h4 class="footer__subtitle">Sígueme</h4>
                 <div class="footer__socials">
-                    <a href="https://github.com/manulzweb" class="social-link"><span class="material-icons iconsize">code</span></a>
+                    <a href="https://github.com/manulzweb" class="social-link"><span
+                            class="material-icons iconsize">code</span></a>
                 </div>
             </div>
         </div>
@@ -130,7 +175,8 @@
             <p>&copy; 2026 Diseñado por Manuel Vasquez</p>
         </div>
     </footer>
-    
+
     <script type="module" src="src/js/main.js"></script>
 </body>
+
 </html>

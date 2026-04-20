@@ -11,7 +11,7 @@
     transition: all ease 0.25s;
 }
 
-.big-card:hover{
+.big-card:hover {
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
     scale: 1.02;
 }
@@ -43,10 +43,32 @@
     gap: 0.5rem;
 }
 
+.big-card__actions {
+    margin-top: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .big-card {
+        padding: 1.5rem;
+    }
+
+    .big-card__name {
+        font-size: 2.5rem;
+    }
+
+    .big-card__actions {
+        display: flex;
+        justify-content: end;
+        gap: 1rem;
+    }
+}
+
 @media (max-width: 425px) {
     .big-card {
         padding: 1.2rem;
     }
+
     .big-card__name {
         font-size: 2rem;
     }

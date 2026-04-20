@@ -27,55 +27,12 @@
     --text-main: #F8FAFC;
     --text-muted: #94A3B8;
     --text-disabled: #4d4d4d;
-
-    /* Variable faltante que rompía todos los títulos */
     --big-title: 3.2rem;
-
-    /* --- EFECTOS DE PROFUNDIDAD --- */
     --glass-white: rgba(4, 4, 4, 0.05);
-    /* Blanco translúcido para efectos de vidrio */
     --glow-shadow: rgba(113, 0, 194, 0.35);
-    /* Tu accent con transparencia para sombras */
     --glass-bg: rgba(255, 255, 255, 0.05);
-    /* Efecto cristal sobre negro */
     --cursor-pc: url('/public/img/cursorPC.png'), auto;
     --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), pointer;
-}
-
-/* --- ORBES LUMINOSAS AMBIENTALES --- */
-.glow-point {
-    position: fixed;
-    width: 50vw;
-    height: 50vw;
-    border-radius: 50%;
-    filter: blur(140px);
-    z-index: -1;
-    opacity: 0.15;
-    animation: drift 15s infinite alternate ease-in-out;
-    pointer-events: none;
-}
-
-.glow-point--1 {
-    top: -15%;
-    left: -10%;
-    background: var(--accent-700);
-}
-
-.glow-point--2 {
-    bottom: -15%;
-    right: -10%;
-    background: var(--accent-400);
-    animation-delay: -7.5s;
-}
-
-@keyframes drift {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    100% {
-        transform: translate(8%, 15%) scale(1.1);
-    }
 }
 
 * {
@@ -189,19 +146,16 @@ section {
 @media (max-width: 768px) {
     :root {
         --big-title: 2.4rem;
-        /* Achicamos los títulos de sección paramóviles */
     }
 
     .section {
         padding: 2rem 1.5rem 3rem 1.5rem;
-        /* Mejor padding que 0rem top */
     }
 }
 
 @media (max-width: 425px) {
     html {
         font-size: 15px;
-        /* De 14 a 15 para mejor lectura y que no encoja tanto */
     }
 
     :root {

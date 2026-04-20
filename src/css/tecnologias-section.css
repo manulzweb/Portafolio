@@ -18,9 +18,8 @@
 .tech-card {
     background: rgba(255, 253, 254, 0.035);
     border-radius: 20px;
-    padding: 1.8rem 1.2rem; /* Padding reducido para tarjetas más pequeñas */
+    padding: 1.8rem 1.2rem;
     outline: 2px dotted var(--accent-700);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     transition: transform 0.3s ease, border-color 0.3s ease;
@@ -28,7 +27,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+
     animation: appearance linear forwards;
     animation-timeline: view();
     animation-range: entry 0% cover 25%;

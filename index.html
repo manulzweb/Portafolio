@@ -44,9 +44,6 @@
 </head>
 
 <body>
-    <!-- Puntos de luz ambientales para dar vida al Glassmorphism -->
-    <div class="glow-point glow-point--1"></div>
-    <div class="glow-point glow-point--2"></div>
 
     <header class="sticky animated-border-bottom-5">
         <nav class="navbar" aria-label="Navegación principal">
@@ -60,19 +57,55 @@
                 <span></span>
             </label>
             <ul class="navbar__items">
-                <li class=""><a class="navbar__link button-animation" href="#inicio">Inicio</a></li>
-                <li class=""><a class="navbar__link button-animation" href="#proyectos">Proyectos</a></li>
-                <li class=""><a class="navbar__link button-animation" href="#servicios">Servicios</a></li>
-                <li class=""><a class="navbar__link button-animation" href="mascotas.html">Mascotas</a></li>
-                <li><a class="navbar__link btn btn--contact button-animation" href="#contacto">Contacto</a></li>
+
+                <li>
+                    <a class="navbar__link button-animation" href="#home" aria-label="home">
+                        <span class="material-icons">home</span>
+                        <div class="navbar__link-text">
+                            Inicio
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="#projects" aria-label="Proyectos">
+                        <span class="material-icons">folder</span>
+                        <div class="navbar__link-text">
+                            Proyectos
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="#services" aria-label="Servicios">
+                        <span class="material-icons">logo_dev</span>
+                        <div class="navbar__link-text">
+                            Servicios
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link button-animation" href="mascotas.html" aria-label="Mascotas">
+                        <span class="material-icons">pets</span>
+                        <div class="navbar__link-text">
+                            Mascotas
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar__link btn btn--contact" href="#contact" aria-label="Contacto">
+                        <span class="material-icons">connect_without_contact</span>
+                        <div class="navbar__link-text">
+                            Contacto
+                        </div>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </header>
     <!-- Contenido principal -->
-
     <main class="bg">
         <!-- Sección de inicio -->
-        <section id="inicio" class="section hero-section-bg">
+        <section id="home" class="section hero-section-bg">
             <article class="hero">
                 <figure class="hero__img-container animated-border-5">
                     <img class="hero__img" src="public/img/ManuelVasquezPhoto.webp"
@@ -89,7 +122,7 @@
                         robustas y experiencias de usuario excepcionales combinando diseño moderno con código fluido y
                         escalable.
                     </p>
-                    <div>
+                    <div class="big-card__actions">
                         <a href="#proyectos" class="btn btn--primary">Ver Proyectos</a>
                     </div>
                 </div>
@@ -143,7 +176,7 @@
             </div>
         </section>
 
-        <section id="proyectos" class="section">
+        <section id="projects" class="section">
             <div class="proyectos">
                 <article class="proyectos__intro">
                     <h2 class="section-title">Proyectos Destacados</h2>
@@ -155,7 +188,7 @@
                 <div class="proyectos__grid">
                     <!-- Proyecto 1 -->
                     <article class="proyecto-card">
-                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 1">
+                        <img class="proyecto-card__img" src="public/img/placeholder-portafolio.svg" alt="Vista previa del proyecto Portafolio Personal">
                         <div class="proyecto-card__content">
                             <header>
                                 <h3 class="proyecto-card__title">Proyecto 1: Portafolio Personal</h3>
@@ -172,7 +205,7 @@
                     </article>
                     <!-- Proyecto 2 -->
                     <article class="proyecto-card">
-                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 2">
+                        <img class="proyecto-card__img" src="public/img/placeholder-tareas.svg" alt="Vista previa del proyecto Aplicación de Tareas">
                         <div class="proyecto-card__content">
                             <header>
                                 <h3 class="proyecto-card__title">Proyecto 2: Aplicación de Tareas</h3>
@@ -189,7 +222,7 @@
                     </article>
                     <!-- Proyecto 3 -->
                     <article class="proyecto-card">
-                        <img class="proyecto-card__img" src="public/img/dashboard.png" alt="Dashboard Proyecto 3">
+                        <img class="proyecto-card__img" src="public/img/placeholder-api.svg" alt="Vista previa del proyecto API REST Spring Boot">
                         <div class="proyecto-card__content">
                             <header>
                                 <h3 class="proyecto-card__title">Proyecto 3: API REST con Spring Boot</h3>
@@ -208,7 +241,7 @@
                 </div>
             </div>
         </section>
-        <section id="servicios" class="section servicios">
+        <section id="services" class="section servicios">
             <div class="servicios__intro">
                 <h2 class="section-title">Servicios Profesionales</h2>
                 <p class="section-description">Ofrezco soluciones integrales de desarrollo y diseño digital.</p>
