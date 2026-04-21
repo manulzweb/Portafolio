@@ -25,7 +25,6 @@
 }
 
 .mascota-card {
-    /* Glassmorphism Dark Purple Style acorde a hero-style */
     background: rgba(255, 253, 254, 0.035);
     border-radius: 20px;
     outline: 2px dotted var(--accent-700);

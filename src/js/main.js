@@ -3,9 +3,23 @@ import { GalleryManager } from './services/GalleryManager.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Show welcome message
+
     const currentHour = new Date().getHours();
-    const isMorning = currentHour < 12;
-    console.log(`${isMorning ? 'Buenos días' : 'Buenas tardes'}, ¡Bienvenido/a a mi Portafolio Full-Stack Modular!`);
+
+    let dayMoment;
+    if (currentHour < 12) {
+        dayMoment = 'Buenos días';
+    } else if (currentHour < 18) {
+        dayMoment = 'Buenas tardes'
+    } else {
+        dayMoment = 'Buenas noches'
+    }
+
+    const welcomeToast = document.createElement('div');
+    welcomeToast.classList.add('toast-glass');
+    document.body.appendChild(welcomeToast);
+
+    welcomeToast.textContent = `${dayMoment}, ¡Bienvenido/a a mi portafolio!`;
 
     const btnSaludoMascotas = document.getElementById('btn-saludo-mascotas');
     const titleMascotas = document.querySelector('.section-title');

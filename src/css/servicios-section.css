@@ -21,7 +21,7 @@
     padding: 2rem;
     outline: 2px dotted var(--accent-700);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, outline 1s ease;
     
     /* Animación de entrada igual a los proyectos */
     animation: appearance linear forwards;
@@ -32,6 +32,7 @@
 .servicio-card:hover {
     transform: translateY(-10px);
     background: rgba(255, 253, 254, 0.06);
+    outline: 2px solid var(--accent-700);
 }
 
 .servicio-card__icon {
@@ -42,11 +43,11 @@
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.2rem;
     display: inline-block;
-    filter: drop-shadow(0 0 10px rgba(219, 141, 250, 0.4));
+    filter: drop-shadow(0 0 10px rgba(235, 184, 255, 0.4));
 }
 
 .servicio-card__subtitle {
-    color: var(--accent-700);
+    color: var(--accent-400);
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }

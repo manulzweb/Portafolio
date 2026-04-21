@@ -19,7 +19,7 @@
 
 .btn--primary:hover, .btn--contact:hover  {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--accent-700);
+    box-shadow: 0 0px 10px var(--accent-600);
     filter: brightness(110%);
 }
 
