@@ -1,0 +1,54 @@
+{
+    "pets": [
+        {
+            "type":"dog",
+            "name":"Perla",
+            "description":"Es una perrita muy traviesa y divertida, le gustan mucho los humanos",
+            "imgUrl": "../public/img/pets/perla.webp",
+            "alt":""
+            
+        },
+        {
+            "type":"dog",
+            "name":"Princesa",
+            "description":"Si quieres una pelicula de drama, llamala, es perfectamente dramatica pero muy cariñosa, le encantan las caricias",
+            "alt":"",
+            "imgUrl": "../public/img/pets/princesa.webp"
+        },
+        {
+            "type": "dog",
+            "name": "Lucky",
+            "description": "El consentido de la casa de todos. No era muy cariñoso y sí muy arisco, el único macho del conjunto. Demostraba amor a su manera, aunque sabíamos que era interesado y conveniente, el favorito de mi mamá.",
+            "imgUrl": "../public/img/pets/lucky.webp",
+            "alt": ""
+        },
+        {
+            "type": "turtle",
+            "name": "Leila",
+            "description": "Con ella entendimos que las tortugas no son como en la TV: son rápidas las desgraciadas y muy escurridizas, se escondía mucho.",
+            "imgUrl": "../public/img/pets/leila.webp",
+            "alt": ""
+        },
+        {
+            "type": "cat",
+            "name": "Ares",
+            "description": "El único gato que tuvimos. Muy consentido por mi papá y recordado por ser extremadamente travieso; dañó tantas cosas que mi mamá lo tuvo que mandar a otra parte.",
+            "imgUrl": "../public/img/pets/ares.webp",
+            "alt": ""
+        },
+        {
+            "type": "dog",
+            "name": "Dante y Dalila",
+            "description": "Dante era un caballero con heterocromía, atento y sereno. Dalila, rescatada de personas terribles, llegó con traumas pero encontró en Dante a su pareja ideal.",
+            "imgUrl": "../public/img/pets/dante-dalila.webp",
+            "alt": ""
+        },
+        {
+            "type": "dog",
+            "name": "Camille",
+            "description": "Alias 'Maria la Bandida'. Famosa por sus días de gloria cazando pollos y volándose portones. Una sinvergüenza total que enamoró a mi papá con sus ojos y ternura.",
+            "imgUrl": "../public/img/pets/camille.webp",
+            "alt": ""
+        }
+    ]
+}

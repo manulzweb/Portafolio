@@ -31,8 +31,7 @@
     --glass-white: rgba(4, 4, 4, 0.05);
     --glow-shadow: rgba(113, 0, 194, 0.35);
     --glass-bg: rgba(255, 255, 255, 0.05);
-    --cursor-pc: url('/public/img/cursorPC.png'), auto;
-    --cursor-pala: url('/public/img/cursorPalaMinecraft.png'), pointer;
+   
 }
 
 * {
@@ -46,7 +45,6 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
-    cursor: var(--cursor-pc);
     background-color: var(--bg-body);
     color: var(--text-main);
 }

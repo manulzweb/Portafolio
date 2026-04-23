@@ -1,9 +1,32 @@
-.whatsapp-button {
+.whatsapp-container {
     position: fixed;
     bottom: 1rem;
     right: 20px;
-    filter: drop-shadow(0px 0px 10px green);
     animation: infinite pulse 2s ease-in-out;
+}
+
+.whatsapp-button {
+    filter: drop-shadow(0px 0px 10px green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center
+
+}
+
+.whatsapp-container:hover{
+    animation-play-state: paused
+}
+
+.whatsapp-button:hover {
+    animation: infinite scale 1s ease-in-out;
+    scale: 1.05;
+}
+
+@keyframes scale {
+    0% { transform: scale(1);}
+    50% { transform:scale(1.05);}
+    100% { transform: scale(1);}
 }
 
 @keyframes pulse {

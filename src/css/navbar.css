@@ -50,7 +50,7 @@
 
 /* Estilo para el enlace al pasar el mouse por encima */
 .navbar__link:hover {
-    cursor: var(--cursor-pala);
+    cursor: pointer;
 }
 
 .button-animation:hover {

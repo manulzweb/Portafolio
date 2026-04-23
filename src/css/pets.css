@@ -1,4 +1,4 @@
-.mascotas {
+.pets {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     gap: 3rem;
 }
 
-.mascotas__intro {
+.pets__intro {
     text-align: center;
     width: 100%;
     display: flex;
@@ -16,7 +16,7 @@
     padding: 1rem;
 }
 
-.mascotas__grid {
+.pets__grid {
     display: grid;
     /* Grid Columns 3 en Desktop */
     grid-template-columns: repeat(3, 1fr);
@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.mascota-card {
+.pet-card {
     background: rgba(255, 253, 254, 0.035);
     border-radius: 20px;
     outline: 2px dotted var(--accent-700);
@@ -44,13 +44,13 @@
     animation-range: entry 0% cover 30%;
 }
 
-.mascota-card:hover {
+.pet-card:hover {
     transform: translateY(-8px);
     background: rgba(255, 253, 254, 0.06);
     outline: 2px solid var(--accent-500);
 }
 
-.mascota-card__fig {
+.pet-card__fig {
     width: 100%;
     /* Alto estricto para evitar alteraciones del contenedor */
     height: 220px;
@@ -60,7 +60,7 @@
     /* Placeholder-ish bg before image loads */
 }
 
-.mascota-card__img {
+.pet-card__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -69,12 +69,12 @@
     transition: transform 0.4s ease;
 }
 
-.mascota-card:hover .mascota-card__img {
+.pet-card:hover .pet-card__img {
     transform: scale(1.08);
     /* Micro-animación en hover */
 }
 
-.mascota-card__body {
+.pet-card__body {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -82,13 +82,13 @@
     /* Ocupa el espacio restante horizontal/verticalmente */
 }
 
-.mascota-card__title {
+.pet-card__title {
     color: var(--accent-400);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.mascota-card__desc {
+.pet-card__desc {
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.5;
@@ -97,34 +97,34 @@
 /* MEDIA QUERIES (Semana 3) */
 
 @media (max-width: 1024px) {
-    .mascotas__grid {
+    .pets__grid {
         grid-template-columns: repeat(3, 1fr);
         /* Tablet pide 3 columnas en la Story */
     }
 }
 
 @media (max-width: 768px) {
-    .mascotas {
+    .pets {
         padding: 6rem 0 0 0;
     }
 
-    .mascotas__grid {
+    .pets__grid {
         padding: 0 2rem;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 425px) {
-    .mascotas {
+    .pets {
         padding: 3rem 0 0 0;
     }
 
-    .mascotas__grid {
+    .pets__grid {
         grid-template-columns: repeat(1, 1fr);
         /* Una columna en celulares frontales muy estrechos */
     }
 
-    .mascota-card__fig {
+    .pet-card__fig {
         height: 200px;
     }
 }
