@@ -43,7 +43,7 @@ export class GalleryManager {
      */
     showGallery() {
         this.galleryContainer.style.display = 'grid';
-        this.btnElement.textContent = 'Hide Gallery';
+        this.btnElement.textContent = 'Ocultar Galería';
 
         // Animación fluida de aparición (Fade In + Slide Up)
         this.galleryContainer.animate([
@@ -65,7 +65,7 @@ export class GalleryManager {
         // Esperamos a que la animación termine antes de cambiar el display a 'none'
         animation.onfinish = () => {
             this.galleryContainer.style.display = 'none';
-            this.btnElement.textContent = 'Show Gallery';
+            this.btnElement.textContent = 'Mostrar Galería';
         };
     }
 }
