@@ -24,5 +24,5 @@ export function showToast() {
     // Asignamos el texto del mensaje
     welcomeToast.textContent = `${dayMoment}, Welcome to my portfolio!`;
 
-    // El toast se oculta automáticamente mediante animaciones CSS (si están configuradas)
+    // El toast se oculta automáticamente mediante animaciones CSS
 }

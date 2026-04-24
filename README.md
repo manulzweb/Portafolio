@@ -4,20 +4,20 @@ Portafolio personal estático de alto rendimiento. Diseño responsivo, animacion
 
 ## Descripción
 
-- **arquitectura modular**: separación de estilos (BEM), lógica (ES6+) y datos (JSON).
-- **diseño premium**: gradientes animados, glassmorphism y bordes dinámicos.
-- **componentes**:
-    - **imperativo**: `PetCard.js` (DOM manual).
-    - **declarativo**: `TechCard.js` (Web Components).
+- **Arquitectura Modular**: Separación de estilos (BEM), lógica (ES6+) y datos (JSON).
+- **Diseño Premium**: Gradientes animados, glassmorphism y bordes dinámicos.
+- **Componentes**:
+    - **Imperativo**: `PetCard.js` (DOM manual).
+    - **Declarativo**: `TechCard.js` (Web Components).
 
 ## Características
 
-- ✅ **navegación**: barra fija y responsiva con menú hamburguesa (solo CSS).
-- ✅ **bordes animados**: efecto de luz giratoria en tarjetas.
-- ✅ **modal**: ventana de contacto integrada.
-- ✅ **galería**: carga dinámica de mascotas desde JSON.
-- ✅ **toast**: bienvenida personalizada según la hora.
-- ✅ **optimización**: incluye `style.min.css` para producción.
+- ✅ **Navegación**: barra fija y responsiva con menú hamburguesa (solo CSS).
+- ✅ **Bordes animados**: efecto de luz giratoria en tarjetas.
+- ✅ **Modal**: ventana de contacto integrada.
+- ✅ **Galería**: carga dinámica de mascotas desde JSON.
+- ✅ **Toast**: bienvenida personalizada según la hora.
+- ✅ **Optimización**: incluye `style.min.css` para producción.
 
 ## Estructura
 

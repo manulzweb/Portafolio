@@ -1,11 +1,5 @@
-/**
- * Gestiona el comportamiento del modal de contacto.
- * Incluye la apertura, cierre, manejo de eventos de teclado y envío del formulario.
- */
 class ContactModal {
-    /**
-     * Inicializa las referencias a los elementos del DOM necesarios para el modal.
-     */
+    // Inicializa las referencias a los elementos del DOM necesarios para el modal.
     constructor() {
         this.modal = document.getElementById('contact-modal');
         // Botones que pueden abrir el modal
@@ -13,12 +7,12 @@ class ContactModal {
         this.closeBtn = document.getElementById('modal-close');
         this.form = document.getElementById('contact-form');
         this.overlay = document.querySelector('.modal__overlay');
-        
+
         this.init();
     }
 
     /**
-     * Configura todos los escuchadores de eventos (clicks, submit, escape).
+     * Configura todos los escuchadores de eventos click keydow y esc.
      */
     init() {
         // Eventos para abrir el modal desde diferentes botones
@@ -41,7 +35,7 @@ class ContactModal {
         // Manejo del envío del formulario
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
-        // Cerrar con la tecla Escape
+        // Cerrar con la tecla Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal.classList.contains('active')) {
                 this.close();
@@ -85,7 +79,7 @@ class ContactModal {
         console.log('Form data:', formData);
 
         alert('Thank you for your message! I will contact you soon.');
-        
+
         this.close();
     }
 }

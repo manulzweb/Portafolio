@@ -11,16 +11,16 @@ export class Pet {
      * @param {string} data.imgUrl - URL de la imagen de la mascota.
      * @param {string} [data.alt] - Texto alternativo para la imagen.
      */
-    constructor({type, name, description, imgUrl, alt}) {
+    constructor({ type, name, description, imgUrl, alt }) {
         this.type = type;
         this.name = name;
         this.description = description;
         this.img = imgUrl;
-        // Si no se proporciona un alt, se genera uno por defecto automáticamente
-        this.alt = alt  == "" ? `${this.name} the ${this.type}` : alt;
+        // Si no se proporciona un alt, se genera uno por defecto automáticamente con el nombre y el tipo de pet
+        this.alt = alt == "" ? `${this.name} the ${this.type}` : alt;
     }
 
-    // --- Métodos Setter (Asignadores) ---
+    // --- Métodos Setter  ---
 
     setType(type) {
         this.type = type;
@@ -39,15 +39,15 @@ export class Pet {
     }
 
     setAlt(alt) {
-        this.alt = alt; // Corregido: antes asignaba a this.img por error
+        this.alt = alt;
     }
 
-    // --- Métodos Getter (Obtenedores) ---
+    // --- Métodos Getter  ---
 
     getName() {
         return this.name;
     }
-    
+
     getDescription() {
         return this.description;
     }
