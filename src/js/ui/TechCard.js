@@ -21,15 +21,14 @@ class TechCard extends HTMLElement {
     connectedCallback() {
         // Obtenemos los valores de los atributos o definimos valores por defecto
         const title = this.getAttribute('data-title') || 'Technology';
-        const icon = this.getAttribute('data-icon') || 'desktop_windows';
-        
+        const icon = this.getAttribute('data-icon');
+
         // Procesamos la cadena de items para convertirla en una lista de etiquetas <li>
         const items = (this.getAttribute('data-items') || '')
             .split(',')
             .map(item => `<li>${item.trim()}</li>`)
             .join('');
 
-        // Inyectamos el HTML de manera declarativa
         this.innerHTML = `
         <article class="tech-card pointer">
             <h3 class="tech-card__title">${title}</h3>

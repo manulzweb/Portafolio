@@ -1,7 +1,3 @@
-/**
- * Representa un componente de interfaz para mostrar la información de una mascota.
- * Utiliza un enfoque de renderizado IMPERATIVO, creando nodos del DOM manualmente.
- */
 export class PetCard {
     /**
      * @param {Pet} pet - Objeto que contiene los datos de la mascota (nombre, descripción, imagen, etc.).
@@ -10,17 +6,13 @@ export class PetCard {
         this.pet = pet;
     }
 
-    /**
-     * Genera la estructura HTML de la tarjeta de la mascota.
-     * 
-     * @returns {HTMLElement} El elemento 'article' que contiene toda la estructura de la tarjeta.
-     */
+    // Renderizado imperativo: se crean los elementos uno por uno usando el DOM
     render() {
         // Creamos el contenedor principal de la tarjeta
         const card = document.createElement('article');
         card.classList.add('pet-card');
-        card.classList.add('pointer'); // Clase de utilidad para el cursor
-        
+        card.classList.add('pointer');
+
         // Contenedor de la imagen
         const figure = document.createElement('figure');
         figure.classList.add('pet-card__fig');
@@ -30,9 +22,9 @@ export class PetCard {
         img.classList.add('pet-card__img');
         img.src = this.pet.img;
         img.alt = this.pet.alt;
-        
+
         figure.appendChild(img);
-        
+
         // Título de la tarjeta (Nombre de la mascota)
         const title = document.createElement("h3");
         title.classList.add('pet-card__title');
@@ -52,7 +44,7 @@ export class PetCard {
         // Ensamblamos la tarjeta completa
         card.appendChild(figure);
         card.appendChild(info_container);
-        
+
         // Retornamos el nodo completo listo para ser insertado en el DOM
         return card;
     }
