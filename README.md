@@ -2,11 +2,11 @@
 
 Bienvenido al repositorio de mi portafolio profesional. Este proyecto es un sitio web estático de alto rendimiento, diseñado con una estética moderna glassmorphism y una arquitectura modular pensada para la escalabilidad.
 
-## 🚀 Resumen del Proyecto
+## Resumen del Proyecto
 
 Este portafolio no es solo una carta de presentación, sino una demostración técnica de habilidades en **Frontend Development**. Implementa animaciones avanzadas, componentes personalizados y una gestión de datos dinámica.
 
-### 🏗️ Arquitectura y Diseño
+### Arquitectura y Diseño
 
 - **Metodología BEM**: El CSS sigue la convención *Block Element Modifier* para un código organizado y reutilizable.
 - **Arquitectura Modular**: Los estilos y la lógica están fragmentados por secciones y funcionalidades, facilitando el mantenimiento.
@@ -15,7 +15,7 @@ Este portafolio no es solo una carta de presentación, sino una demostración t�
     - **Bordes Animados**: Uso de `@property` y gradientes cónicos para crear bordes que brillan y rotan.
     - **Responsive Design**: Totalmente adaptado para móviles, tablets y escritorio.
 
-## 🛠️ Características Técnicas
+## Características Técnicas
 
 ### 1. Sistema de Componentes (Dual Strategy)
 Para demostrar diferentes enfoques de desarrollo, el proyecto utiliza dos métodos de renderizado:
@@ -38,7 +38,7 @@ La sección de mascotas es totalmente dinámica. No necesitas editar el HTML par
 
 ### **¿Cómo actualizar la galería?**
 Para añadir nuevas mascotas o cambiar la información actual, debes editar el archivo de datos:
-📍 **Ruta**: `src/js/data/PetData.json`
+**Ruta**: `src/js/data/PetData.json`
 
 **Formato del JSON**:
 ```json
