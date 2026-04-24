@@ -54,22 +54,59 @@ Para añadir nuevas mascotas o cambiar la información actual, debes editar el a
 
 ## 📁 Estructura de Carpetas
 
-```text
-├── index.html              # Home principal
-├── mascotas.html           # Galería de mascotas
-├── public/                 # Imágenes y activos multimedia
-└── src/
-    ├── css/                # Estilos fragmentados
-    │   ├── style.min.css   # Bundle final (optimizado)
+```
+.
+├── index.html
+├── LICENSE
+├── mascotas.html
+├── public
+│   ├── img
+│   │   ├── ManuelVasquezPhoto.webp
+│   │   ├── pets
+│   │   │   ├── ares.webp
+│   │   │   ├── camille.webp
+│   │   │   ├── dante-dalila.webp
+│   │   │   ├── leila.webp
+│   │   │   ├── lucky.webp
+│   │   │   ├── perla.webp
+│   │   │   └── princesa.webp
+│   │   ├── placeholder-api.svg
+│   │   ├── placeholder-portafolio.svg
+│   │   ├── placeholder-tareas.svg
+│   │   └── whatsapp.webp
+│   └── video
+├── README.md
+└── src
+    ├── css
     │   ├── animated-border.css
-    │   └── ...             # Estilos por componentes
-    └── js/
-        ├── scripts.js      # Lógica del home
-        ├── petsScript.js   # Lógica de la galería
-        ├── data/           # PetData.json (Base de datos local)
-        ├── services/       # Modal, Toast, GalleryManager
-        ├── types/          # Clase Pet (Modelo)
-        └── ui/             # PetCard y TechCard (Componentes)
+    │   ├── big-card.css
+    │   ├── buttons.css
+    │   ├── footer.css
+    │   ├── hero-section.css
+    │   ├── modal.css
+    │   ├── navbar.css
+    │   ├── pets.css
+    │   ├── projects-section.css
+    │   ├── services-section.css
+    │   ├── style.css
+    │   ├── style.min.css
+    │   ├── technologies-section.css
+    │   ├── toast.css
+    │   └── whatsapp-button.css
+    └── js
+        ├── data
+        │   └── PetData.json
+        ├── petsScript.js
+        ├── scripts.js
+        ├── services
+        │   ├── ContactModal.js
+        │   ├── GalleryManager.js
+        │   └── Toast.js
+        ├── types
+        │   └── Pet.js
+        └── ui
+            ├── PetCard.js
+            └── TechCard.js
 ```
 
 ## ⚙️ Ejecución y Despliegue

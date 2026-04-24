@@ -22,6 +22,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     width: 100%;
+    padding: 2rem;
 }
 
 .pet-card {
@@ -99,7 +100,6 @@
     }
 
     .pets__grid {
-        padding: 0 2rem;
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -110,7 +110,7 @@
     }
 
     .pets__grid {
-        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
     }
 
     .pet-card__fig {
