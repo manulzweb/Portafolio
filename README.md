@@ -1,25 +1,26 @@
 # Portafolio de Manuel Vasquez
 
-Este repositorio contiene un portafolio personal estático con diseño responsivo y componentes JavaScript modulares. Incluye una página principal de presentación profesional y una página secundaria con una galería dinámica de mascotas.
+Este repositorio contiene un portafolio personal estático con diseño responsivo y componentes JavaScript modulares. El sitio está compuesto por una página principal de presentación y una página secundaria dedicada a una galería de mascotas con datos cargados dinámicamente.
 
 ## Descripción
 
 - Sitio web estático construido con HTML, CSS y JavaScript moderno.
 - Página principal (`index.html`) con secciones de inicio, tecnologías, proyectos, servicios y contacto.
-- Página de mascotas (`mascotas.html`) con una galería cargada desde JSON, animaciones y botones interactivos.
-- Estructura modular de CSS y JS para mantener separación de responsabilidades.
+- Página de mascotas (`mascotas.html`) con galería dinámica, botones interactivos y mensajes de bienvenida.
+- Estructura modular de CSS y JS para separar responsabilidades entre estilos, datos y comportamiento.
 
 ## Características
 
 - Navegación responsiva con menú hamburguesa.
-- Hero section con presentación personal.
-- Secciones de proyectos y servicios.
-- Sección de tecnologías destacadas.
-- Galería dinámica de mascotas basada en datos JSON.
-- Componente de tarjeta de mascota reutilizable.
-- Toast de bienvenida según la hora del día.
+- Hero section con presentación profesional.
+- Sección de tecnologías con tarjetas visuales.
+- Sección de proyectos destacados.
+- Sección de servicios.
+- Página de mascotas con tarjetas generadas desde JSON.
+- Componente `tech-card` para tarjetas de tecnología.
+- Mensaje toast de bienvenida según la hora del día.
 - Botón de WhatsApp para contacto rápido.
-- Animaciones de aparición y toggling de elementos.
+- Buenas prácticas de modularidad y código organizado.
 
 ## Estructura del proyecto
 
@@ -58,10 +59,10 @@ Este repositorio contiene un portafolio personal estático con diseño responsiv
     │   ├── hero-section.css
     │   ├── navbar.css
     │   ├── pets.css
-    │   ├── proyectos-section.css
-    │   ├── servicios-section.css
+    │   ├── projects-section.css
+    │   ├── services-section.css
     │   ├── style.css
-    │   ├── tecnologias-section.css
+    │   ├── technologies-section.css
     │   ├── toast.css
     │   └── whatsapp-button.css
     └── js
@@ -84,37 +85,29 @@ Este repositorio contiene un portafolio personal estático con diseño responsiv
 - CSS3
 - JavaScript ES6+ (módulos)
 - API Fetch
-- Animaciones con CSS
+- Componentes Web nativos
+- Animaciones CSS
 
 ## 📦 Cómo ejecutar el proyecto
 
-Este es un sitio estático. Para ejecutarlo localmente se recomienda usar un servidor HTTP simple, ya que la carga de `JSON` mediante `fetch` puede no funcionar correctamente con el protocolo `file://`.
+Este sitio es estático. Se recomienda ejecutarlo con una extensión de servidor local, ya que `fetch` de JSON puede fallar con `file://`.
 
-Opciones:
+**Opción recomendada:**
+- Usar **Live Server** en VSCode u otra extensión equivalente de servidor local.
 
-1. Usar Python:
+##  Notas de entrega final
 
-```bash
-cd nombreCarpetaConRepoClonado
-python3 -m http.server 8000
-```
+- El proyecto no requiere instalación de dependencias.
+- `index.html` y `mascotas.html` se pueden desplegar como sitio estático.
+- La galería de mascotas se puede ampliar editando `src/js/data/PetData.json`.
+- `TechCard` y `PetCard` son dos formas distintas de renderizado de tarjetas usadas en el proyecto.
 
-Luego abrir `http://localhost:8000` en el navegador.
+## ✨ Mejoras futuras sugeridas
 
-2. Usar la extensión Live Server de VSCode.
-
-## 📁 Notas sobre desarrollo
-
-- No requiere dependencias ni herramientas de compilación.
-- El proyecto está listo para desplegarse como sitio estático en plataformas como GitHub Pages.
-- Para extender la galería, agrega nuevas entradas en `src/js/data/PetData.json`.
-
-## Mejoras futuras sugeridas
-
-- Añadir navegación entre páginas más fluida.
-- Incluir formularios de contacto funcionales.
-- Mejorar accesibilidad con atributos ARIA adicionales.
-- Agregar tests unitarios para los componentes JavaScript.
+- Añadir formulación de contacto funcional.
+- Mejorar las rutas y enlaces internos para navegación más fluida.
+- Incorporar pruebas unitarias para `PetCard`, `TechCard` y los servicios.
+- Añadir más contenido real a los proyectos y servicios.
 
 ## Contacto
 

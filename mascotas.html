@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="src/css/footer.css">
     <link rel="stylesheet" href="src/css/pets.css">
     <link rel="stylesheet" href="src/css/toast.css">
+    <link rel="stylesheet" href="src/css/modal.css">
 </head>
 <body>
 
@@ -43,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar__link button-animation" href="index.html#proyectos" aria-label="Proyectos">
+                    <a class="navbar__link button-animation" href="index.html#projects" aria-label="Proyectos">
                         <span class="material-icons">folder</span>
                         <div class="navbar__link-text">
                             Proyectos
@@ -51,7 +52,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar__link button-animation" href="index.html#servicios" aria-label="Servicios">
+                    <a class="navbar__link button-animation" href="index.html#services" aria-label="Servicios">
                         <span class="material-icons">logo_dev</span>
                         <div class="navbar__link-text">
                             Servicios
@@ -59,15 +60,15 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar__link button-animation" href="pets.html" aria-label="pets">
+                    <a class="navbar__link button-animation" href="mascotas.html" aria-label="pets">
                         <span class="material-icons">pets</span>
                         <div class="navbar__link-text">
-                            pets
+                            Mascotas
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a class="navbar__link btn btn--contact" href="index.html#contacto" aria-label="Contacto">
+                    <a class="navbar__link btn btn--contact" href="#" id="contact-btn" aria-label="Contacto">
                         <span class="material-icons">connect_without_contact</span>
                         <div class="navbar__link-text">
                             Contacto
@@ -97,6 +98,30 @@
             </div>
         </section>
     </main>
+
+    <!-- Modal de Contacto -->
+    <div id="contact-modal" class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modal-close">&times;</button>
+            <h2 class="modal__title">Contactame</h2>
+            <form class="modal__form" id="contact-form">
+                <div class="form__group">
+                    <label for="name" class="form__label">Nombre</label>
+                    <input type="text" id="name" name="name" class="form__input" required>
+                </div>
+                <div class="form__group">
+                    <label for="email" class="form__label">Email</label>
+                    <input type="email" id="email" name="email" class="form__input" required>
+                </div>
+                <div class="form__group">
+                    <label for="message" class="form__label">Mensaje</label>
+                    <textarea id="message" name="message" class="form__input form__textarea" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="form__submit btn btn--primary">Enviar</button>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer__container">

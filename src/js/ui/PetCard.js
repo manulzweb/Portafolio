@@ -1,4 +1,5 @@
 export class PetCard {
+    // Clase de presentación que construye el DOM de una tarjeta de mascota.
     constructor(pet) {
         this.pet = pet;
     }

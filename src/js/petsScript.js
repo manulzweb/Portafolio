@@ -1,8 +1,8 @@
-import { GreetingManager } from './services/GreetingManager.js';
 import { GalleryManager } from './services/GalleryManager.js';
 import { PetCard } from './ui/PetCard.js';
 import { Pet } from './model/Pet.js'
 import { showToast } from './services/Toast.js';
+import ContactModal from './services/ContactModal.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const data = await loadPets();
@@ -11,18 +11,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     // 1. Show welcome message
     showToast()
-
-    const btnSaludoMascotas = document.getElementById('btn-saludo-mascotas');
-    const titleMascotas = document.querySelector('.section-title');
-
-    // if btnSaludoMascotas and titleMascotas exist we create an instance of GreetingManager and inject the DOM explicitly without coupling the logical classes to the abstract HTML.
-    if (btnSaludoMascotas && titleMascotas) {
-        new GreetingManager(btnSaludoMascotas, titleMascotas);
-    }
+    
+    // 2. Initialize contact modal
+    new ContactModal();
 
     const btnToggleGallery = document.getElementById('btn-toggle-gallery');
-    const galleryContainer = document.getElementById('mascotas-gallery');
-
+    const galleryContainer = document.getElementById('pets-gallery');
+    console.log(btnToggleGallery.textContent);
+    console.log(galleryContainer.textContent);
+    
     // if btnToggleGallery and galleryContainer exist we create an instance of GalleryManager and inject the DOM explicitly without coupling the logical classes to the abstract HTML.
     if (btnToggleGallery && galleryContainer) {
         new GalleryManager(btnToggleGallery, galleryContainer);
@@ -30,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderPets(selector, arr, to_render){
+    // Toma un selector y un arreglo de datos, crea instancias de PetCard y los inyecta en el DOM.
     const container = document.querySelector(selector);
     if (!container) return;
     container.innerHTML = '';

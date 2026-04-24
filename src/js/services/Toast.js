@@ -4,7 +4,7 @@ export function showToast(){
     let dayMoment;
     if (currentHour < 12) {
         dayMoment = 'Buenos días';
-    } else if (currentHour < 18) {
+    } else if (currentHour < 19) {
         dayMoment = 'Buenas tardes'
     } else {
         dayMoment = 'Buenas noches'

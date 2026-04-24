@@ -1,14 +1,14 @@
-.tecnologias {
+.technologies {
     flex-direction: column;
     width: 100%;
 }
 
-.tecnologias__intro {
+.technologies__intro {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.tecnologias__grid {
+.technologies__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
@@ -49,6 +49,11 @@
     filter: drop-shadow(0 0 10px rgba(219, 141, 250, 0.5));
 }
 
+.tech-card__content {
+    display: flex;
+    flex-direction: column;
+}
+
 .tech-card__title {
     color: var(--accent-400);
     font-size: 1.5rem;
@@ -86,13 +91,48 @@
 }
 
 @media (max-width: 1024px) {
-    .tecnologias__grid {
+    .technologies__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 650px) {
-    .tecnologias__grid {
+    .technologies__grid {
         grid-template-columns: 1fr;
+    }
+
+    .tech-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        padding: 1.2rem;
+    }
+
+
+    .tech-card__icon {
+        font-size: 2.5rem !important;
+        margin-right: 1.7rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tech-card__content {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0rem 0.5rem;
+    }
+
+    .tech-card__list li {
+        padding: 0.2rem 0;
+    }
+
+    .tech-card__title {
+        text-align: center;
     }
 }

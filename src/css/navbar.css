@@ -126,10 +126,7 @@
         min-width: 30px;
         max-width: 50px;
     }
-
-
 }
-
 
 /* --- RESPONSIVE (MOBILE) --- */
 @media (max-width: 425px) {
@@ -138,7 +135,6 @@
     .navbar__toggle-btn {
         display: flex;
         z-index: 101;
-        /* Por encima del menú */
     }
 
     .navbar {
@@ -158,15 +154,12 @@
         top: 1rem;
         gap: 0rem 1rem;
         max-width: 242px;
+        transition: border-radius 0.2s ease 5s;
     }
 
     .navbar__items {
         grid-column: 1 / -1;
-
-        /* Clave: max-height animable sin wrapper */
         max-height: 0;
-        overflow: hidden;
-
         opacity: 0;
         pointer-events: none;
 
@@ -176,7 +169,7 @@
             transform 0.3s ease,
             padding 0.3s ease;
 
-        /* Layout vertical */
+
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -185,6 +178,11 @@
     }
 
     /* ── MENÚ ABIERTO ── */
+    .navbar:has(.navbar__toggle-check:checked) {
+        border-radius: 30px;
+        transition: border-radius 0.2s ease;
+    }
+
     .navbar__toggle-check:checked~.navbar__items {
         max-height: 400px;
         opacity: 1;

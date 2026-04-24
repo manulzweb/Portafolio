@@ -1,14 +1,14 @@
-.servicios {
+.services {
     flex-direction: column;
     width: 100%;
 }
 
-.servicios__intro {
+.services__intro {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.servicios__grid {
+.services__grid {
     display: grid;
     /* GRID MÁGICO: Las columnas se calculan solas */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
