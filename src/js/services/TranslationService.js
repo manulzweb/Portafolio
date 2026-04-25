@@ -5,12 +5,18 @@ import translations from '../translations.json' with { type: 'json' };
 
 class TranslationService {
     constructor() {
+        /** @type {string} Idioma seleccionado actualmente (obtenido de localStorage o por defecto 'es') */
         this.currentLang = localStorage.getItem('language') || 'es';
+
+        /** @type {Object} Diccionario de traducciones importado desde el JSON */
         this.translations = translations;
+
         this.init();
-        
     }
 
+    /**
+     * Inicializa el servicio aplicando las traducciones actuales y creando el botón de cambio de idioma.
+     */
     init() {
         this.applyTranslations();
         this.createLanguageToggle();
@@ -21,6 +27,8 @@ class TranslationService {
         const toggleBtn = document.createElement('button');
         toggleBtn.id = 'lang-toggle';
         toggleBtn.className = 'lang-toggle';
+
+        // Estructura interna: Icono de idioma y texto del idioma actual
         toggleBtn.innerHTML = `
             <span class="material-icons">language</span>
             <span class="lang-text">${this.currentLang.toUpperCase()}</span>
@@ -35,15 +43,24 @@ class TranslationService {
         toggleBtn.addEventListener('click', () => this.toggleLanguage());
     }
 
+    /**
+     * Cambia el idioma actual entre las opciones disponibles (Español / Inglés).
+     * Guarda la selección en localStorage para futuras visitas.
+     */
     toggleLanguage() {
         //Ternario que evalua si hay un currentlang y si es del mismo valor y tipo de "es". en dado caso lo pone a "en", sino lo deja en "es". Esto solo sirve para cuando son dos idiomas.
         this.currentLang = this.currentLang === 'es' ? 'en' : 'es';
         //guardamos en el localstorage el string curretLang con el valor "language"
         localStorage.setItem('language', this.currentLang);
+
+        // Actualizar la interfaz con los nuevos textos
         this.applyTranslations();
         this.updateToggleButton();
     }
 
+    /**
+     * Actualiza el texto visible dentro del botón de toggle para reflejar el idioma actual.
+     */
     updateToggleButton() {
         const toggleBtn = document.getElementById('lang-toggle');
         if (toggleBtn) {
@@ -54,13 +71,17 @@ class TranslationService {
         }
     }
 
+    /**
+     * Recorre el DOM y actualiza todos los elementos que posean el atributo 'data' 
+     * con su traducción correspondiente. También actualiza metadatos del sitio.
+     */
     applyTranslations() {
         const lang = this.currentLang;
         const translations = this.translations[lang];
 
         if (!translations) return;
 
-        // Actualizar elementos con atributo data
+        // 1. Actualizar elementos con atributo 'data' (buscando su clave en el JSON)
         document.querySelectorAll('[data]').forEach(element => {
             const key = element.getAttribute('data');
             if (translations[key]) {
@@ -68,10 +89,12 @@ class TranslationService {
             }
         });
 
-        // Actualizar title del documento
-        document.title = lang === 'es' ? 'Manuel Vasquez | Desarrollador Full-Stack & UI/UX' : 'Manuel Vasquez | Full-Stack Developer & UI/UX';
+        // 2. Actualizar el título de la pestaña del navegador
+        document.title = lang === 'es'
+            ? 'Manuel Vasquez | Desarrollador Full-Stack & UI/UX'
+            : 'Manuel Vasquez | Full-Stack Developer & UI/UX';
 
-        // Actualizar meta description
+        // 3. Actualizar la meta-descripción para SEO
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
             metaDesc.content = lang === 'es'
@@ -79,7 +102,7 @@ class TranslationService {
                 : 'Manuel Vasquez\'s portfolio, Full-Stack Developer specialized in JS, Java Spring Boot and modern architectures.';
         }
 
-        // Actualizar lang attribute del HTML
+        // 4. Actualizar el atributo lang global del documento HTML
         document.documentElement.lang = lang;
     }
 

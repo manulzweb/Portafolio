@@ -1,4 +1,7 @@
-<!-- Galería de mascotas -->
+<!-- 
+    Galería de Mascotas - Sección complementaria del portafolio.
+    Muestra una lista de mascotas cargadas dinámicamente mediante JavaScript.
+-->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Hojas de Estilo Modulares -->
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/buttons.css">
     <link rel="stylesheet" href="src/css/navbar.css">
@@ -83,12 +87,14 @@
         </nav>
     </header>
 
-    <!-- Sección de Mascotas -->
+    <!-- Contenido Principal: Sección de Mascotas -->
     <main class="bg">
         <section class="section pets">
             <article class="pets__intro">
                 <h1 class="section-title">Mis mascotas</h1>
                 <p class="section-description">¡Una galería de las mascotas de mi novia, mira estas ternuritas!.</p>
+                
+                <!-- Controles de la Galería -->
                 <div style="margin-top:2rem;">
                     <button id="btn-toggle-gallery" class="btn btn--primary pointer">Ocultar/Mostrar Galería</button>
                     <button id="btn-saludo-pets" class="btn btn--secondary pointer"
@@ -96,6 +102,7 @@
                 </div>
             </article>
 
+            <!-- Contenedor donde se renderizarán las tarjetas dinámicamente -->
             <div id="pets-gallery" class="pets__grid">
             </div>
         </section>
@@ -150,6 +157,8 @@
             <p>&copy; 2026 Diseñado por Manuel Vasquez</p>
         </div>
     </footer>
+
+    <!-- Lógica de Negocio y Componentes de Mascotas -->
     <script type="module" src="src/js/petsScript.js"></script>
 </body>
 

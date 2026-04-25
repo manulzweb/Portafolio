@@ -15,9 +15,12 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
+    /* Posicionamiento fijo en la pantalla */
     position: fixed;
     right: 3rem;
     top: 5rem;
+    z-index: 1000;
+    /* Asegura que esté por encima de otros elementos */
 }
 
 .lang-toggle:hover {
@@ -52,6 +55,7 @@
     }
 }
 
+/* Ajustes para Móviles (Pantallas pequeñas) */
 @media (max-width: 425px) {
     .lang-toggle {
         font-size: 0.7rem;
@@ -63,5 +67,5 @@
     .lang-toggle .material-icons {
         font-size: 0.9rem;
     }
-    
+
 }

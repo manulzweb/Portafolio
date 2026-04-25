@@ -12,10 +12,10 @@ class ContactModal {
     }
 
     /**
-     * Configura todos los escuchadores de eventos click keydow y esc.
+     * Configura todos los escuchadores de eventos (clicks, pulsaciones de teclas y envío de formulario).
      */
     init() {
-        // Eventos para abrir el modal desde diferentes botones
+        // Eventos para abrir el modal desde diferentes botones de la interfaz
         this.contactBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -23,19 +23,19 @@ class ContactModal {
             });
         });
 
-        // Eventos para cerrar el modal
+        // Eventos para cerrar el modal al hacer click en el botón de cerrar o en el fondo (overlay)
         this.closeBtn.addEventListener('click', () => this.close());
         this.overlay.addEventListener('click', () => this.close());
 
-        // Evita que el click dentro del contenido del modal lo cierre (propagación)
+        // Evita que el click dentro del contenido del modal cierre el mismo (frenar propagación)
         this.modal.querySelector('.modal__content').addEventListener('click', (e) => {
             e.stopPropagation();
         });
 
-        // Manejo del envío del formulario
+        // Manejo del envío del formulario de contacto
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
-        // Cerrar con la tecla Esc
+        // Cerrar el modal automáticamente al presionar la tecla Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal.classList.contains('active')) {
                 this.close();
@@ -61,25 +61,27 @@ class ContactModal {
     }
 
     /**
-     * Procesa los datos del formulario al enviarlo.
+     * Procesa los datos del formulario al enviarlo, los registra en consola 
+     * y muestra una notificación de éxito al usuario.
      * 
      * @param {Event} e - El evento de envío (submit).
      */
     handleSubmit(e) {
         e.preventDefault();
 
-        // Recolección de datos del formulario
+        // Recolección de los datos ingresados por el usuario
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             message: document.getElementById('message').value,
         };
 
-        // Simulación de envío de datos
-        console.log('Form data:', formData);
+        // Simulación de envío de datos (aquí se integraría un servicio de backend o email)
+        console.log('Datos del formulario recibidos:', formData);
 
-        alert('Thank you for your message! I will contact you soon.');
+        alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
 
+        // Cerrar el modal tras el envío exitoso
         this.close();
     }
 }

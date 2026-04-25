@@ -32,6 +32,26 @@ Para demostrar diferentes enfoques de desarrollo, el proyecto utiliza dos métod
 ### 4. Notificaciones Dinámicas
 - Sistema de **Toast** que saluda al usuario de forma personalizada según su hora local (mañana, tarde o noche).
 
+### 5. Sistema de Internacionalización (i18n)
+- Soporte para múltiples idiomas (Español/Inglés) sin recarga de página.
+- Gestión de textos mediante archivos JSON externos.
+- Persistencia de preferencia de idioma en el navegador.
+
+---
+
+## 🌍 Sistema de Traducciones
+Para que el sitio sea traducible, se utiliza un servicio que mapea claves del HTML con un diccionario JSON.
+
+### **Cómo usarlo**
+Agrega el atributo `data` a cualquier elemento HTML con la clave correspondiente en `translations.json`:
+```html
+<h1 data="greeting">Hola, soy</h1>
+```
+
+### **Cómo agregar más idiomas**
+1. Añade el nuevo idioma en `src/js/translations.json`.
+2. Actualiza `toggleLanguage()` en `TranslationService.js` para soportar más de dos idiomas.
+
 ## Gestión de Mascotas (Galería Dinámica)
 
 La sección de mascotas es totalmente dinámica. No necesitas editar el HTML para añadir o quitar mascotas.
@@ -83,6 +103,7 @@ Para añadir nuevas mascotas o cambiar la información actual, debes editar el a
     │   ├── buttons.css
     │   ├── footer.css
     │   ├── hero-section.css
+    │   ├── lang-toggle.css
     │   ├── modal.css
     │   ├── navbar.css
     │   ├── pets.css
@@ -98,10 +119,12 @@ Para añadir nuevas mascotas o cambiar la información actual, debes editar el a
         │   └── PetData.json
         ├── petsScript.js
         ├── scripts.js
+        ├── translations.json
         ├── services
         │   ├── ContactModal.js
         │   ├── GalleryManager.js
-        │   └── Toast.js
+        │   ├── Toast.js
+        │   └── TranslationService.js
         ├── types
         │   └── Pet.js
         └── ui
