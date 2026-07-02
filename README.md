@@ -2,6 +2,22 @@
 
 Bienvenido al repositorio de mi portafolio profesional. Este proyecto es un sitio web estático de alto rendimiento, diseñado con una estética moderna glassmorphism y una arquitectura modular pensada para la escalabilidad.
 
+## ✨ Rediseño v2 — "Dev OS"
+
+La página principal (`index.html` + `src/css/portfolio.css` + `src/js/portfolio.js`) fue rediseñada con un concepto creativo de "sistema operativo de desarrollador", 100% vanilla (cero frameworks, cero dependencias):
+
+- **Terminal interactiva real** en el hero: escribe `help`, `whoami`, `cat stack.txt`, `pets` o `sudo hire-me`.
+- **Pantalla de boot** estilo sistema operativo al cargar (solo la primera vez por sesión).
+- **Fondo de partículas** en canvas que reacciona al mouse.
+- **Cursor personalizado** con anillo magnético (solo desktop).
+- **Efecto glitch** en el nombre, typewriter de roles y contadores animados.
+- **Tarjetas con tilt 3D**, botones magnéticos y reveal-on-scroll con `IntersectionObserver`.
+- **i18n ES/EN** sin recarga, con persistencia en `localStorage`.
+- **Easter egg**: código Konami (↑↑↓↓←→←→BA) activa el modo fiesta 🎉.
+- **Accesible**: respeta `prefers-reduced-motion` desactivando partículas y animaciones.
+
+La galería de mascotas (`mascotas.html`) conserva la arquitectura original documentada abajo.
+
 ## Resumen del Proyecto
 
 Este portafolio no es solo una carta de presentación, sino una demostración técnica de habilidades en **Frontend Development**. Implementa animaciones avanzadas, componentes personalizados y una gestión de datos dinámica.
