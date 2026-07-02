@@ -4,7 +4,7 @@ Bienvenido al repositorio de mi portafolio profesional. Este proyecto es un siti
 
 ## ✨ Rediseño v2 — "Dev OS"
 
-La página principal (`index.html` + `src/css/portfolio.css` + `src/js/portfolio.js`) fue rediseñada con un concepto creativo de "sistema operativo de desarrollador", 100% vanilla (cero frameworks, cero dependencias):
+La página principal (`index.html` + `src/css/portfolio.css` + `src/js/portfolio.js`) fue rediseñada con un concepto creativo de "terminal de desarrollador", **conservando la identidad visual original**: paleta morada (`--accent-700: #7100c2`), glassmorphism, bordes animados cónicos (`animated-border.css`) y tipografía Nunito. 100% vanilla (cero frameworks, cero dependencias):
 
 - **Terminal interactiva real** en el hero: escribe `help`, `whoami`, `cat stack.txt`, `pets` o `sudo hire-me`.
 - **Pantalla de boot** estilo sistema operativo al cargar (solo la primera vez por sesión).

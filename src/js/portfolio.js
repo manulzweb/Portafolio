@@ -10,10 +10,10 @@ const I18N = {
     es: {
         navHome: "Inicio", navAbout: "Sobre mí", navStack: "Stack",
         navProjects: "Proyectos", navServices: "Servicios", navContact: "Contacto",
-        heroHello: "// Hola mundo, soy",
+        heroHello: "Hola, soy",
         heroDesc: "Construyo soluciones digitales de alto rendimiento: arquitecturas robustas y experiencias de usuario excepcionales, con código limpio y escalable.",
         heroCta: "Ver proyectos", heroCta2: "Hablemos",
-        heroHint: '↓ tip: la terminal de la derecha es real, escribe "help"',
+        heroHint: '↓ psst: la terminal de abajo es real, escribe "help"',
         aboutTitle: "Sobre mí",
         aboutP1: "Soy desarrollador Full-Stack con base en Barranquilla, Colombia. Me obsesiona el detalle: desde el diseño de una API hasta la última micro-interacción de la interfaz.",
         aboutP2: "Trabajo con JavaScript en el frontend y Java Spring Boot en el backend, y disfruto convertir problemas complejos en productos simples, rápidos y agradables de usar.",
@@ -48,10 +48,10 @@ const I18N = {
     en: {
         navHome: "Home", navAbout: "About", navStack: "Stack",
         navProjects: "Projects", navServices: "Services", navContact: "Contact",
-        heroHello: "// Hello world, I'm",
+        heroHello: "Hi, I'm",
         heroDesc: "I build high-performance digital solutions: robust architectures and exceptional user experiences, with clean, scalable code.",
         heroCta: "View projects", heroCta2: "Let's talk",
-        heroHint: '↓ tip: the terminal on the right is real, type "help"',
+        heroHint: '↓ psst: the terminal below is real, type "help"',
         aboutTitle: "About me",
         aboutP1: "I'm a Full-Stack developer based in Barranquilla, Colombia. I'm obsessed with detail: from API design to the last micro-interaction in the UI.",
         aboutP2: "I work with JavaScript on the frontend and Java Spring Boot on the backend, and I enjoy turning complex problems into simple, fast, delightful products.",
@@ -314,7 +314,7 @@ if (!reducedMotion) {
             if (p.y < 0 || p.y > H) p.vy *= -1;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(120, 160, 255, 0.5)";
+            ctx.fillStyle = "rgba(168, 70, 243, 0.5)";
             ctx.fill();
         }
         for (let i = 0; i < particles.length; i++) {
@@ -322,7 +322,7 @@ if (!reducedMotion) {
                 const a = particles[i], b = particles[j];
                 const d = Math.hypot(a.x - b.x, a.y - b.y);
                 if (d < 130) {
-                    ctx.strokeStyle = `rgba(100, 140, 240, ${(1 - d / 130) * 0.16})`;
+                    ctx.strokeStyle = `rgba(140, 37, 219, ${(1 - d / 130) * 0.18})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(a.x, a.y);
@@ -332,7 +332,7 @@ if (!reducedMotion) {
             }
             const dm = Math.hypot(particles[i].x - mouse.x, particles[i].y - mouse.y);
             if (dm < 180) {
-                ctx.strokeStyle = `rgba(34, 211, 238, ${(1 - dm / 180) * 0.3})`;
+                ctx.strokeStyle = `rgba(194, 105, 247, ${(1 - dm / 180) * 0.3})`;
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(mouse.x, mouse.y);
@@ -355,7 +355,7 @@ const dot = document.getElementById("cursor-dot");
 const ring = document.getElementById("cursor-ring");
 
 if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reducedMotion) {
-    let rx = 0, ry = 0, tx = 0, ty = 0;
+    let rx = -100, ry = -100, tx = -100, ty = -100;
     window.addEventListener("mousemove", (e) => {
         tx = e.clientX; ty = e.clientY;
         dot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
@@ -483,6 +483,6 @@ window.addEventListener("keydown", (e) => {
 /* ── Firma en consola ─────────────────────────── */
 console.log(
     "%c<MV/> %c¿Inspeccionando el código? Me gusta tu estilo. Hablemos → manuelandresvasquezm21@gmail.com",
-    "color:#22d3ee;font-size:1.4rem;font-weight:bold",
+    "color:#a846f3;font-size:1.4rem;font-weight:bold",
     "color:#98a0b8;font-size:0.9rem"
 );
