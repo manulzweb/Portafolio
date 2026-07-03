@@ -47,6 +47,11 @@
         <pre class="boot__log" id="boot-log"></pre>
     </div>
 
+    <!-- Fondo ambiental: auras moradas difuminadas a pantalla completa -->
+    <div class="bg-aura" aria-hidden="true">
+        <span></span><span></span><span></span>
+    </div>
+
     <!-- Fondo de partículas -->
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
@@ -170,17 +175,6 @@
             </div>
         </section>
 
-        <!-- ═══════════ MARQUEE (antesala del stack) ═══════════ -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee__track mono" id="marquee-track">
-                <span>JavaScript</span><span>•</span><span>Java Spring Boot</span><span>•</span>
-                <span>React</span><span>•</span><span>Angular</span><span>•</span>
-                <span>Node.js</span><span>•</span><span>Python</span><span>•</span>
-                <span>AWS</span><span>•</span><span>SQL / NoSQL</span><span>•</span>
-                <span>Git & GitHub</span><span>•</span><span>UI/UX</span><span>•</span>
-            </div>
-        </div>
-
         <!-- ═══════════ STACK ═══════════ -->
         <section id="stack" class="section">
             <p class="section__index mono">02</p>
@@ -227,80 +221,9 @@
                 Una selección de trabajo reciente que refleja mi experiencia full-stack.
             </p>
 
-            <div class="projects__grid">
-                <article class="card project reveal tilt">
-                    <div class="project__window">
-                        <div class="project__winbar">
-                            <span></span><span></span><span></span>
-                            <em class="mono">portfolio.js</em>
-                        </div>
-                        <div class="project__code" aria-hidden="true">
-                            <i style="width:55%"></i><i style="width:80%" class="c2"></i><i style="width:40%" class="c3"></i>
-                            <i style="width:70%"></i><i style="width:30%" class="c2"></i><i style="width:62%" class="c3"></i>
-                        </div>
-                    </div>
-                    <div class="project__body">
-                        <p class="project__tags mono">HTML • CSS • JavaScript</p>
-                        <h3 class="project__title" data-i18n="p1Title">Portafolio personal</h3>
-                        <p class="project__desc" data-i18n="p1Desc">
-                            Sitio estático de alto rendimiento con web components, i18n sin recarga
-                            y animaciones hechas a mano. Sin frameworks, sin dependencias.
-                        </p>
-                        <div class="project__links mono">
-                            <a href="https://github.com/manulzweb/manulzweb.github.io" target="_blank" rel="noopener">code ↗</a>
-                            <a href="https://manulzweb.github.io/" target="_blank" rel="noopener">live ↗</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card project reveal tilt">
-                    <div class="project__window">
-                        <div class="project__winbar">
-                            <span></span><span></span><span></span>
-                            <em class="mono">TaskApp.jsx</em>
-                        </div>
-                        <div class="project__code" aria-hidden="true">
-                            <i style="width:35%" class="c2"></i><i style="width:75%"></i><i style="width:58%" class="c3"></i>
-                            <i style="width:44%"></i><i style="width:68%" class="c2"></i><i style="width:26%" class="c3"></i>
-                        </div>
-                    </div>
-                    <div class="project__body">
-                        <p class="project__tags mono">React • LocalStorage</p>
-                        <h3 class="project__title" data-i18n="p2Title">Aplicación de tareas</h3>
-                        <p class="project__desc" data-i18n="p2Desc">
-                            Gestor de tareas en React para organizar el día a día de forma
-                            eficiente, con estado persistente y UI reactiva.
-                        </p>
-                        <div class="project__links mono">
-                            <a href="https://github.com/manulzweb" target="_blank" rel="noopener">code ↗</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card project reveal tilt">
-                    <div class="project__window">
-                        <div class="project__winbar">
-                            <span></span><span></span><span></span>
-                            <em class="mono">UserController.java</em>
-                        </div>
-                        <div class="project__code" aria-hidden="true">
-                            <i style="width:64%" class="c3"></i><i style="width:38%"></i><i style="width:82%" class="c2"></i>
-                            <i style="width:50%" class="c3"></i><i style="width:72%"></i><i style="width:33%" class="c2"></i>
-                        </div>
-                    </div>
-                    <div class="project__body">
-                        <p class="project__tags mono">Java • Spring Boot • REST</p>
-                        <h3 class="project__title" data-i18n="p3Title">API REST con Spring Boot</h3>
-                        <p class="project__desc" data-i18n="p3Desc">
-                            API RESTful para gestión de usuarios: backend sólido para
-                            aplicaciones web y móviles, con buenas prácticas y capas limpias.
-                        </p>
-                        <div class="project__links mono">
-                            <a href="https://github.com/manulzweb" target="_blank" rel="noopener">code ↗</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
+            <!-- Tarjetas generadas desde src/js/data/projects.js — edita ese
+                 archivo para añadir, quitar o reordenar proyectos -->
+            <div class="projects__grid" id="projects-grid"></div>
         </section>
 
         <!-- ═══════════ SERVICIOS ═══════════ -->

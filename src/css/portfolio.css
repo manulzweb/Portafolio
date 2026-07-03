@@ -85,6 +85,50 @@ a { color: inherit; }
 
 .skip-link:focus-visible { transform: translateY(0); }
 
+/* ── Fondo ambiental: auras moradas ───────────── */
+/* Gradientes radiales con borde 100% transparente: glow suave
+   de esquina a esquina, sin cortes ni bordes negros visibles */
+.bg-aura {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-aura span {
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+.bg-aura span:nth-child(1) {
+    top: -22%;
+    left: -15%;
+    background: radial-gradient(circle, rgba(113, 0, 194, 0.28) 0%, rgba(113, 0, 194, 0) 68%);
+    animation: aura-drift 26s ease-in-out infinite alternate;
+}
+
+.bg-aura span:nth-child(2) {
+    top: 25%;
+    right: -25%;
+    background: radial-gradient(circle, rgba(255, 0, 200, 0.13) 0%, rgba(255, 0, 200, 0) 66%);
+    animation: aura-drift 34s ease-in-out infinite alternate-reverse;
+}
+
+.bg-aura span:nth-child(3) {
+    bottom: -28%;
+    left: 15%;
+    background: radial-gradient(circle, rgba(74, 0, 128, 0.32) 0%, rgba(74, 0, 128, 0) 70%);
+    animation: aura-drift 40s ease-in-out infinite alternate;
+}
+
+@keyframes aura-drift {
+    to { transform: translate(5vw, -4vh) scale(1.12); }
+}
+
 /* ── Fondo canvas ─────────────────────────────── */
 #bg-canvas {
     position: fixed;
@@ -336,7 +380,6 @@ html.lenis, html.lenis body { height: auto; }
     max-width: 1200px;
     margin: 0 auto;
     padding: calc(var(--nav-h) + 3rem) clamp(1.2rem, 5vw, 4rem) 4rem;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(31, 28, 107, 0.25) 100%);
 }
 
 .hero__grid {
@@ -591,33 +634,6 @@ html.lenis, html.lenis body { height: auto; }
 .terminal__body .t-pink { color: var(--magenta); }
 .terminal__body .t-violet { color: var(--accent-300); }
 
-/* ── Marquee ──────────────────────────────────── */
-.marquee {
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
-    overflow: hidden;
-    padding: 1rem 0;
-    margin-top: clamp(4rem, 9vw, 7rem);
-    background: var(--glass-bg);
-    backdrop-filter: blur(3px);
-}
-
-.marquee__track {
-    display: flex;
-    gap: 2.5rem;
-    width: max-content;
-    animation: marquee 28s linear infinite;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-.marquee__track span:nth-child(4n+2) { color: var(--accent-400); }
-
-.marquee:hover .marquee__track { animation-play-state: paused; }
-
-@keyframes marquee { to { transform: translateX(-50%); } }
-
 /* ── Secciones ────────────────────────────────── */
 .section {
     max-width: 1200px;
@@ -794,6 +810,14 @@ html.lenis, html.lenis body { height: auto; }
     font-family: var(--font-mono);
     font-size: 0.72rem;
     color: var(--text-muted);
+}
+
+/* Captura real del proyecto (campo opcional "image" en projects.js) */
+.project__img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top;
 }
 
 .project__code {

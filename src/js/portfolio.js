@@ -4,6 +4,7 @@
    ════════════════════════════════════════════════ */
 
 import Lenis from "./vendor/lenis.mjs";
+import { PROJECTS } from "./data/projects.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -26,12 +27,6 @@ const I18N = {
         chipLearning: ".NET — aprendiendo",
         projectsTitle: "Proyectos destacados",
         projectsDesc: "Una selección de trabajo reciente que refleja mi experiencia full-stack.",
-        p1Title: "Portafolio personal",
-        p1Desc: "Sitio estático de alto rendimiento con web components, i18n sin recarga y animaciones hechas a mano. Sin frameworks, sin dependencias.",
-        p2Title: "Aplicación de tareas",
-        p2Desc: "Gestor de tareas en React para organizar el día a día de forma eficiente, con estado persistente y UI reactiva.",
-        p3Title: "API REST con Spring Boot",
-        p3Desc: "API RESTful para gestión de usuarios: backend sólido para aplicaciones web y móviles, con buenas prácticas y capas limpias.",
         servicesTitle: "Servicios",
         s1Title: "Desarrollo Full-Stack", s1Desc: "Aplicaciones completas y escalables, desde la base de datos hasta la UI.",
         s2Title: "Diseño UI/UX", s2Desc: "Interfaces y prototipos atractivos centrados en la experiencia del usuario.",
@@ -65,12 +60,6 @@ const I18N = {
         chipLearning: ".NET — learning",
         projectsTitle: "Featured projects",
         projectsDesc: "A selection of recent work that reflects my full-stack experience.",
-        p1Title: "Personal portfolio",
-        p1Desc: "High-performance static site with web components, reload-free i18n and hand-crafted animations. No frameworks, no dependencies.",
-        p2Title: "Task app",
-        p2Desc: "React task manager to organize your day efficiently, with persistent state and a reactive UI.",
-        p3Title: "REST API with Spring Boot",
-        p3Desc: "RESTful API for user management: a solid backend for web and mobile apps, with best practices and clean layers.",
         servicesTitle: "Services",
         s1Title: "Full-Stack Development", s1Desc: "Complete, scalable applications from the database to the UI.",
         s2Title: "UI/UX Design", s2Desc: "Attractive interfaces and prototypes focused on user experience.",
@@ -105,6 +94,7 @@ function setLang(l) {
     lang = l;
     localStorage.setItem("lang", l);
     applyLang();
+    renderProjects();
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
@@ -552,8 +542,9 @@ if (!reducedMotion) {
 }
 
 /* ── Tilt 3D en tarjetas ──────────────────────── */
-if (!reducedMotion && window.matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".tilt").forEach((el) => {
+function enableTilt(elements) {
+    if (reducedMotion || !window.matchMedia("(hover: hover)").matches) return;
+    elements.forEach((el) => {
         el.addEventListener("mousemove", (e) => {
             const r = el.getBoundingClientRect();
             const px = (e.clientX - r.left) / r.width - 0.5;
@@ -563,6 +554,8 @@ if (!reducedMotion && window.matchMedia("(hover: hover)").matches) {
         el.addEventListener("mouseleave", () => { el.style.transform = ""; });
     });
 }
+
+enableTilt(document.querySelectorAll(".tilt"));
 
 /* ── Reveal on scroll ─────────────────────────── */
 const revealObserver = new IntersectionObserver(
@@ -579,6 +572,53 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+/* ── Proyectos data-driven ────────────────────── */
+// Renderiza las tarjetas desde src/js/data/projects.js.
+// Añadir un proyecto = editar ese archivo, nada más.
+function renderProjects() {
+    const grid = document.getElementById("projects-grid");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    PROJECTS.forEach((p) => {
+        const card = document.createElement("article");
+        card.className = "card project reveal tilt";
+
+        const preview = p.image
+            ? `<img class="project__img" src="${p.image}" alt="" loading="lazy">`
+            : `<div class="project__code" aria-hidden="true">${Array.from({ length: 6 }, (_, i) => {
+                  const cls = ["", ' class="c2"', ' class="c3"'][i % 3];
+                  return `<i style="width:${32 + ((Math.random() * 50) | 0)}%"${cls}></i>`;
+              }).join("")}</div>`;
+
+        const links = (p.links ?? [])
+            .map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`)
+            .join("");
+
+        card.innerHTML = `
+            <div class="project__window">
+                <div class="project__winbar">
+                    <span></span><span></span><span></span>
+                    <em class="mono">${p.file}</em>
+                </div>
+                ${preview}
+            </div>
+            <div class="project__body">
+                <p class="project__tags mono">${p.tags}</p>
+                <h3 class="project__title">${p.title[lang] ?? p.title.es}</h3>
+                <p class="project__desc">${p.desc[lang] ?? p.desc.es}</p>
+                <div class="project__links mono">${links}</div>
+            </div>`;
+
+        grid.appendChild(card);
+        revealObserver.observe(card);
+    });
+
+    enableTilt(grid.querySelectorAll(".tilt"));
+}
+
+renderProjects();
 
 /* ── Contadores animados ──────────────────────── */
 const statObserver = new IntersectionObserver(

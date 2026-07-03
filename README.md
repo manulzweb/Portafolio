@@ -28,6 +28,26 @@ La galería de mascotas (`mascotas.html`) conserva la arquitectura original docu
 
 > El deploy en GitHub Pages sigue siendo 100% estático: no se necesita build. Vite es solo comodidad de desarrollo local.
 
+### 📂 Cómo añadir un proyecto
+
+Los proyectos se generan desde **`src/js/data/projects.js`** — no toques el HTML. Copia un bloque y edítalo:
+
+```js
+{
+    file: "MiApp.jsx",                    // nombre en la barra de la ventana
+    tags: "React • Node.js",              // tecnologías
+    title: { es: "Mi app", en: "My app" },
+    desc:  { es: "Qué hace…", en: "What it does…" },
+    image: "public/img/projects/mi-app.webp", // opcional: captura real
+    links: [
+        { label: "code", url: "https://github.com/..." },
+        { label: "live", url: "https://..." },
+    ],
+},
+```
+
+Si omites `image`, la tarjeta dibuja la ventana de código animada. El orden del array es el orden en pantalla.
+
 ## Resumen del Proyecto
 
 Este portafolio no es solo una carta de presentación, sino una demostración técnica de habilidades en **Frontend Development**. Implementa animaciones avanzadas, componentes personalizados y una gestión de datos dinámica.
