@@ -251,6 +251,9 @@ const NEOFETCH =
 let termHistory = [];
 let termHistPos = -1;
 
+// Se asigna en el módulo del canvas (solo si las animaciones están activas)
+let startMatrixRain = null;
+
 const TERM_CMDS = {
     help: () =>
         "commands:\n" +
@@ -281,17 +284,9 @@ const TERM_CMDS = {
         return off ? "partículas desactivadas 🌑" : "partículas activadas ✨";
     },
     matrix: () => {
-        const chars = "アイウエオカキクケコサシスセソ01";
-        let n = 0;
-        const timer = setInterval(() => {
-            const line = Array.from({ length: 40 }, () => chars[(Math.random() * chars.length) | 0]).join("");
-            termPrint(line, "t-violet");
-            if (++n >= 9) {
-                clearInterval(timer);
-                termPrint("wake up, Neo… 🐇", "t-accent");
-            }
-        }, 90);
-        return "entering the matrix…";
+        if (!startMatrixRain) return "matrix: no disponible con animaciones reducidas 🐇";
+        startMatrixRain(10);
+        return "wake up, Neo… lluvia de caracteres durante 10s 🐇";
     },
     clear: () => { termOut.innerHTML = ""; return null; },
     "sudo hire-me": () => "permission granted ✔\nenviando CV… hecho.\n→ escribe 'contact' para cerrar el trato 🤝",
@@ -422,7 +417,7 @@ if (!reducedMotion) {
         }));
     }
 
-    function draw() {
+    function drawParticles() {
         ctx.clearRect(0, 0, W, H);
         for (const p of particles) {
             p.x += p.vx;
@@ -456,10 +451,60 @@ if (!reducedMotion) {
                 ctx.stroke();
             }
         }
+    }
+
+    /* Lluvia Matrix en el fondo de la página (comando "matrix") */
+    const MATRIX_CHARS = "アイウエオカキクケコサシスセソタチツテト0123456789<>/{}[];=";
+    const MATRIX_FS = 16;
+    let mode = "particles";
+    let matrixUntil = 0;
+    let drops = [];
+
+    function initDrops() {
+        drops = Array.from({ length: Math.ceil(W / MATRIX_FS) }, () => -((Math.random() * 40) | 0));
+    }
+
+    function drawMatrix() {
+        // Capa translúcida que crea las estelas
+        ctx.fillStyle = "rgba(8, 8, 8, 0.1)";
+        ctx.fillRect(0, 0, W, H);
+        ctx.font = `${MATRIX_FS}px "JetBrains Mono", monospace`;
+        for (let i = 0; i < drops.length; i++) {
+            const ch = MATRIX_CHARS[(Math.random() * MATRIX_CHARS.length) | 0];
+            // Cabeza de la columna más clara, cuerpo en el morado de la marca
+            ctx.fillStyle = Math.random() < 0.08 ? "#ebbafe" : "#a846f3";
+            ctx.fillText(ch, i * MATRIX_FS, drops[i] * MATRIX_FS);
+            if (drops[i] * MATRIX_FS > H && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+        if (Date.now() > matrixUntil) {
+            mode = "particles";
+            document.body.classList.remove("matrix-mode");
+            ctx.clearRect(0, 0, W, H);
+        }
+    }
+
+    startMatrixRain = (seconds = 10) => {
+        matrixUntil = Date.now() + seconds * 1000;
+        if (mode !== "matrix") {
+            mode = "matrix";
+            initDrops();
+            document.body.classList.add("matrix-mode");
+            ctx.clearRect(0, 0, W, H);
+        }
+    };
+
+    function draw() {
+        if (mode === "matrix") drawMatrix();
+        else drawParticles();
         requestAnimationFrame(draw);
     }
 
-    window.addEventListener("resize", () => { resize(); initParticles(); });
+    window.addEventListener("resize", () => {
+        resize();
+        initParticles();
+        if (mode === "matrix") initDrops();
+    });
     window.addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
     window.addEventListener("mouseout", () => { mouse.x = -9999; mouse.y = -9999; });
     resize();

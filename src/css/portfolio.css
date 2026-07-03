@@ -99,6 +99,9 @@ a { color: inherit; }
 /* Comando "theme" de la terminal */
 .no-particles #bg-canvas { opacity: 0; }
 
+/* Comando "matrix": la lluvia gana presencia y anula el modo sin partículas */
+.matrix-mode #bg-canvas { opacity: 0.85; }
+
 /* ── Lenis (smooth scroll) ────────────────────── */
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
