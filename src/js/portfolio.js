@@ -284,12 +284,12 @@ const TERM_CMDS = {
         return off ? "partículas desactivadas 🌑" : "partículas activadas ✨";
     },
     matrix: () => {
-        if (!startMatrixRain) return "modprobe: ERROR: could not insert 'matrix_rain': animaciones reducidas";
+        if (!startMatrixRain) return "rain: error: animaciones reducidas activas";
         startMatrixRain(10);
         return (
-            "$ sudo modprobe matrix_rain\n" +
-            "[  OK  ] módulo matrix_rain.ko cargado en el kernel\n" +
-            "[  OK  ] lluvia de caracteres activa · se descarga solo en 10s"
+            "$ sudo rain activate\n" +
+            "[  OK  ] rain.service iniciado\n" +
+            "[  OK  ] lluvia de caracteres activa · se detiene sola en 10s"
         );
     },
     clear: () => { termOut.innerHTML = ""; return null; },
