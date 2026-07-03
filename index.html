@@ -40,6 +40,9 @@
 
 <body>
 
+    <!-- Enlace de salto para lectores de pantalla / teclado -->
+    <a class="skip-link" href="#home" data-i18n="skipLink">Saltar al contenido</a>
+
     <!-- Pantalla de arranque estilo boot de sistema -->
     <div id="boot" class="boot" aria-hidden="true">
         <pre class="boot__log" id="boot-log"></pre>
@@ -88,22 +91,28 @@
                         alt="Fotografía profesional de Manuel Vasquez" fetchpriority="high">
                 </figure>
 
-                <div class="big-card reveal">
-                    <p class="hero__hello reveal" data-i18n="heroHello">Hola, soy</p>
-                    <h1 class="hero__name glitch reveal" data-text="Manuel Vasquez">Manuel Vasquez</h1>
-                    <p class="hero__role mono reveal">
-                        <span class="hero__prompt">&gt;</span>
-                        <span id="typed-role"></span><span class="caret" aria-hidden="true"></span>
-                    </p>
-                    <p class="hero__desc reveal" data-i18n="heroDesc">
-                        Construyo soluciones digitales de alto rendimiento: arquitecturas robustas
-                        y experiencias de usuario excepcionales, con código limpio y escalable.
-                    </p>
-                    <div class="hero__actions reveal">
-                        <a href="#projects" class="btn btn--primary magnetic pointer" data-i18n="heroCta">Ver proyectos</a>
-                        <a href="#contact" class="btn btn--ghost magnetic pointer" data-i18n="heroCta2">Hablemos</a>
+                <!-- .hero__panel: tarjeta glass en desktop; en móvil se disuelve
+                     (display: contents) para que head y body se reordenen en el grid -->
+                <div class="hero__panel">
+                    <header class="hero__head reveal">
+                        <p class="hero__hello" data-i18n="heroHello">Hola, soy</p>
+                        <h1 class="hero__name glitch" data-text="Manuel Vasquez">Manuel Vasquez</h1>
+                        <p class="hero__role mono">
+                            <span class="hero__prompt">&gt;</span>
+                            <span id="typed-role"></span><span class="caret" aria-hidden="true"></span>
+                        </p>
+                    </header>
+                    <div class="hero__body reveal">
+                        <p class="hero__desc" data-i18n="heroDesc">
+                            Construyo soluciones digitales de alto rendimiento: arquitecturas robustas
+                            y experiencias de usuario excepcionales, con código limpio y escalable.
+                        </p>
+                        <div class="hero__actions">
+                            <a href="#projects" class="btn btn--primary magnetic pointer" data-i18n="heroCta">Ver proyectos</a>
+                            <a href="#contact" class="btn btn--ghost magnetic pointer" data-i18n="heroCta2">Hablemos</a>
+                        </div>
+                        <p class="hero__hint mono" data-i18n="heroHint">↓ psst: la terminal de abajo es real, escribe "help"</p>
                     </div>
-                    <p class="hero__hint mono reveal" data-i18n="heroHint">↓ psst: la terminal de abajo es real, escribe "help"</p>
                 </div>
             </div>
 
@@ -116,7 +125,8 @@
                         <span class="terminal__dot terminal__dot--g"></span>
                         <span class="terminal__title mono">manuel@manulzweb: ~</span>
                     </div>
-                    <div class="terminal__body mono" id="terminal-body" tabindex="0">
+                    <div class="terminal__body mono" id="terminal-body" tabindex="0" role="log"
+                        aria-label="Terminal interactiva. Escribe help y presiona Enter para ver los comandos disponibles.">
                         <div id="terminal-output"></div>
                         <div class="terminal__input-line">
                             <span class="terminal__ps1">➜&nbsp;~&nbsp;</span><!--
@@ -182,7 +192,7 @@
 
             <div class="stack__grid">
                 <article class="card stack-card reveal tilt">
-                    <div class="stack-card__head mono"><span class="stack-card__icon">⌨</span> frontend/</div>
+                    <div class="stack-card__head mono">frontend/<span class="stack-card__count">04</span></div>
                     <ul class="chips">
                         <li class="chip">HTML5 & CSS</li>
                         <li class="chip">JavaScript (ES6+)</li>
@@ -191,7 +201,7 @@
                     </ul>
                 </article>
                 <article class="card stack-card reveal tilt">
-                    <div class="stack-card__head mono"><span class="stack-card__icon">⚙</span> backend/</div>
+                    <div class="stack-card__head mono">backend/<span class="stack-card__count">04</span></div>
                     <ul class="chips">
                         <li class="chip">Java Spring Boot</li>
                         <li class="chip">Node.js & Express</li>
@@ -200,7 +210,7 @@
                     </ul>
                 </article>
                 <article class="card stack-card reveal tilt">
-                    <div class="stack-card__head mono"><span class="stack-card__icon">☁</span> infra/</div>
+                    <div class="stack-card__head mono">infra/<span class="stack-card__count">03</span></div>
                     <ul class="chips">
                         <li class="chip">AWS</li>
                         <li class="chip">Git & GitHub</li>
@@ -301,22 +311,22 @@
 
             <div class="services__grid">
                 <article class="card service reveal">
-                    <span class="service__icon mono">{&nbsp;}</span>
+                    <span class="service__icon mono" aria-hidden="true">{&nbsp;}</span>
                     <h3 data-i18n="s1Title">Desarrollo Full-Stack</h3>
                     <p data-i18n="s1Desc">Aplicaciones completas y escalables, desde la base de datos hasta la UI.</p>
                 </article>
                 <article class="card service reveal">
-                    <span class="service__icon mono">✎</span>
+                    <span class="service__icon mono" aria-hidden="true">&lt;&nbsp;&gt;</span>
                     <h3 data-i18n="s2Title">Diseño UI/UX</h3>
                     <p data-i18n="s2Desc">Interfaces y prototipos atractivos centrados en la experiencia del usuario.</p>
                 </article>
                 <article class="card service reveal">
-                    <span class="service__icon mono">◈</span>
+                    <span class="service__icon mono" aria-hidden="true">[&nbsp;]</span>
                     <h3 data-i18n="s3Title">Consultoría IT</h3>
                     <p data-i18n="s3Desc">Asesoría en arquitectura de sistemas, nube y mejores prácticas modernas.</p>
                 </article>
                 <article class="card service reveal">
-                    <span class="service__icon mono">⚡</span>
+                    <span class="service__icon mono" aria-hidden="true">//</span>
                     <h3 data-i18n="s4Title">Optimización</h3>
                     <p data-i18n="s4Desc">Auditorías de rendimiento y mejora de velocidad en sitios existentes.</p>
                 </article>

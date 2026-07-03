@@ -60,6 +60,31 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
+/* Accesibilidad: foco visible consistente en todo el sitio */
+:focus-visible {
+    outline: 2px solid var(--accent-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Enlace de salto: oculto hasta recibir foco por teclado */
+.skip-link {
+    position: fixed;
+    top: 0.6rem;
+    left: 0.6rem;
+    z-index: 110;
+    padding: 0.6rem 1.1rem;
+    background: var(--accent-700);
+    color: var(--text-main);
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible { transform: translateY(0); }
+
 /* ── Fondo canvas ─────────────────────────────── */
 #bg-canvas {
     position: fixed;
@@ -151,10 +176,17 @@ a { color: inherit; }
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--glass-border);
-    transition: transform 0.35s ease;
+    transition: transform 0.35s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav--hidden { transform: translateY(-100%); }
+
+/* Estado con scroll: más presencia, borde con tinte morado */
+.nav--scrolled {
+    background: rgba(8, 8, 8, 0.78);
+    border-bottom-color: rgba(168, 70, 243, 0.18);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
 
 .nav__brand {
     font-family: var(--font-mono);
@@ -196,6 +228,10 @@ a { color: inherit; }
 
 .nav__link:hover { color: var(--text-main); }
 .nav__link:hover::after { transform: scaleX(1); }
+
+/* Scrollspy: sección activa */
+.nav__link--active { color: var(--text-main); }
+.nav__link--active::after { transform: scaleX(1); }
 
 .nav__lang {
     font-family: var(--font-mono);
@@ -316,8 +352,9 @@ a { color: inherit; }
     height: auto;
 }
 
-/* Tarjeta glass principal (estilo big-card original) */
-.big-card {
+/* Panel glass principal (estilo big-card original).
+   En móvil se disuelve con display: contents y el glass pasa a .hero__body */
+.hero__panel {
     min-width: 200px;
     width: 100%;
     padding: 2rem;
@@ -329,7 +366,7 @@ a { color: inherit; }
     transition: box-shadow ease 0.25s;
 }
 
-.big-card:hover { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7); }
+.hero__panel:hover { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7); }
 
 .hero__hello { color: var(--text-muted); font-size: 1.5rem; font-weight: 300; }
 
@@ -427,25 +464,56 @@ a { color: inherit; }
     opacity: 0.75;
 }
 
+/* Móvil: fila [foto | nombre+rol] y tarjeta de descripción debajo */
 @media (max-width: 860px) {
     .hero { padding-top: calc(var(--nav-h) + 1.8rem); padding-bottom: 3rem; }
-    .hero__grid { grid-template-columns: 1fr; justify-items: center; gap: 1.6rem; }
 
-    /* Foto compacta en móvil: avatar cuadrado */
-    .hero__img-container { max-width: 220px; }
-    .hero__img { aspect-ratio: 1 / 1; }
+    .hero__grid {
+        grid-template-columns: minmax(96px, 124px) 1fr;
+        grid-template-areas:
+            "photo head"
+            "body  body";
+        gap: 1.1rem 1.2rem;
+        align-items: center;
+    }
 
-    .big-card { padding: 1.5rem; text-align: center; }
-    .hero__hello { font-size: 1.2rem; }
-    .hero__actions { justify-content: center; }
+    /* El panel desaparece como caja; sus hijos entran al grid */
+    .hero__panel {
+        display: contents;
+    }
+
+    .hero__img-container { grid-area: photo; max-width: 124px; --border-radius: 20px; }
+    .hero__img { aspect-ratio: 1 / 1; border-radius: 16px; }
+
+    .hero__head { grid-area: head; min-width: 0; }
+    .hero__hello { font-size: 1rem; }
+    .hero__name { font-size: clamp(1.45rem, 6.5vw, 2rem); margin-bottom: 0.3rem; }
+    .hero__role { font-size: 0.92rem; margin-bottom: 0; min-height: 1.6em; }
+
+    .hero__body {
+        grid-area: body;
+        margin-top: 0.4rem;
+        padding: 1.4rem;
+        background: var(--glass-bg);
+        border-radius: var(--radius);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+
+    .hero__desc { font-size: 1.05rem; margin-bottom: 1.2rem; }
+    .hero__hint { margin-top: 1.2rem; }
 
     .terminal-frame { margin-top: 2.2rem; }
     .terminal__body { height: 250px; font-size: 0.8rem; }
 }
 
 @media (max-width: 425px) {
-    .hero__img-container { max-width: 190px; }
-    .big-card { padding: 1.2rem; }
+    .hero__grid { grid-template-columns: 96px 1fr; gap: 1rem; }
+    .hero__img-container { max-width: 96px; --border-radius: 16px; }
+    .hero__img { border-radius: 12px; }
+    .hero__body { padding: 1.2rem; }
+    .hero__actions .btn { padding: 0.7rem 1.2rem; font-size: 0.95rem; }
     .stat { padding: 0.9rem 0.7rem; }
     .stat__label { font-size: 0.8rem; }
 }
@@ -563,6 +631,7 @@ a { color: inherit; }
     text-transform: uppercase;
     color: var(--accent-400);
     margin-bottom: 1rem;
+    text-wrap: balance;
 }
 
 .section__desc { color: var(--text-muted); font-size: 1.15rem; max-width: 60ch; margin-bottom: 2.5rem; }
@@ -635,13 +704,22 @@ a { color: inherit; }
 .stack-card__head {
     color: var(--accent-400);
     font-size: 1rem;
-    margin-bottom: 1.2rem;
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     gap: 0.6rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--glass-border);
 }
 
-.stack-card__icon { font-size: 1.2rem; }
+.stack-card__count {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+}
+
+.stack-card__count::before { content: "· "; color: var(--accent-800); }
 
 .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
@@ -791,6 +869,7 @@ a { color: inherit; }
     font-weight: 800;
     line-height: 1.12;
     margin: 1.5rem 0 1.2rem;
+    text-wrap: balance;
 }
 
 .contact__gradient {

@@ -8,6 +8,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 /* ── i18n ─────────────────────────────────────── */
 const I18N = {
     es: {
+        skipLink: "Saltar al contenido",
         navHome: "Inicio", navAbout: "Sobre mí", navStack: "Stack",
         navProjects: "Proyectos", navServices: "Servicios", navContact: "Contacto",
         heroHello: "Hola, soy",
@@ -46,6 +47,7 @@ const I18N = {
         roles: ["Desarrollador Full-Stack", "Diseñador UI/UX", "Constructor de APIs", "Amante del código limpio"],
     },
     en: {
+        skipLink: "Skip to content",
         navHome: "Home", navAbout: "About", navStack: "Stack",
         navProjects: "Projects", navServices: "Services", navContact: "Contact",
         heroHello: "Hi, I'm",
@@ -445,10 +447,34 @@ window.addEventListener("scroll", () => {
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = `${(y / max) * 100}%`;
+    nav.classList.toggle("nav--scrolled", y > 12);
     if (y > 140 && y > lastY) nav.classList.add("nav--hidden");
     else nav.classList.remove("nav--hidden");
     lastY = y;
 }, { passive: true });
+
+/* ── Scrollspy: resaltar sección activa en el navbar ── */
+const navLinks = new Map(
+    [...document.querySelectorAll('.nav__link[href^="#"]')].map((a) => [a.hash.slice(1), a])
+);
+
+const spyObserver = new IntersectionObserver(
+    (entries) => {
+        for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            navLinks.forEach((link, id) =>
+                link.classList.toggle("nav__link--active", id === entry.target.id)
+            );
+        }
+    },
+    // Franja central del viewport: la sección que la cruza es la activa
+    { rootMargin: "-40% 0px -55% 0px" }
+);
+
+navLinks.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) spyObserver.observe(section);
+});
 
 // Cerrar menú móvil al navegar
 document.querySelectorAll(".nav__links a").forEach((a) =>
