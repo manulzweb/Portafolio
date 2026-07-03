@@ -284,9 +284,13 @@ const TERM_CMDS = {
         return off ? "partículas desactivadas 🌑" : "partículas activadas ✨";
     },
     matrix: () => {
-        if (!startMatrixRain) return "matrix: no disponible con animaciones reducidas 🐇";
+        if (!startMatrixRain) return "modprobe: ERROR: could not insert 'matrix_rain': animaciones reducidas";
         startMatrixRain(10);
-        return "wake up, Neo… lluvia de caracteres durante 10s 🐇";
+        return (
+            "$ sudo modprobe matrix_rain\n" +
+            "[  OK  ] módulo matrix_rain.ko cargado en el kernel\n" +
+            "[  OK  ] lluvia de caracteres activa · se descarga solo en 10s"
+        );
     },
     clear: () => { termOut.innerHTML = ""; return null; },
     "sudo hire-me": () => "permission granted ✔\nenviando CV… hecho.\n→ escribe 'contact' para cerrar el trato 🤝",
