@@ -93,7 +93,17 @@ a { color: inherit; }
     height: 100%;
     z-index: -2;
     opacity: 0.55;
+    transition: opacity 0.4s ease;
 }
+
+/* Comando "theme" de la terminal */
+.no-particles #bg-canvas { opacity: 0; }
+
+/* ── Lenis (smooth scroll) ────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
 
 /* ── Boot screen ──────────────────────────────── */
 .boot {
@@ -482,7 +492,8 @@ a { color: inherit; }
         display: contents;
     }
 
-    .hero__img-container { grid-area: photo; max-width: 124px; --border-radius: 20px; }
+    /* Borde animado más fino en el avatar móvil */
+    .hero__img-container { grid-area: photo; max-width: 124px; --border-radius: 20px; --border-padding: 2px; }
     .hero__img { aspect-ratio: 1 / 1; border-radius: 16px; }
 
     .hero__head { grid-area: head; min-width: 0; }
@@ -510,7 +521,7 @@ a { color: inherit; }
 
 @media (max-width: 425px) {
     .hero__grid { grid-template-columns: 96px 1fr; gap: 1rem; }
-    .hero__img-container { max-width: 96px; --border-radius: 16px; }
+    .hero__img-container { max-width: 96px; --border-radius: 16px; --border-padding: 2px; }
     .hero__img { border-radius: 12px; }
     .hero__body { padding: 1.2rem; }
     .hero__actions .btn { padding: 0.7rem 1.2rem; font-size: 0.95rem; }

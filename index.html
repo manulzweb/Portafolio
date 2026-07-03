@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manuel Vasquez — Full-Stack Developer</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
-        rel="stylesheet">
+    <!-- Fuentes self-hosteadas: sin requests a terceros, mejor LCP y privacidad -->
+    <link rel="preload" href="public/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="src/css/fonts.css">
 
     <link rel="stylesheet" href="src/css/animated-border.css">
     <link rel="stylesheet" href="src/css/portfolio.css">
@@ -125,7 +124,7 @@
                         <span class="terminal__dot terminal__dot--g"></span>
                         <span class="terminal__title mono">manuel@manulzweb: ~</span>
                     </div>
-                    <div class="terminal__body mono" id="terminal-body" tabindex="0" role="log"
+                    <div class="terminal__body mono" id="terminal-body" tabindex="0" role="log" data-lenis-prevent
                         aria-label="Terminal interactiva. Escribe help y presiona Enter para ver los comandos disponibles.">
                         <div id="terminal-output"></div>
                         <div class="terminal__input-line">

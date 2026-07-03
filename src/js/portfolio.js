@@ -1,7 +1,9 @@
 /* ════════════════════════════════════════════════
    Portfolio v2 — "Dev OS" · Manuel Vasquez
-   Vanilla JS, sin dependencias.
+   Vanilla JS + Lenis (vendorizado) para smooth scroll.
    ════════════════════════════════════════════════ */
+
+import Lenis from "./vendor/lenis.mjs";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -99,13 +101,49 @@ function applyLang() {
     document.getElementById("lang-toggle").textContent = lang === "es" ? "EN" : "ES";
 }
 
-document.getElementById("lang-toggle").addEventListener("click", () => {
-    lang = lang === "es" ? "en" : "es";
-    localStorage.setItem("lang", lang);
+function setLang(l) {
+    lang = l;
+    localStorage.setItem("lang", l);
     applyLang();
+}
+
+document.getElementById("lang-toggle").addEventListener("click", () => {
+    setLang(lang === "es" ? "en" : "es");
 });
 
 applyLang();
+
+/* ── Smooth scroll (Lenis) ────────────────────── */
+let lenis = null;
+
+if (!reducedMotion) {
+    lenis = new Lenis({ duration: 1.1 });
+    const rafLenis = (time) => {
+        lenis.raf(time);
+        requestAnimationFrame(rafLenis);
+    };
+    requestAnimationFrame(rafLenis);
+}
+
+function scrollToSection(hash) {
+    const target = document.querySelector(hash);
+    if (!target) return;
+    if (lenis) {
+        lenis.scrollTo(target, { offset: -88 });
+    } else {
+        target.scrollIntoView();
+    }
+    history.replaceState(null, "", hash);
+}
+
+// Los anclas internas pasan por Lenis para una única fuente de smoothing
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+        if (!a.hash || !document.querySelector(a.hash)) return;
+        e.preventDefault();
+        scrollToSection(a.hash);
+    });
+});
 
 /* ── Toast ────────────────────────────────────── */
 const toastEl = document.getElementById("toast");
@@ -188,24 +226,73 @@ const TERM_FILES = {
         "whatsapp  : https://wa.me/573016778673\n" +
         "github    : https://github.com/manulzweb\n" +
         "location  : Barranquilla, Colombia",
+    "cv.txt":
+        "MANUEL VASQUEZ MENDOZA\n" +
+        "Full-Stack Developer · Barranquilla, CO\n" +
+        "──────────────────────────────────────\n" +
+        "· 3+ años construyendo software\n" +
+        "· Frontend: JavaScript, React, Angular\n" +
+        "· Backend : Java Spring Boot, Node.js\n" +
+        "· Infra   : AWS, SQL/NoSQL, Git\n" +
+        "──────────────────────────────────────\n" +
+        "→ 'contact' para hablar conmigo",
 };
+
+const NEOFETCH =
+    "   __  ___ _   __      manuel@manulzweb\n" +
+    "  /  |/  /| | / /      ────────────────\n" +
+    " / /|_/ / | |/ /       OS       : ManulzWeb OS v2.0\n" +
+    "/_/  /_/  |___/        Role     : Full-Stack Developer\n" +
+    "                       Stack    : JS · Spring Boot · AWS\n" +
+    "                       Location : Barranquilla, CO 🇨🇴\n" +
+    "                       Uptime   : 3+ years coding\n" +
+    "                       Shell    : vanilla-js 100%";
+
+let termHistory = [];
+let termHistPos = -1;
 
 const TERM_CMDS = {
     help: () =>
         "commands:\n" +
-        "  whoami        quién soy\n" +
-        "  ls            listar archivos\n" +
-        "  cat <file>    leer un archivo\n" +
-        "  projects      ir a proyectos\n" +
-        "  contact       ir a contacto\n" +
-        "  pets          conocer a mis mascotas 🐾\n" +
-        "  sudo hire-me  😏\n" +
-        "  clear         limpiar pantalla",
+        "  whoami         quién soy\n" +
+        "  neofetch       ficha del sistema\n" +
+        "  ls             listar archivos\n" +
+        "  cat <file>     leer un archivo (prueba cv.txt)\n" +
+        "  projects       ir a proyectos\n" +
+        "  contact        ir a contacto\n" +
+        "  pets           conocer a mis mascotas 🐾\n" +
+        "  lang es|en     cambiar idioma\n" +
+        "  theme          activar/desactivar partículas\n" +
+        "  history        comandos anteriores (↑/↓ para navegar)\n" +
+        "  matrix         🐇\n" +
+        "  sudo hire-me   😏\n" +
+        "  clear          limpiar pantalla\n" +
+        "tip: Tab autocompleta",
     whoami: () => "Manuel Vasquez Mendoza — Full-Stack Developer\nBarranquilla, Colombia 🇨🇴",
+    neofetch: () => NEOFETCH,
     ls: () => Object.keys(TERM_FILES).join("   "),
-    projects: () => { location.hash = "#projects"; return "cd ~/projects …"; },
-    contact: () => { location.hash = "#contact"; return "cd ~/contact …"; },
+    projects: () => { scrollToSection("#projects"); return "cd ~/projects …"; },
+    contact: () => { scrollToSection("#contact"); return "cd ~/contact …"; },
     pets: () => { setTimeout(() => (location.href = "mascotas.html"), 600); return "opening pets gallery… 🐕🐈"; },
+    history: () =>
+        termHistory.length ? termHistory.map((c, i) => `  ${i + 1}  ${c}`).join("\n") : "(vacío)",
+    theme: () => {
+        const off = document.body.classList.toggle("no-particles");
+        return off ? "partículas desactivadas 🌑" : "partículas activadas ✨";
+    },
+    matrix: () => {
+        const chars = "アイウエオカキクケコサシスセソ01";
+        let n = 0;
+        const timer = setInterval(() => {
+            const line = Array.from({ length: 40 }, () => chars[(Math.random() * chars.length) | 0]).join("");
+            termPrint(line, "t-violet");
+            if (++n >= 9) {
+                clearInterval(timer);
+                termPrint("wake up, Neo… 🐇", "t-accent");
+            }
+        }, 90);
+        return "entering the matrix…";
+    },
     clear: () => { termOut.innerHTML = ""; return null; },
     "sudo hire-me": () => "permission granted ✔\nenviando CV… hecho.\n→ escribe 'contact' para cerrar el trato 🤝",
 };
@@ -229,10 +316,20 @@ function termRun(raw) {
     const cmd = raw.trim();
     termEcho(cmd);
     if (!cmd) { termBody.scrollTop = termBody.scrollHeight; return; }
+    termHistory.push(cmd);
+    termHistPos = termHistory.length;
     const lower = cmd.toLowerCase();
     if (lower.startsWith("cat ")) {
         const file = cmd.slice(4).trim();
         termPrint(TERM_FILES[file] ?? `cat: ${file}: No such file`, TERM_FILES[file] ? "t-out" : "t-pink");
+    } else if (lower.startsWith("lang ")) {
+        const l = lower.slice(5).trim();
+        if (l === "es" || l === "en") {
+            setLang(l);
+            termPrint(l === "es" ? "idioma cambiado a español 🇪🇸" : "language switched to English 🇬🇧");
+        } else {
+            termPrint(`lang: '${l}' no soportado — usa "lang es" o "lang en"`, "t-pink");
+        }
     } else if (TERM_CMDS[lower]) {
         const out = TERM_CMDS[lower]();
         if (out !== null) termPrint(out);
@@ -242,12 +339,30 @@ function termRun(raw) {
     termBody.scrollTop = termBody.scrollHeight;
 }
 
+// Autocompletado con Tab: comandos y, tras "cat ", archivos
+function termComplete(buffer) {
+    const catMatch = buffer.match(/^cat\s+(\S*)$/i);
+    if (catMatch) {
+        const hit = Object.keys(TERM_FILES).find((f) => f.startsWith(catMatch[1]));
+        return hit ? `cat ${hit}` : buffer;
+    }
+    const candidates = [...Object.keys(TERM_CMDS), "cat ", "lang "];
+    const hits = candidates.filter((c) => c.startsWith(buffer.toLowerCase()));
+    return hits.length === 1 ? hits[0] : buffer;
+}
+
 termBody.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         termRun(termBuffer);
         termBuffer = "";
     } else if (e.key === "Backspace") {
         termBuffer = termBuffer.slice(0, -1);
+    } else if (e.key === "Tab") {
+        termBuffer = termComplete(termBuffer);
+    } else if (e.key === "ArrowUp") {
+        if (termHistPos > 0) termBuffer = termHistory[--termHistPos];
+    } else if (e.key === "ArrowDown") {
+        termBuffer = termHistPos < termHistory.length - 1 ? termHistory[++termHistPos] : (termHistPos = termHistory.length, "");
     } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
         termBuffer += e.key;
     } else {
@@ -476,10 +591,36 @@ navLinks.forEach((_, id) => {
     if (section) spyObserver.observe(section);
 });
 
-// Cerrar menú móvil al navegar
+// Menú móvil: cerrar al navegar, con Esc, y atrapar el foco mientras está abierto
+const navToggle = document.getElementById("nav-toggle");
+
 document.querySelectorAll(".nav__links a").forEach((a) =>
-    a.addEventListener("click", () => { document.getElementById("nav-toggle").checked = false; })
+    a.addEventListener("click", () => { navToggle.checked = false; })
 );
+
+navToggle.addEventListener("change", () => {
+    if (navToggle.checked) document.querySelector(".nav__links a")?.focus();
+});
+
+window.addEventListener("keydown", (e) => {
+    if (!navToggle.checked) return;
+    if (e.key === "Escape") {
+        navToggle.checked = false;
+        return;
+    }
+    if (e.key === "Tab" && window.matchMedia("(max-width: 860px)").matches) {
+        const items = [...document.querySelectorAll(".nav__links a, .nav__links button")];
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
+});
 
 /* ── Copiar email ─────────────────────────────── */
 document.getElementById("copy-email").addEventListener("click", async (e) => {

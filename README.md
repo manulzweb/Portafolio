@@ -18,6 +18,16 @@ La página principal (`index.html` + `src/css/portfolio.css` + `src/js/portfolio
 
 La galería de mascotas (`mascotas.html`) conserva la arquitectura original documentada abajo.
 
+### 🛠 Tooling y calidad
+
+- **Fuentes self-hosteadas** (`public/fonts/` + `src/css/fonts.css`): sin requests a Google Fonts → mejor LCP y privacidad.
+- **Lenis** (vendorizado en `src/js/vendor/lenis.mjs`): smooth-scroll con inercia; respeta `prefers-reduced-motion`.
+- **Terminal ampliada**: historial con ↑/↓, autocompletado con Tab, `neofetch`, `matrix`, `theme`, `lang es|en`, `cat cv.txt`.
+- **npm scripts**: `npm run dev` (servidor Vite con hot-reload), `npm run lint` (ESLint), `npm run format` (Prettier).
+- **CI** (`.github/workflows/quality.yml`): ESLint + auditoría Lighthouse en cada push/PR.
+
+> El deploy en GitHub Pages sigue siendo 100% estático: no se necesita build. Vite es solo comodidad de desarrollo local.
+
 ## Resumen del Proyecto
 
 Este portafolio no es solo una carta de presentación, sino una demostración técnica de habilidades en **Frontend Development**. Implementa animaciones avanzadas, componentes personalizados y una gestión de datos dinámica.
