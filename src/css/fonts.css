@@ -1,0 +1,50 @@
+/* Fuentes self-hosteadas (@fontsource) — sin dependencia de Google Fonts.
+   Mejora LCP, privacidad y funciona offline. Subset latin (incluye ñ, tildes). */
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("../../public/fonts/nunito-latin-300-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../../public/fonts/nunito-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../../public/fonts/nunito-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("../../public/fonts/nunito-latin-800-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../../public/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../../public/fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2");
+}

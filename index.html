@@ -1,319 +1,293 @@
-<!-- Estructura principal del portafolio -->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel Vasquez | Desarrollador Full-Stack & UI/UX</title>
-    <!-- Fuentes y Tipografía (Google Fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos de Material Design -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Manuel Vasquez — Full-Stack Developer</title>
 
-    <!-- Hojas de estilo modulares -->
-    <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/big-card.css">
-    <link rel="stylesheet" href="src/css/buttons.css">
+    <!-- Fuentes self-hosteadas: sin requests a terceros, mejor LCP y privacidad -->
+    <link rel="preload" href="public/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/fonts/jetbrains-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="src/css/fonts.css">
+
     <link rel="stylesheet" href="src/css/animated-border.css">
-    <link rel="stylesheet" href="src/css/hero-section.css">
-    <link rel="stylesheet" href="src/css/technologies-section.css">
-    <link rel="stylesheet" href="src/css/projects-section.css">
-    <link rel="stylesheet" href="src/css/services-section.css">
-    <link rel="stylesheet" href="src/css/footer.css">
-    <link rel="stylesheet" href="src/css/navbar.css">
-    <link rel="stylesheet" href="src/css/toast.css">
-    <link rel="stylesheet" href="src/css/modal.css">
-    <link rel="stylesheet" href="src/css/lang-toggle.css">
-    <link rel="stylesheet" href="src/css/whatsapp-button.css">
+    <link rel="stylesheet" href="src/css/portfolio.css">
 
     <meta name="description"
-        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JavaScript, Java Spring Boot y arquitecturas modernas.">
     <meta name="author" content="Manuel Vasquez">
     <meta name="keywords"
         content="Manuel Vasquez, Desarrollador Full-Stack, UI/UX, JavaScript, Java Spring Boot, Arquitecturas Modernas">
 
-    <meta property="og:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
+    <meta property="og:title" content="Manuel Vasquez — Full-Stack Developer">
     <meta property="og:description"
-        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+        content="Construyo soluciones digitales de alto rendimiento. JavaScript, Java Spring Boot y arquitecturas modernas.">
     <meta property="og:image" content="public/img/ManuelVasquezPhoto.webp">
     <meta property="og:url" content="https://manulzweb.github.io/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Manuel Vasquez | Desarrollador Web Full-Stack">
+    <meta name="twitter:title" content="Manuel Vasquez — Full-Stack Developer">
     <meta name="twitter:description"
-        content="Portafolio de Manuel Vasquez, Desarrollador Full-Stack especializado en JS, Java Spring Boot y arquitecturas modernas.">
+        content="Construyo soluciones digitales de alto rendimiento. JavaScript, Java Spring Boot y arquitecturas modernas.">
     <meta name="twitter:image" content="public/img/ManuelVasquezPhoto.webp">
     <meta name="twitter:creator" content="@manulzweb">
+    <meta name="theme-color" content="#060810">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080808'/%3E%3Ctext x='50' y='68' font-size='52' font-family='monospace' font-weight='bold' fill='%23a846f3' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
 </head>
 
 <body>
 
-    <!-- Barra de navegación superior -->
-    <header class="sticky animated-border-bottom-5">
-        <nav class="navbar" aria-label="Navegación principal">
-            <span class="navbar__title">ManulzWeb</span>
-            <input type="checkbox" id="nav-toggle" class="navbar__toggle-check">
-            <label for="nav-toggle" class="navbar__toggle-btn pointer">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <ul class="navbar__items">
+    <!-- Enlace de salto para lectores de pantalla / teclado -->
+    <a class="skip-link" href="#home" data-i18n="skipLink">Saltar al contenido</a>
 
-                <li>
-                    <a class="navbar__link button-animation pointer" href="#home" aria-label="home">
-                        <span class="material-icons">home</span>
-                        <div class="navbar__link-text" data="home">Inicio</div>
-                    </a>
-                </li>
-                <li>
-                    <a class="navbar__link button-animation pointer" href="#projects" aria-label="Proyectos">
-                        <span class="material-icons">folder</span>
-                        <div class="navbar__link-text" data="projects">Proyectos</div>
-                    </a>
-                </li>
-                <li>
-                    <a class="navbar__link button-animation pointer" href="#services" aria-label="Servicios">
-                        <span class="material-icons">logo_dev</span>
-                        <div class="navbar__link-text" data="services">Servicios</div>
-                    </a>
-                </li>
-                <li>
-                    <a class="navbar__link button-animation pointer" href="mascotas.html" aria-label="Mascotas">
-                        <span class="material-icons">pets</span>
-                        <div class="navbar__link-text" data="pets">Mascotas</div>
-                    </a>
-                </li>
-                <li>
-                    <a class="navbar__link btn btn--contact pointer" href="#" id="contact-btn" aria-label="Contacto">
-                        <span class="material-icons">connect_without_contact</span>
-                        <div class="navbar__link-text" data="contact">Contacto</div>
-                    </a>
-                </li>
+    <!-- Pantalla de arranque estilo boot de sistema -->
+    <div id="boot" class="boot" aria-hidden="true">
+        <pre class="boot__log" id="boot-log"></pre>
+    </div>
 
-            </ul>
+    <!-- Fondo ambiental: auras moradas difuminadas a pantalla completa -->
+    <div class="bg-aura" aria-hidden="true">
+        <span></span><span></span><span></span>
+    </div>
+
+    <!-- Fondo de partículas -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Barra de progreso de scroll -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Cursor personalizado (solo desktop) -->
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Navegación -->
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="#home" aria-label="Inicio">
+            <span class="nav__brand-bracket">&lt;</span>MV<span class="nav__brand-bracket">/&gt;</span>
+        </a>
+
+        <input type="checkbox" id="nav-toggle" class="nav__check">
+        <label for="nav-toggle" class="nav__burger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </label>
+
+        <nav class="nav__links" aria-label="Navegación principal">
+            <a href="#home" class="nav__link" data-i18n="navHome">Inicio</a>
+            <a href="#about" class="nav__link" data-i18n="navAbout">Sobre mí</a>
+            <a href="#stack" class="nav__link" data-i18n="navStack">Stack</a>
+            <a href="#projects" class="nav__link" data-i18n="navProjects">Proyectos</a>
+            <a href="#services" class="nav__link" data-i18n="navServices">Servicios</a>
+            <a href="mascotas.html" class="nav__link">🐾</a>
+            <button id="lang-toggle" class="nav__lang" aria-label="Cambiar idioma">EN</button>
+            <a href="#contact" class="btn btn--sm btn--primary nav__cta" data-i18n="navContact">Contacto</a>
         </nav>
     </header>
-    <!-- Contenido principal -->
-    <main class="bg">
-        <!-- Sección Hero: Presentación personal -->
-        <section id="home" class="section hero-section-bg">
-            <article class="hero">
-                <figure class="hero__img-container animated-border-5 pointer">
+
+    <main>
+
+        <!-- ═══════════ HERO ═══════════ -->
+        <section id="home" class="hero">
+            <div class="hero__grid">
+                <figure class="hero__img-container animated-border-5 pointer reveal">
                     <img class="hero__img" src="public/img/ManuelVasquezPhoto.webp"
                         alt="Fotografía profesional de Manuel Vasquez" fetchpriority="high">
                 </figure>
-                <div class="big-card">
-                    <header>
-                        <p class="big-card__subtitle" data="greeting">Hola, soy</p>
-                        <h1 class="big-card__name" data="fullName">Manuel Vasquez Mendoza</h1>
-                        <p class="big-card__subtitle" data="role">Desarrollador Full-Stack</p>
+
+                <!-- .hero__panel: tarjeta glass en desktop; en móvil se disuelve
+                     (display: contents) para que head y body se reordenen en el grid -->
+                <div class="hero__panel">
+                    <header class="hero__head reveal">
+                        <p class="hero__hello" data-i18n="heroHello">Hola, soy</p>
+                        <h1 class="hero__name glitch" data-text="Manuel Vasquez">Manuel Vasquez</h1>
+                        <p class="hero__role mono">
+                            <span class="hero__prompt">&gt;</span>
+                            <span id="typed-role"></span><span class="caret" aria-hidden="true"></span>
+                        </p>
                     </header>
-                    <p class="big-card__description" data="description">
-                        Construyo soluciones digitales de alto rendimiento. Me especializo en crear arquitecturas
-                        robustas y experiencias de usuario excepcionales combinando diseño moderno con código fluido y
-                        escalable.
-                    </p>
-                    <div class="big-card__actions">
-                        <a href="#projects" class="btn btn--primary pointer" data="viewProjects">Ver proyectos</a>
+                    <div class="hero__body reveal">
+                        <p class="hero__desc" data-i18n="heroDesc">
+                            Construyo soluciones digitales de alto rendimiento: arquitecturas robustas
+                            y experiencias de usuario excepcionales, con código limpio y escalable.
+                        </p>
+                        <div class="hero__actions">
+                            <a href="#projects" class="btn btn--primary magnetic pointer" data-i18n="heroCta">Ver proyectos</a>
+                            <a href="#contact" class="btn btn--ghost magnetic pointer" data-i18n="heroCta2">Hablemos</a>
+                        </div>
+                        <p class="hero__hint mono" data-i18n="heroHint">↓ psst: la terminal de abajo es real, escribe "help"</p>
                     </div>
                 </div>
-            </article>
-        </section>
-
-        <!-- Sección de Tecnologías -->
-        <section id="technologies" class="section technologies">
-            <div class="technologies__intro">
-                <h2 class="section-title" data="techStack">Mi Stack Tecnológico</h2>
-                <p class="section-description" data="techDescription">Herramientas y plataformas que utilizo para construir soluciones
-                    robustas, rápidas y escalables.</p>
             </div>
 
-            <div class="technologies__grid">
-                <!-- Tarjetas de tecnología renderizadas como Web Components -->
-                <tech-card data-title="Frontend" data-icon="desktop_windows"
-                    data-items="HTML5 & CSS, JavaScript (ES6+), React, Angular">
-                </tech-card>
-
-                <tech-card data-title="Backend" data-icon="dns"
-                    data-items="Java Spring Boot, Python, Node.js & Express, .NET Aprendiendo">
-                </tech-card>
-
-                <tech-card data-title="Infra & Tools" data-icon="cloud"
-                    data-items="AWS, Git & GitHub, Bases de Datos (SQL / NoSQL)">
-                </tech-card>
-            </div>
-        </section>
-
-        <!-- Sección de Proyectos -->
-        <section id="projects" class="section projects">
-            <div class="projects">
-                <article class="projects__intro">
-                    <h2 class="section-title" data="featuredProjects">Proyectos Destacados</h2>
-                    <p class="section-description" data="projectsDescription">
-                        A continuación, se presentan algunos de mis proyectos más recientes,
-                        que reflejan mi experiencia y habilidades en el desarrollo web full-stack.
-                    </p>
-                </article>
-                <div class="projects__grid">
-                    <article class="project-card pointer">
-                        <img class="project-card__img" src="public/img/placeholder-portafolio.svg"
-                            alt="Vista previa del proyecto Portafolio Personal">
-                        <div class="project-card__content">
-                            <header>
-                                <h3 class="project-card__title" data="project1Title">Proyecto 1: Portafolio Personal</h3>
-                            </header>
-                            <p class="project-card__description" data="project1Desc">
-                                Un portafolio personal desarrollado con HTML, CSS y JavaScript nativo,
-                                diseñado para mostrar mis habilidades y proyectos de manera profesional.
-                            </p>
+            <!-- Terminal interactiva -->
+            <div class="terminal-frame animated-border-2 reveal">
+                <div class="terminal" id="terminal">
+                    <div class="terminal__bar">
+                        <span class="terminal__dot terminal__dot--r"></span>
+                        <span class="terminal__dot terminal__dot--y"></span>
+                        <span class="terminal__dot terminal__dot--g"></span>
+                        <span class="terminal__title mono">manuel@manulzweb: ~</span>
+                    </div>
+                    <div class="terminal__body mono" id="terminal-body" tabindex="0" role="log" data-lenis-prevent
+                        aria-label="Terminal interactiva. Escribe help y presiona Enter para ver los comandos disponibles.">
+                        <div id="terminal-output"></div>
+                        <div class="terminal__input-line">
+                            <span class="terminal__ps1">➜&nbsp;~&nbsp;</span><!--
+                            --><span id="terminal-input"></span><span class="caret caret--block" aria-hidden="true"></span>
                         </div>
-                        <div class="project-card__actions">
-                            <a href="#" class="btn btn--primary pointer" data="viewDemo">Ver Demo</a>
-                            <a href="#" class="btn btn--secondary pointer" data="website">Sitio Web</a>
-                        </div>
-                    </article>
-                    <article class="project-card pointer">
-                        <img class="project-card__img" src="public/img/placeholder-tareas.svg"
-                            alt="Vista previa del proyecto Aplicación de Tareas">
-                        <div class="project-card__content">
-                            <header>
-                                <h3 class="project-card__title" data="project2Title">Proyecto 2: Aplicación de Tareas</h3>
-                            </header>
-                            <p class="project-card__description" data="project2Desc">
-                                Una aplicación de gestión de tareas desarrollada con React,
-                                que permite a los usuarios organizar sus actividades diarias de manera eficiente.
-                            </p>
-                        </div>
-                        <div class="project-card__actions">
-                            <a href="#" class="btn btn--primary pointer" data="viewDemo">Ver Demo</a>
-                            <a href="#" class="btn btn--secondary pointer" data="website">Sitio Web</a>
-                        </div>
-                    </article>
-                    <article class="project-card pointer">
-                        <img class="project-card__img" src="public/img/placeholder-api.svg"
-                            alt="Vista previa del proyecto API REST Spring Boot">
-                        <div class="project-card__content">
-                            <header>
-                                <h3 class="project-card__title" data="project3Title">Proyecto 3: API REST con Spring Boot</h3>
-                            </header>
-                            <p class="project-card__description" data="project3Desc">
-                                Una API RESTful desarrollada con Java Spring Boot, diseñada para gestionar datos de
-                                usuarios
-                                y proporcionar servicios de backend para aplicaciones web y móviles.
-                            </p>
-                        </div>
-                        <div class="project-card__actions">
-                            <a href="#" class="btn btn--primary pointer" data="viewDemo">Ver Demo</a>
-                            <a href="#" class="btn btn--secondary pointer" data="website">Sitio Web</a>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
-        <!-- Sección de Servicios -->
-        <section id="services" class="section services">
-            <div class="services__intro">
-                <h2 class="section-title" data="professionalServices">Servicios Profesionales</h2>
-                <p class="section-description" data="servicesDescription">Ofrezco soluciones integrales de desarrollo y diseño digital.</p>
+
+        <!-- ═══════════ SOBRE MÍ ═══════════ -->
+        <section id="about" class="section">
+            <p class="section__index mono">01</p>
+            <h2 class="section__title" data-i18n="aboutTitle">Sobre mí</h2>
+
+            <div class="about">
+                <div class="about__text">
+                    <p class="reveal" data-i18n="aboutP1">
+                        Soy desarrollador Full-Stack con base en Barranquilla, Colombia. Me obsesiona el detalle:
+                        desde el diseño de una API hasta la última micro-interacción de la interfaz.
+                    </p>
+                    <p class="reveal" data-i18n="aboutP2">
+                        Trabajo con JavaScript en el frontend y Java Spring Boot en el backend, y disfruto
+                        convertir problemas complejos en productos simples, rápidos y agradables de usar.
+                    </p>
+
+                    <div class="about__stats">
+                        <div class="stat reveal">
+                            <span class="stat__num mono" data-count="3">0</span><span class="stat__plus mono">+</span>
+                            <span class="stat__label" data-i18n="statYears">años programando</span>
+                        </div>
+                        <div class="stat reveal">
+                            <span class="stat__num mono" data-count="15">0</span><span class="stat__plus mono">+</span>
+                            <span class="stat__label" data-i18n="statProjects">proyectos construidos</span>
+                        </div>
+                        <div class="stat reveal">
+                            <span class="stat__num mono" data-count="100">0</span><span class="stat__plus mono">%</span>
+                            <span class="stat__label" data-i18n="statCommit">compromiso por commit</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- ═══════════ STACK ═══════════ -->
+        <section id="stack" class="section">
+            <p class="section__index mono">02</p>
+            <h2 class="section__title" data-i18n="stackTitle">Stack tecnológico</h2>
+            <p class="section__desc reveal" data-i18n="stackDesc">
+                Herramientas que uso para construir soluciones robustas, rápidas y escalables.
+            </p>
+
+            <div class="stack__grid">
+                <article class="card stack-card reveal tilt">
+                    <div class="stack-card__head mono">frontend/<span class="stack-card__count">04</span></div>
+                    <ul class="chips">
+                        <li class="chip">HTML5 & CSS</li>
+                        <li class="chip">JavaScript (ES6+)</li>
+                        <li class="chip">React</li>
+                        <li class="chip">Angular</li>
+                    </ul>
+                </article>
+                <article class="card stack-card reveal tilt">
+                    <div class="stack-card__head mono">backend/<span class="stack-card__count">04</span></div>
+                    <ul class="chips">
+                        <li class="chip">Java Spring Boot</li>
+                        <li class="chip">Node.js & Express</li>
+                        <li class="chip">Python</li>
+                        <li class="chip chip--wip" data-i18n="chipLearning">.NET — aprendiendo</li>
+                    </ul>
+                </article>
+                <article class="card stack-card reveal tilt">
+                    <div class="stack-card__head mono">infra/<span class="stack-card__count">03</span></div>
+                    <ul class="chips">
+                        <li class="chip">AWS</li>
+                        <li class="chip">Git & GitHub</li>
+                        <li class="chip">SQL / NoSQL</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- ═══════════ PROYECTOS ═══════════ -->
+        <section id="projects" class="section">
+            <p class="section__index mono">03</p>
+            <h2 class="section__title" data-i18n="projectsTitle">Proyectos destacados</h2>
+            <p class="section__desc reveal" data-i18n="projectsDesc">
+                Una selección de trabajo reciente que refleja mi experiencia full-stack.
+            </p>
+
+            <!-- Tarjetas generadas desde src/js/data/projects.js — edita ese
+                 archivo para añadir, quitar o reordenar proyectos -->
+            <div class="projects__grid" id="projects-grid"></div>
+        </section>
+
+        <!-- ═══════════ SERVICIOS ═══════════ -->
+        <section id="services" class="section">
+            <p class="section__index mono">04</p>
+            <h2 class="section__title" data-i18n="servicesTitle">Servicios</h2>
 
             <div class="services__grid">
-                <article class="service-card pointer">
-                    <span class="material-icons service-card__icon">code</span>
-                    <h2 class="service-card__subtitle" data="fullstackDev">Desarrollo Full-Stack</h2>
-                    <p data="fullstackDesc">Creación de aplicaciones completas y escalables desde la recolección de datos hasta la UI.</p>
+                <article class="card service reveal">
+                    <span class="service__icon mono" aria-hidden="true">{&nbsp;}</span>
+                    <h3 data-i18n="s1Title">Desarrollo Full-Stack</h3>
+                    <p data-i18n="s1Desc">Aplicaciones completas y escalables, desde la base de datos hasta la UI.</p>
                 </article>
-
-                <article class="service-card pointer">
-                    <span class="material-icons service-card__icon">design_services</span>
-                    <h2 class="service-card__subtitle" data="uiuxDesign">Diseño UI/UX</h2>
-                    <p data="uiuxDesc">Interfaces y prototipos funcionales altamente atractivos centrados en la experiencia final del
-                        usuario.</p>
+                <article class="card service reveal">
+                    <span class="service__icon mono" aria-hidden="true">&lt;&nbsp;&gt;</span>
+                    <h3 data-i18n="s2Title">Diseño UI/UX</h3>
+                    <p data-i18n="s2Desc">Interfaces y prototipos atractivos centrados en la experiencia del usuario.</p>
                 </article>
-
-                <article class="service-card pointer">
-                    <span class="material-icons service-card__icon">support_agent</span>
-                    <h2 class="service-card__subtitle" data="itConsulting">Consultoría IT</h2>
-                    <p data="itDesc">Asesoramiento en arquitectura de sistemas empresariales, nubes genéricas y en mejores prácticas
-                        modernas.</p>
+                <article class="card service reveal">
+                    <span class="service__icon mono" aria-hidden="true">[&nbsp;]</span>
+                    <h3 data-i18n="s3Title">Consultoría IT</h3>
+                    <p data-i18n="s3Desc">Asesoría en arquitectura de sistemas, nube y mejores prácticas modernas.</p>
                 </article>
-
-                <article class="service-card pointer">
-                    <span class="material-icons service-card__icon">speed</span>
-                    <h2 class="service-card__subtitle" data="optimization">Optimización</h2>
-                    <p data="optimizationDesc">Mejora de velocidad en sitios heredados y auditorías de rendimiento integral para web vitales.
-                    </p>
+                <article class="card service reveal">
+                    <span class="service__icon mono" aria-hidden="true">//</span>
+                    <h3 data-i18n="s4Title">Optimización</h3>
+                    <p data-i18n="s4Desc">Auditorías de rendimiento y mejora de velocidad en sitios existentes.</p>
                 </article>
             </div>
+        </section>
 
-            <div style="text-align: center; margin-top: 3.5rem; width: 100%;">
-                <a href="#" id="contact-btn-services" class="btn btn--primary button-animation pointer"
-                    style="font-size: 1.1rem; padding: 1rem 2.5rem;" data="requestQuote">Solicitar Presupuesto Especializado</a>
+        <!-- ═══════════ CONTACTO ═══════════ -->
+        <section id="contact" class="section contact">
+            <p class="section__index mono">05</p>
+            <h2 class="contact__big reveal">
+                <span data-i18n="contactLine1">¿Tienes una idea?</span><br>
+                <span class="contact__gradient" data-i18n="contactLine2">Construyámosla.</span>
+            </h2>
+            <p class="section__desc reveal" data-i18n="contactDesc">
+                Estoy disponible para proyectos freelance y oportunidades full-time.
+            </p>
+            <div class="contact__actions reveal">
+                <button class="btn btn--primary magnetic" id="copy-email" data-email="manuelandresvasquezm21@gmail.com">
+                    <span data-i18n="copyEmail">Copiar email</span> ⧉
+                </button>
+                <a class="btn btn--ghost magnetic" href="https://wa.me/573016778673" target="_blank" rel="noopener">WhatsApp ↗</a>
+                <a class="btn btn--ghost magnetic" href="https://github.com/manulzweb" target="_blank" rel="noopener">GitHub ↗</a>
             </div>
+            <p class="contact__email mono reveal">manuelandresvasquezm21@gmail.com</p>
         </section>
     </main>
 
-    <!-- Modal de contacto -->
-    <div id="contact-modal" class="modal">
-        <div class="modal__overlay"></div>
-        <div class="modal__content">
-            <button class="modal__close material-icons pointer" id="modal-close">close</button>
-            <h2 class="modal__title" data="contactMe">Contactame</h2>
-            <form class="modal__form" id="contact-form">
-                <div class="form__group">
-                    <label for="name" class="form__label" data="formName">Nombre</label>
-                    <input type="text" id="name" name="name" class="form__input" required>
-                </div>
-                <div class="form__group">
-                    <label for="email" class="form__label" data="email">Email</label>
-                    <input type="email" id="email" name="email" class="form__input" required>
-                </div>
-                <div class="form__group">
-                    <label for="message" class="form__label" data="message">Mensaje</label>
-                    <textarea id="message" name="message" class="form__input form__textarea" rows="5"
-                        required></textarea>
-                </div>
-                <button type="submit" class="form__submit btn btn--primary pointer" data="send">Enviar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Pie de página -->
-    <footer id="contact" class="footer">
-        <div class="footer__container">
-            <div>
-                <h3 class="footer__title" data="portfolio">Mi Portafolio</h3>
-                <p data="portfolioDesc">Creando experiencias digitales únicas con código y diseño.</p>
-            </div>
-
-            <div>
-                <h4 class="footer__subtitle" data="contactInfo">Contacto</h4>
-                <ul class="footer__contact-list">
-                    <li>
-                        <span class="material-icons">email</span>
-                        manuelandresvasquezm21@gmail.com
-                    </li>
-                    <li>
-                        <span class="material-icons">location_on</span>
-                        <span data="location">Barranquilla, Colombia</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__bottom">
-                <p data="copyright">&copy; 2026 Diseñado por Manuel Vasquez</p>
-            </div>
+    <footer class="footer">
+        <p class="mono">
+            <span data-i18n="footerBuilt">Diseñado y construido por</span> Manuel Vasquez — Barranquilla, CO
+        </p>
+        <p class="mono footer__hint" data-i18n="footerEgg">psst… prueba ↑↑↓↓←→←→BA</p>
+        <p class="mono">© 2026 — <span data-i18n="footerStack">hecho con HTML, CSS y JS puros. Cero frameworks.</span></p>
     </footer>
-    <!-- Botón flotante de WhatsApp -->
-    <div class="whatsapp-container">
-        <a class="whatsapp-button pointer" href="https://wa.me/573016778673" target="_blank">
-            <img src="public/img/whatsapp.webp" alt="Icono de WhatsApp">
-        </a>
-    </div>
-    <script type="module" src="src/js/scripts.js"></script>
+
+    <!-- Toast -->
+    <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="src/js/portfolio.js"></script>
 </body>
 
 </html>
