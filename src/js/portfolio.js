@@ -5,6 +5,12 @@
 
 import Lenis from "./vendor/lenis.mjs";
 import { PROJECTS } from "./data/projects.js";
+import { TIMELINE } from "./data/timeline.js";
+import { TESTIMONIALS } from "./data/testimonials.js";
+
+// Clave de https://web3forms.com (gratis). Con la clave vacía, el
+// formulario cae a mailto: como respaldo. Ver README → "Formulario".
+const WEB3FORMS_KEY = "";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -16,8 +22,15 @@ const I18N = {
         navProjects: "Proyectos", navServices: "Servicios", navContact: "Contacto",
         heroHello: "Hola, soy",
         heroDesc: "Construyo soluciones digitales de alto rendimiento: arquitecturas robustas y experiencias de usuario excepcionales, con código limpio y escalable.",
-        heroCta: "Ver proyectos", heroCta2: "Hablemos",
+        heroCta: "Ver proyectos", heroCta2: "Hablemos", heroCv: "CV ↓",
         heroHint: '↓ psst: la terminal de abajo es real, escribe "help"',
+        journeyTitle: "Trayectoria",
+        journeyDesc: "El camino que me trajo hasta aquí, un commit a la vez.",
+        testimonialsTitle: "Lo que dicen de mí",
+        formName: "Nombre", formEmail: "Email", formMessage: "Mensaje", formSend: "Enviar mensaje",
+        toastSent: "✓ Mensaje enviado, te responderé pronto",
+        toastSendErr: "✗ No se pudo enviar — inténtalo de nuevo",
+        toastMailto: "Abriendo tu app de correo…",
         aboutTitle: "Sobre mí",
         aboutP1: "Soy desarrollador Full-Stack con base en Barranquilla, Colombia. Me obsesiona el detalle: desde el diseño de una API hasta la última micro-interacción de la interfaz.",
         aboutP2: "Trabajo con JavaScript en el frontend y Java Spring Boot en el backend, y disfruto convertir problemas complejos en productos simples, rápidos y agradables de usar.",
@@ -49,8 +62,15 @@ const I18N = {
         navProjects: "Projects", navServices: "Services", navContact: "Contact",
         heroHello: "Hi, I'm",
         heroDesc: "I build high-performance digital solutions: robust architectures and exceptional user experiences, with clean, scalable code.",
-        heroCta: "View projects", heroCta2: "Let's talk",
+        heroCta: "View projects", heroCta2: "Let's talk", heroCv: "CV ↓",
         heroHint: '↓ psst: the terminal below is real, type "help"',
+        journeyTitle: "Journey",
+        journeyDesc: "The path that got me here, one commit at a time.",
+        testimonialsTitle: "What people say",
+        formName: "Name", formEmail: "Email", formMessage: "Message", formSend: "Send message",
+        toastSent: "✓ Message sent, I'll get back to you soon",
+        toastSendErr: "✗ Couldn't send — please try again",
+        toastMailto: "Opening your email app…",
         aboutTitle: "About me",
         aboutP1: "I'm a Full-Stack developer based in Barranquilla, Colombia. I'm obsessed with detail: from API design to the last micro-interaction in the UI.",
         aboutP2: "I work with JavaScript on the frontend and Java Spring Boot on the backend, and I enjoy turning complex problems into simple, fast, delightful products.",
@@ -95,6 +115,8 @@ function setLang(l) {
     localStorage.setItem("lang", l);
     applyLang();
     renderProjects();
+    renderTimeline();
+    renderTestimonials();
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
@@ -102,6 +124,21 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
 });
 
 applyLang();
+
+/* ── Tema claro/oscuro ────────────────────────── */
+let theme = localStorage.getItem("theme") || "dark";
+const themeToggle = document.getElementById("theme-toggle");
+
+function applyTheme(t) {
+    theme = t;
+    document.documentElement.dataset.theme = t;
+    localStorage.setItem("theme", t);
+    // Muestra el tema al que se cambiará al pulsar
+    themeToggle.textContent = t === "dark" ? "☀" : "☾";
+}
+
+themeToggle.addEventListener("click", () => applyTheme(theme === "dark" ? "light" : "dark"));
+applyTheme(theme);
 
 /* ── Smooth scroll (Lenis) ────────────────────── */
 let lenis = null;
@@ -225,6 +262,7 @@ const TERM_FILES = {
         "· Backend : Java Spring Boot, Node.js\n" +
         "· Infra   : AWS, SQL/NoSQL, Git\n" +
         "──────────────────────────────────────\n" +
+        "→ PDF: public/cv/Manuel-Vasquez-CV.pdf\n" +
         "→ 'contact' para hablar conmigo",
 };
 
@@ -244,22 +282,116 @@ let termHistPos = -1;
 // Se asigna en el módulo del canvas (solo si las animaciones están activas)
 let startMatrixRain = null;
 
+/* ── Snake en la terminal ─────────────────────── */
+let snakeActive = false;
+
+function startSnake() {
+    const COLS = 22;
+    const ROWS = 11;
+    let snake = [{ x: 5, y: 5 }];
+    let dir = { x: 1, y: 0 };
+    let pendingDir = dir;
+    let food = null;
+    let score = 0;
+    snakeActive = true;
+
+    const board = document.createElement("pre");
+    board.className = "t-out";
+    termOut.appendChild(board);
+
+    const placeFood = () => {
+        do {
+            food = { x: (Math.random() * COLS) | 0, y: (Math.random() * ROWS) | 0 };
+        } while (snake.some((s) => s.x === food.x && s.y === food.y));
+    };
+    placeFood();
+
+    const render = () => {
+        let out = "┌" + "─".repeat(COLS) + `┐ score: ${score}\n`;
+        for (let y = 0; y < ROWS; y++) {
+            out += "│";
+            for (let x = 0; x < COLS; x++) {
+                if (snake[0].x === x && snake[0].y === y) out += "█";
+                else if (snake.some((s) => s.x === x && s.y === y)) out += "▓";
+                else if (food.x === x && food.y === y) out += "◆";
+                else out += " ";
+            }
+            out += "│\n";
+        }
+        out += "└" + "─".repeat(COLS) + "┘ ←↑↓→ mover · q sale";
+        board.textContent = out;
+        termBody.scrollTop = termBody.scrollHeight;
+    };
+
+    const end = (msg) => {
+        clearInterval(timer);
+        window.removeEventListener("keydown", onKey, true);
+        snakeActive = false;
+        termPrint(`${msg} — puntuación: ${score} 🐍`, "t-violet");
+        termBody.scrollTop = termBody.scrollHeight;
+    };
+
+    const onKey = (e) => {
+        if (e.key === "q" || e.key === "Escape") {
+            e.preventDefault();
+            e.stopPropagation();
+            end("partida abandonada");
+            return;
+        }
+        const map = {
+            ArrowUp: { x: 0, y: -1 },
+            ArrowDown: { x: 0, y: 1 },
+            ArrowLeft: { x: -1, y: 0 },
+            ArrowRight: { x: 1, y: 0 },
+        };
+        const d = map[e.key];
+        if (!d) return;
+        e.preventDefault();
+        e.stopPropagation();
+        if (d.x !== -dir.x || d.y !== -dir.y) pendingDir = d;
+    };
+    window.addEventListener("keydown", onKey, true);
+
+    const timer = setInterval(() => {
+        dir = pendingDir;
+        const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+        const hitWall = head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS;
+        if (hitWall || snake.some((s) => s.x === head.x && s.y === head.y)) {
+            end("💀 game over");
+            return;
+        }
+        snake.unshift(head);
+        if (head.x === food.x && head.y === food.y) {
+            score++;
+            placeFood();
+        } else {
+            snake.pop();
+        }
+        render();
+    }, 130);
+
+    render();
+}
+
 const TERM_CMDS = {
     help: () =>
         "commands:\n" +
-        "  whoami         quién soy\n" +
-        "  neofetch       ficha del sistema\n" +
-        "  ls             listar archivos\n" +
-        "  cat <file>     leer un archivo (prueba cv.txt)\n" +
-        "  projects       ir a proyectos\n" +
-        "  contact        ir a contacto\n" +
-        "  pets           conocer a mis mascotas 🐾\n" +
-        "  lang es|en     cambiar idioma\n" +
-        "  theme          activar/desactivar partículas\n" +
-        "  history        comandos anteriores (↑/↓ para navegar)\n" +
-        "  matrix         🐇\n" +
-        "  sudo hire-me   😏\n" +
-        "  clear          limpiar pantalla\n" +
+        "  whoami           quién soy\n" +
+        "  neofetch         ficha del sistema\n" +
+        "  ls               listar archivos\n" +
+        "  cat <file>       leer un archivo (prueba cv.txt)\n" +
+        "  github           mis stats de GitHub en vivo\n" +
+        "  snake            🐍 jugar snake (flechas · q sale)\n" +
+        "  projects         ir a proyectos\n" +
+        "  contact          ir a contacto\n" +
+        "  pets             conocer a mis mascotas 🐾\n" +
+        "  lang es|en       cambiar idioma\n" +
+        "  theme light|dark cambiar tema\n" +
+        "  particles        partículas on/off\n" +
+        "  history          comandos anteriores (↑/↓ navega)\n" +
+        "  matrix           lluvia de caracteres\n" +
+        "  sudo hire-me     😏\n" +
+        "  clear            limpiar pantalla\n" +
         "tip: Tab autocompleta",
     whoami: () => "Manuel Vasquez Mendoza — Full-Stack Developer\nBarranquilla, Colombia 🇨🇴",
     neofetch: () => NEOFETCH,
@@ -269,9 +401,35 @@ const TERM_CMDS = {
     pets: () => { setTimeout(() => (location.href = "mascotas.html"), 600); return "opening pets gallery… 🐕🐈"; },
     history: () =>
         termHistory.length ? termHistory.map((c, i) => `  ${i + 1}  ${c}`).join("\n") : "(vacío)",
-    theme: () => {
+    particles: () => {
         const off = document.body.classList.toggle("no-particles");
         return off ? "partículas desactivadas 🌑" : "partículas activadas ✨";
+    },
+    theme: () => `uso: theme light|dark — tema actual: ${theme}`,
+    github: () => {
+        fetch("https://api.github.com/users/manulzweb")
+            .then((r) => (r.ok ? r.json() : Promise.reject()))
+            .then((d) => {
+                termPrint(
+                    `user      : ${d.login}\n` +
+                        `repos     : ${d.public_repos}\n` +
+                        `followers : ${d.followers}\n` +
+                        `following : ${d.following}\n` +
+                        `since     : ${new Date(d.created_at).getFullYear()}\n` +
+                        `→ https://github.com/${d.login}`
+                );
+                termBody.scrollTop = termBody.scrollHeight;
+            })
+            .catch(() => {
+                termPrint("github: no se pudo consultar la API (¿sin conexión?)", "t-pink");
+                termBody.scrollTop = termBody.scrollHeight;
+            });
+        return "consultando api.github.com…";
+    },
+    snake: () => {
+        if (snakeActive) return "snake: ya hay una partida en curso";
+        startSnake();
+        return null;
     },
     matrix: () => {
         if (!startMatrixRain) return "rain: error: animaciones reducidas activas";
@@ -311,6 +469,14 @@ function termRun(raw) {
     if (lower.startsWith("cat ")) {
         const file = cmd.slice(4).trim();
         termPrint(TERM_FILES[file] ?? `cat: ${file}: No such file`, TERM_FILES[file] ? "t-out" : "t-pink");
+    } else if (lower.startsWith("theme ")) {
+        const t = lower.slice(6).trim();
+        if (t === "light" || t === "dark") {
+            applyTheme(t);
+            termPrint(t === "light" ? "tema claro activado ☀" : "tema oscuro activado ☾");
+        } else {
+            termPrint(`theme: '${t}' no soportado — usa "theme light" o "theme dark"`, "t-pink");
+        }
     } else if (lower.startsWith("lang ")) {
         const l = lower.slice(5).trim();
         if (l === "es" || l === "en") {
@@ -335,12 +501,13 @@ function termComplete(buffer) {
         const hit = Object.keys(TERM_FILES).find((f) => f.startsWith(catMatch[1]));
         return hit ? `cat ${hit}` : buffer;
     }
-    const candidates = [...Object.keys(TERM_CMDS), "cat ", "lang "];
+    const candidates = [...Object.keys(TERM_CMDS), "cat ", "lang ", "theme "];
     const hits = candidates.filter((c) => c.startsWith(buffer.toLowerCase()));
     return hits.length === 1 ? hits[0] : buffer;
 }
 
 termBody.addEventListener("keydown", (e) => {
+    if (snakeActive) return; // el juego captura el teclado
     if (e.key === "Enter") {
         termRun(termBuffer);
         termBuffer = "";
@@ -619,6 +786,100 @@ function renderProjects() {
 }
 
 renderProjects();
+
+/* ── Trayectoria data-driven ──────────────────── */
+function renderTimeline() {
+    const list = document.getElementById("timeline-list");
+    if (!list) return;
+    list.innerHTML = "";
+    TIMELINE.forEach((t) => {
+        const li = document.createElement("li");
+        li.className = "timeline__item reveal";
+        li.innerHTML = `
+            <span class="timeline__year mono">${t.year}</span>
+            <div class="timeline__content">
+                <h3>${t.title[lang] ?? t.title.es}</h3>
+                <p>${t.desc[lang] ?? t.desc.es}</p>
+            </div>`;
+        list.appendChild(li);
+        revealObserver.observe(li);
+    });
+}
+
+renderTimeline();
+
+/* ── Testimonios (solo con datos reales) ──────── */
+function renderTestimonials() {
+    const section = document.getElementById("testimonials");
+    const grid = document.getElementById("testimonials-grid");
+    if (!section || !grid) return;
+    section.hidden = TESTIMONIALS.length === 0;
+    grid.innerHTML = "";
+    TESTIMONIALS.forEach((t) => {
+        const card = document.createElement("figure");
+        card.className = "card testimonial reveal";
+        card.innerHTML = `
+            <blockquote>“${t.quote[lang] ?? t.quote.es}”</blockquote>
+            <figcaption>
+                <strong>${t.author}</strong>
+                <span>${t.role[lang] ?? t.role.es}</span>
+            </figcaption>`;
+        grid.appendChild(card);
+        revealObserver.observe(card);
+    });
+    renumberSections();
+}
+
+// Numeración de secciones calculada (ignora las ocultas)
+function renumberSections() {
+    document
+        .querySelectorAll("main .section:not([hidden]) .section__index")
+        .forEach((el, i) => {
+            el.textContent = String(i + 1).padStart(2, "0");
+        });
+}
+
+renderTestimonials();
+
+/* ── Formulario de contacto ───────────────────── */
+const contactForm = document.getElementById("contact-form");
+
+contactForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!contactForm.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(contactForm));
+
+    // Sin clave de Web3Forms: respaldo por correo
+    if (!WEB3FORMS_KEY) {
+        const subject = encodeURIComponent(`Contacto desde el portafolio — ${data.name}`);
+        const body = encodeURIComponent(`${data.message}\n\n— ${data.name} <${data.email}>`);
+        location.href = `mailto:manuelandresvasquezm21@gmail.com?subject=${subject}&body=${body}`;
+        toast(I18N[lang].toastMailto);
+        return;
+    }
+
+    const btn = contactForm.querySelector("button[type=submit]");
+    btn.disabled = true;
+    try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...data }),
+        });
+        if (!res.ok) throw new Error();
+        contactForm.reset();
+        toast(I18N[lang].toastSent);
+    } catch {
+        toast(I18N[lang].toastSendErr);
+    } finally {
+        btn.disabled = false;
+    }
+});
+
+/* ── PWA: service worker (solo en producción) ─── */
+if ("serviceWorker" in navigator && location.hostname.endsWith("github.io")) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 
 /* ── Contadores animados ──────────────────────── */
 const statObserver = new IntersectionObserver(

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CV — Manuel Vasquez Mendoza</title>
+    <!-- Fuente del PDF. Para regenerar: abre este archivo en el navegador
+         e imprime a PDF (A4, sin márgenes extra), o usa el script del README. -->
+    <link rel="stylesheet" href="../../src/css/fonts.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --purple: #7100c2;
+            --purple-soft: #a846f3;
+            --ink: #201a2e;
+            --dim: #5a5570;
+            --line: #e8e2f2;
+        }
+
+        body {
+            font-family: "Nunito", system-ui, sans-serif;
+            color: var(--ink);
+            font-size: 10.5pt;
+            line-height: 1.55;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 16mm 18mm;
+            background: #fff;
+        }
+
+        header { border-bottom: 3px solid var(--purple); padding-bottom: 6mm; margin-bottom: 7mm; }
+
+        h1 {
+            font-size: 22pt;
+            font-weight: 800;
+            background: linear-gradient(to right, #7100c2, #ff00c8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .role { font-size: 12pt; color: var(--dim); font-weight: 700; }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2mm 8mm;
+            margin-top: 3mm;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8pt;
+            color: var(--dim);
+        }
+
+        h2 {
+            font-size: 11pt;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--purple);
+            margin: 6mm 0 2.5mm;
+        }
+
+        .item { margin-bottom: 3.5mm; }
+        .item__head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+        .item__title { font-weight: 800; }
+        .item__when { font-family: "JetBrains Mono", monospace; font-size: 8pt; color: var(--dim); white-space: nowrap; }
+        .item p { color: var(--ink); }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 1.5mm; }
+
+        .chip {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 8pt;
+            padding: 0.8mm 3mm;
+            border: 1px solid var(--purple-soft);
+            border-radius: 10mm;
+            color: var(--purple);
+        }
+
+        .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
+
+        footer {
+            margin-top: 8mm;
+            padding-top: 3mm;
+            border-top: 1px solid var(--line);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 7.5pt;
+            color: var(--dim);
+            text-align: center;
+        }
+
+        @page { size: A4; margin: 0; }
+        @media print { body { width: auto; } }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Manuel Vasquez Mendoza</h1>
+        <p class="role">Desarrollador Full-Stack</p>
+        <div class="contact">
+            <span>manuelandresvasquezm21@gmail.com</span>
+            <span>github.com/manulzweb</span>
+            <span>manulzweb.github.io</span>
+            <span>+57 301 677 8673</span>
+            <span>Barranquilla, Colombia</span>
+        </div>
+    </header>
+
+    <section>
+        <h2>Perfil</h2>
+        <p>
+            Desarrollador Full-Stack con más de 3 años construyendo software. Especializado en JavaScript
+            en el frontend (React, Angular) y Java Spring Boot en el backend. Me obsesiona el detalle:
+            desde el diseño de una API hasta la última micro-interacción de la interfaz. Disfruto convertir
+            problemas complejos en productos simples, rápidos y agradables de usar.
+        </p>
+    </section>
+
+    <section>
+        <h2>Stack técnico</h2>
+        <div class="chips">
+            <span class="chip">JavaScript (ES6+)</span>
+            <span class="chip">React</span>
+            <span class="chip">Angular</span>
+            <span class="chip">HTML5 & CSS</span>
+            <span class="chip">Java Spring Boot</span>
+            <span class="chip">Node.js & Express</span>
+            <span class="chip">Python</span>
+            <span class="chip">AWS</span>
+            <span class="chip">SQL / NoSQL</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">UI/UX</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Proyectos destacados</h2>
+        <div class="item">
+            <div class="item__head">
+                <span class="item__title">Portafolio personal — manulzweb.github.io</span>
+                <span class="item__when">2026</span>
+            </div>
+            <p>Sitio estático de alto rendimiento con terminal interactiva, i18n sin recarga, PWA y CI/CD
+                con GitHub Actions. 100% vanilla: cero frameworks.</p>
+        </div>
+        <div class="item">
+            <div class="item__head">
+                <span class="item__title">Aplicación de tareas</span>
+                <span class="item__when">2025</span>
+            </div>
+            <p>Gestor de tareas en React con estado persistente y UI reactiva.</p>
+        </div>
+        <div class="item">
+            <div class="item__head">
+                <span class="item__title">API REST con Spring Boot</span>
+                <span class="item__when">2025</span>
+            </div>
+            <p>API RESTful para gestión de usuarios con buenas prácticas y arquitectura en capas.</p>
+        </div>
+    </section>
+
+    <div class="cols">
+        <section>
+            <h2>Servicios</h2>
+            <div class="item"><p>Desarrollo Full-Stack · Diseño UI/UX · Consultoría IT · Optimización y auditorías de rendimiento</p></div>
+        </section>
+        <section>
+            <h2>Idiomas</h2>
+            <div class="item"><p>Español (nativo) · Inglés (técnico)</p></div>
+        </section>
+    </div>
+
+    <footer>Generado desde manulzweb.github.io — actualizado 2026</footer>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — command not found | Manuel Vasquez</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/src/css/fonts.css">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080808'/%3E%3Ctext x='50' y='68' font-size='52' font-family='monospace' font-weight='bold' fill='%23a846f3' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            background: #080808;
+            color: #F8FAFC;
+            font-family: "Nunito", system-ui, sans-serif;
+            padding: 1.5rem;
+            background-image:
+                radial-gradient(50vmax at 20% 10%, rgba(113, 0, 194, 0.25), transparent 70%),
+                radial-gradient(45vmax at 85% 85%, rgba(255, 0, 200, 0.12), transparent 70%);
+        }
+
+        .term {
+            width: min(640px, 100%);
+            background: rgba(10, 6, 16, 0.9);
+            border: 1px solid rgba(168, 70, 243, 0.35);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(113, 0, 194, 0.35);
+        }
+
+        .term__bar {
+            display: flex;
+            gap: 8px;
+            padding: 0.7rem 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .term__bar i { width: 12px; height: 12px; border-radius: 50%; }
+        .term__bar i:nth-child(1) { background: #ff5f57; }
+        .term__bar i:nth-child(2) { background: #febc2e; }
+        .term__bar i:nth-child(3) { background: #28c840; }
+
+        .term__body {
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            padding: 1.4rem 1.5rem 1.8rem;
+        }
+
+        .ps1 { color: #28c840; font-weight: 600; }
+        .err { color: #ff00c8; }
+        .dim { color: #94A3B8; }
+
+        .code {
+            font-size: clamp(3.5rem, 14vw, 6rem);
+            font-weight: 800;
+            font-family: "Nunito", sans-serif;
+            background: linear-gradient(to right, #7100c2, #ff00c8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.8rem 1.6rem;
+            border-radius: 14px;
+            background: #7100c2;
+            color: #F8FAFC;
+            font-weight: 700;
+            text-decoration: none;
+            font-family: "Nunito", sans-serif;
+            transition: box-shadow 0.25s, filter 0.25s;
+        }
+
+        .btn:hover { box-shadow: 0 0 14px #8c25db; filter: brightness(110%); }
+    </style>
+</head>
+
+<body>
+    <main class="term">
+        <div class="term__bar"><i></i><i></i><i></i></div>
+        <div class="term__body">
+            <p class="code">404</p>
+            <p><span class="ps1">➜ ~ </span>cd <span id="path">esta-pagina</span></p>
+            <p class="err">bash: cd: no such file or directory</p>
+            <p class="dim">La página que buscas no existe, fue movida… o nunca compiló.</p>
+            <a class="btn" href="/">cd ~ (volver al inicio)</a>
+        </div>
+    </main>
+    <script>
+        document.getElementById("path").textContent = location.pathname.replaceAll("/", "") || "esta-pagina";
+    </script>
+</body>
+
+</html>
