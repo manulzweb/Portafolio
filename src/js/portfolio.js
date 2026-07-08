@@ -8,9 +8,13 @@ import { PROJECTS } from "./data/projects.js";
 import { TIMELINE } from "./data/timeline.js";
 import { TESTIMONIALS } from "./data/testimonials.js";
 
-// Clave de https://web3forms.com (gratis). Con la clave vacía, el
-// formulario cae a mailto: como respaldo. Ver README → "Formulario".
-const WEB3FORMS_KEY = "";
+// Clave de https://web3forms.com (gratis). Se lee de la variable de entorno
+// VITE_WEB3FORMS_KEY en el build de Vite/Vercel (define un `.env` o el panel
+// de Vercel). Con la clave vacía, el formulario cae a mailto: como respaldo.
+// El `?? {}` mantiene el sitio funcionando en el deploy estático de GitHub
+// Pages, donde no hay build y `import.meta.env` no existe. Ver README.
+const ENV = import.meta.env ?? {};
+const WEB3FORMS_KEY = ENV.VITE_WEB3FORMS_KEY || "";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

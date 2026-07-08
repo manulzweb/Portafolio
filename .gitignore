@@ -4,3 +4,9 @@ dist/
 *.log
 test-results/
 playwright-report/
+
+# Variables de entorno (se sube solo .env.example)
+.env
+.env.local
+.env.*.local
+.vercel
