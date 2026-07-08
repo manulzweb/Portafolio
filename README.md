@@ -25,6 +25,7 @@ La galería de mascotas (`mascotas.html`) conserva la arquitectura original docu
 - **Terminal ampliada**: historial con ↑/↓, autocompletado con Tab, `neofetch`, `matrix`, `theme`, `lang es|en`, `cat cv.txt`.
 - **npm scripts**: `npm run dev` (servidor Vite con hot-reload), `npm run lint` (ESLint), `npm run format` (Prettier).
 - **CI** (`.github/workflows/quality.yml`): ESLint + auditoría Lighthouse en cada push/PR.
+- **CD** (`.github/workflows/deploy.yml`): despliegue automático a GitHub Pages en cada push a `main` (con lint como puerta de calidad). También se puede lanzar manualmente desde la pestaña Actions.
 
 > El deploy en GitHub Pages sigue siendo 100% estático: no se necesita build. Vite es solo comodidad de desarrollo local.
 
