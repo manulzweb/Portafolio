@@ -868,6 +868,129 @@ html.lenis, html.lenis body { height: auto; }
 
 .project__links a:hover { color: var(--magenta); border-color: var(--magenta); }
 
+/* ── Trayectoria (timeline) ───────────────────── */
+.timeline {
+    list-style: none;
+    position: relative;
+    margin-top: 2.5rem;
+    max-width: 760px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 96px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(var(--accent-700), var(--magenta));
+    opacity: 0.5;
+}
+
+.timeline__item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 2.6rem;
+    padding-bottom: 2.2rem;
+    position: relative;
+}
+
+.timeline__item::before {
+    content: "";
+    position: absolute;
+    left: 91px;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-500);
+    box-shadow: 0 0 14px var(--glow-shadow);
+}
+
+.timeline__year {
+    color: var(--accent-400);
+    font-size: 0.9rem;
+    text-align: right;
+    padding-top: 2px;
+}
+
+.timeline__content h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.3rem; }
+.timeline__content p { color: var(--text-muted); max-width: 55ch; }
+
+@media (max-width: 640px) {
+    .timeline::before { left: 66px; }
+    .timeline__item { grid-template-columns: 46px 1fr; gap: 2rem; }
+    .timeline__item::before { left: 61px; }
+}
+
+/* ── Testimonios ──────────────────────────────── */
+.testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+    margin-top: 2rem;
+}
+
+.testimonial { padding: 1.8rem 1.6rem; margin: 0; }
+
+.testimonial blockquote {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.testimonial figcaption { display: grid; }
+.testimonial figcaption strong { color: var(--accent-400); }
+.testimonial figcaption span { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ── Formulario de contacto ───────────────────── */
+.contact-form {
+    max-width: 640px;
+    margin: 2.8rem auto 0;
+    display: grid;
+    gap: 1.1rem;
+    text-align: left;
+}
+
+.contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+}
+
+.contact-form__field {
+    display: grid;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+    outline: none;
+    border-color: var(--accent-500);
+    box-shadow: 0 0 0 3px rgba(168, 70, 243, 0.18);
+}
+
+.contact-form .btn { justify-self: center; min-width: 220px; }
+
+@media (max-width: 640px) {
+    .contact-form__row { grid-template-columns: 1fr; }
+}
+
 /* ── Servicios ────────────────────────────────── */
 .services__grid {
     display: grid;
@@ -974,6 +1097,59 @@ html.lenis, html.lenis body { height: auto; }
 .party { animation: hue 3s linear infinite; }
 
 @keyframes hue { to { filter: hue-rotate(360deg); } }
+
+/* ── Tema claro ───────────────────────────────── */
+/* La terminal y las ventanas de código permanecen oscuras a propósito,
+   como los bloques de código en docs de Stripe/GitHub */
+html[data-theme="light"] {
+    --bg-body: #f7f4fb;
+    --bg-dark: #ffffff;
+    --text-main: #221a35;
+    --text-muted: #5c5674;
+    --glass-bg: rgba(113, 0, 194, 0.05);
+    --glass-border: rgba(45, 0, 77, 0.14);
+    --glow-shadow: rgba(113, 0, 194, 0.16);
+}
+
+html[data-theme="light"] body { background: var(--bg-body); }
+
+html[data-theme="light"] .card,
+html[data-theme="light"] .hero__panel,
+html[data-theme="light"] .stat {
+    box-shadow: 0 4px 24px rgba(45, 0, 77, 0.08);
+}
+
+/* En móvil el glass del hero vive en .hero__body */
+@media (max-width: 860px) {
+    html[data-theme="light"] .hero__body { box-shadow: 0 4px 24px rgba(45, 0, 77, 0.08); }
+}
+
+html[data-theme="light"] .nav { background: rgba(247, 244, 251, 0.72); }
+html[data-theme="light"] .nav--scrolled { background: rgba(247, 244, 251, 0.88); }
+
+html[data-theme="light"] .btn--ghost {
+    background: rgba(113, 0, 194, 0.06);
+    color: var(--text-main);
+}
+
+html[data-theme="light"] .bg-aura { opacity: 0.55; }
+html[data-theme="light"] #bg-canvas { opacity: 0.3; }
+
+html[data-theme="light"] .boot { background: var(--bg-body); }
+
+html[data-theme="light"] .toast {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(45, 0, 77, 0.18), 0 0 20px var(--glow-shadow);
+}
+
+/* Texto de las zonas que permanecen oscuras */
+html[data-theme="light"] .terminal__body .t-cmd { color: #F8FAFC; }
+html[data-theme="light"] .terminal__body .t-out { color: #98a0b8; }
+html[data-theme="light"] .terminal__title,
+html[data-theme="light"] .project__winbar em { color: #98a0b8; }
+
+html[data-theme="light"] ::-webkit-scrollbar-track { background: #efe9f7; }
+html[data-theme="light"] ::-webkit-scrollbar-thumb { background: #cbb8e6; }
 
 /* ── Accesibilidad: reduce motion ─────────────── */
 @media (prefers-reduced-motion: reduce) {

@@ -28,6 +28,19 @@ La galería de mascotas (`mascotas.html`) conserva la arquitectura original docu
 
 > El deploy en GitHub Pages sigue siendo 100% estático: no se necesita build. Vite es solo comodidad de desarrollo local.
 
+### 🚀 Extras v2.1
+
+- **Trayectoria**: línea de tiempo editable en `src/js/data/timeline.js`.
+- **Testimonios**: la sección aparece sola cuando añadas testimonios reales en `src/js/data/testimonials.js`.
+- **CV en PDF**: botón "CV ↓" en el hero → `public/cv/Manuel-Vasquez-CV.pdf`. La fuente editable es `public/cv/cv.html` (ábrela en el navegador e imprime a PDF para regenerarlo).
+- **Formulario de contacto**: funciona con [Web3Forms](https://web3forms.com) (gratis). Crea una access key con tu email y pégala en `WEB3FORMS_KEY` al inicio de `src/js/portfolio.js`. Sin clave, cae a `mailto:` automáticamente.
+- **Terminal**: nuevos comandos `github` (stats en vivo de la API pública), `snake` 🐍 (jugable con flechas, `q` sale), `theme light|dark` y `particles`.
+- **Modo claro**: toggle ☀/☾ en la navbar con persistencia; la terminal permanece oscura a propósito.
+- **SEO**: JSON-LD (ficha de persona), `sitemap.xml`, `robots.txt` e imagen Open Graph diseñada (`public/img/og-cover.png`).
+- **404 personalizada** (`404.html`) estilo terminal.
+- **PWA**: `manifest.webmanifest` + `sw.js` (solo se registra en producción); instalable y con soporte offline básico.
+- **Tests E2E**: `npm test` corre Playwright (`tests/e2e.spec.js`); también corren en CI.
+
 ### 📂 Cómo añadir un proyecto
 
 Los proyectos se generan desde **`src/js/data/projects.js`** — no toques el HTML. Copia un bloque y edítalo:

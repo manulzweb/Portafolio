@@ -21,6 +21,7 @@ export const PROJECTS = [
     {
         file: "portfolio.js",
         tags: "HTML • CSS • JavaScript",
+        image: "public/img/projects/portfolio.jpg",
         title: {
             es: "Portafolio personal",
             en: "Personal portfolio",
