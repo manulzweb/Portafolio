@@ -34,7 +34,7 @@ La galería de mascotas (`mascotas.html`) conserva la arquitectura original docu
 - **Trayectoria**: línea de tiempo editable en `src/js/data/timeline.js`.
 - **Testimonios**: la sección aparece sola cuando añadas testimonios reales en `src/js/data/testimonials.js`.
 - **CV en PDF**: botón "CV ↓" en el hero → `public/cv/Manuel-Vasquez-CV.pdf`. La fuente editable es `public/cv/cv.html` (ábrela en el navegador e imprime a PDF para regenerarlo).
-- **Formulario de contacto**: funciona con [Web3Forms](https://web3forms.com) (gratis). Crea una access key con tu email y pégala en `WEB3FORMS_KEY` al inicio de `src/js/portfolio.js`. Sin clave, cae a `mailto:` automáticamente.
+- **Formulario de contacto**: funciona con [Web3Forms](https://web3forms.com) (gratis). Crea una access key con tu email y configúrala como variable de entorno `VITE_WEB3FORMS_KEY` (ver [Variables de entorno](#-variables-de-entorno)). Sin clave, cae a `mailto:` automáticamente.
 - **Terminal**: nuevos comandos `github` (stats en vivo de la API pública), `snake` 🐍 (jugable con flechas, `q` sale), `theme light|dark` y `particles`.
 - **Modo claro**: toggle ☀/☾ en la navbar con persistencia; la terminal permanece oscura a propósito.
 - **SEO**: JSON-LD (ficha de persona), `sitemap.xml`, `robots.txt` e imagen Open Graph diseñada (`public/img/og-cover.png`).
@@ -194,12 +194,35 @@ Para añadir nuevas mascotas o cambiar la información actual, debes editar el a
             └── TechCard.js
 ```
 
+## 🔐 Variables de entorno
+
+El proyecto usa Vite para inyectar variables de entorno en el build. Solo las
+variables con prefijo **`VITE_`** se exponen al navegador (el sitio es estático,
+así que su valor acaba siendo público: no pongas secretos de servidor).
+
+| Variable | Para qué | Obligatoria |
+|---|---|---|
+| `VITE_WEB3FORMS_KEY` | Access key de [Web3Forms](https://web3forms.com) para el formulario de contacto. Sin ella, el formulario cae a `mailto:`. | No |
+
+**Local**: copia la plantilla y rellena los valores.
+
+```bash
+cp .env.example .env   # edita .env con tu clave; .env está en .gitignore
+npm run dev            # o npm run build
+```
+
+**Vercel**: define las mismas variables en *Project → Settings → Environment
+Variables*. No subas tu `.env` al repo.
+
 ## ⚙️ Ejecución y Despliegue
 
 Este es un sitio **estático**, pero debido al uso de `fetch` para cargar el JSON, **debe ejecutarse en un entorno de servidor**.
 
-1.  **Local**: Usa la extensión **Live Server** de VSCode.
-2.  **Producción**: Se puede desplegar en GitHub Pages, Netlify o Vercel sin configuración adicional.
+1.  **Local**: `npm run dev` (Vite con hot-reload) o la extensión **Live Server** de VSCode.
+2.  **GitHub Pages**: despliegue 100% estático desde la raíz del repo, sin build (ver workflow `deploy.yml`).
+3.  **Vercel**: usa `vercel.json` (framework Vite). Ejecuta `npm run build` → publica `dist/`. Recuerda definir las [variables de entorno](#-variables-de-entorno) en el panel de Vercel.
+
+> El build de Vercel conserva las rutas con prefijo `public/`: `vite.config.js` copia la carpeta `public/` y los estáticos de la raíz (`sw.js`, `robots.txt`, `sitemap.xml`, `404.html`) al directorio `dist/`.
 
 ## 👨‍💻 Autor
 **Manuel Vasquez**
