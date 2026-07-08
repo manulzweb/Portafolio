@@ -1065,6 +1065,24 @@ html.lenis, html.lenis body { height: auto; }
 
 .footer__hint { opacity: 0.45; font-size: 0.72rem; }
 
+.footer__version { margin-top: 0.3rem; }
+
+.footer__version a {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    color: var(--accent-400);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.footer__version a:hover {
+    border-color: var(--accent-500);
+    background: var(--glass-bg);
+}
+
 /* ── Toast ────────────────────────────────────── */
 .toast {
     position: fixed;
