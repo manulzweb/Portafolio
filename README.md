@@ -2,6 +2,82 @@
 
 Bienvenido al repositorio de mi portafolio profesional. Este proyecto es un sitio web estático de alto rendimiento, diseñado con una estética moderna glassmorphism y una arquitectura modular pensada para la escalabilidad.
 
+## ✨ Rediseño v2 — "Dev OS"
+
+La página principal (`index.html` + `src/css/portfolio.css` + `src/js/portfolio.js`) fue rediseñada con un concepto creativo de "terminal de desarrollador", **conservando la identidad visual original**: paleta morada (`--accent-700: #7100c2`), glassmorphism, bordes animados cónicos (`animated-border.css`) y tipografía Nunito. 100% vanilla (cero frameworks, cero dependencias):
+
+- **Terminal interactiva real** en el hero: escribe `help`, `whoami`, `cat stack.txt`, `pets` o `sudo hire-me`.
+- **Pantalla de boot** estilo sistema operativo al cargar (solo la primera vez por sesión).
+- **Fondo de partículas** en canvas que reacciona al mouse.
+- **Cursor personalizado** con anillo magnético (solo desktop).
+- **Efecto glitch** en el nombre, typewriter de roles y contadores animados.
+- **Tarjetas con tilt 3D**, botones magnéticos y reveal-on-scroll con `IntersectionObserver`.
+- **i18n ES/EN** sin recarga, con persistencia en `localStorage`.
+- **Easter egg**: código Konami (↑↑↓↓←→←→BA) activa el modo fiesta 🎉.
+- **Accesible**: respeta `prefers-reduced-motion` desactivando partículas y animaciones.
+
+La galería de mascotas (`mascotas.html`) conserva la arquitectura original documentada abajo.
+
+### 🛠 Tooling y calidad
+
+- **Fuentes self-hosteadas** (`public/fonts/` + `src/css/fonts.css`): sin requests a Google Fonts → mejor LCP y privacidad.
+- **Lenis** (vendorizado en `src/js/vendor/lenis.mjs`): smooth-scroll con inercia; respeta `prefers-reduced-motion`.
+- **Terminal ampliada**: historial con ↑/↓, autocompletado con Tab, `neofetch`, `matrix`, `theme`, `lang es|en`, `cat cv.txt`.
+- **npm scripts**: `npm run dev` (servidor Vite con hot-reload), `npm run lint` (ESLint), `npm run format` (Prettier).
+- **CI** (`.github/workflows/quality.yml`): ESLint + auditoría Lighthouse en cada push/PR.
+- **CD** (`.github/workflows/deploy.yml`): despliegue automático a GitHub Pages en cada push a `main` (con lint como puerta de calidad). También se puede lanzar manualmente desde la pestaña Actions.
+
+> El deploy en GitHub Pages sigue siendo 100% estático: no se necesita build. Vite es solo comodidad de desarrollo local.
+
+### 🚀 Extras v2.1
+
+- **Trayectoria**: línea de tiempo editable en `src/js/data/timeline.js`.
+- **Testimonios**: la sección aparece sola cuando añadas testimonios reales en `src/js/data/testimonials.js`.
+- **CV en PDF**: botón "CV ↓" en el hero → `public/cv/Manuel-Vasquez-CV.pdf`. La fuente editable es `public/cv/cv.html` (ábrela en el navegador e imprime a PDF para regenerarlo).
+- **Formulario de contacto**: funciona con [Web3Forms](https://web3forms.com) (gratis). Crea una access key con tu email y pégala en `WEB3FORMS_KEY` al inicio de `src/js/portfolio.js`. Sin clave, cae a `mailto:` automáticamente.
+- **Terminal**: nuevos comandos `github` (stats en vivo de la API pública), `snake` 🐍 (jugable con flechas, `q` sale), `theme light|dark` y `particles`.
+- **Modo claro**: toggle ☀/☾ en la navbar con persistencia; la terminal permanece oscura a propósito.
+- **SEO**: JSON-LD (ficha de persona), `sitemap.xml`, `robots.txt` e imagen Open Graph diseñada (`public/img/og-cover.png`).
+- **404 personalizada** (`404.html`) estilo terminal.
+- **PWA**: `manifest.webmanifest` + `sw.js` (solo se registra en producción); instalable y con soporte offline básico.
+- **Tests E2E**: `npm test` corre Playwright (`tests/e2e.spec.js`); también corren en CI.
+
+### 🏷 Cómo publicar una versión
+
+El historial de versiones vive en `CHANGELOG.md` y en la pestaña **Releases** de GitHub.
+
+1. Anota los cambios bajo `## [No publicado]` en `CHANGELOG.md` a medida que trabajas.
+2. Cuando quieras publicar, mueve esos cambios a una versión nueva (p. ej. `## [2.2.0]`) y actualiza `v2.1.0` en el footer de `index.html`.
+3. Crea el tag **sobre `main`** (lo que está en producción) y empújalo:
+   ```bash
+   git checkout main && git pull
+   git tag -a v2.2.0 -m "v2.2.0"
+   git push origin v2.2.0
+   ```
+4. El workflow `.github/workflows/release.yml` genera automáticamente el GitHub Release con notas a partir de los PRs mergeados.
+
+Versionado semántico: **MAJOR** (rompe / rediseño), **MINOR** (funcionalidad nueva), **PATCH** (arreglos).
+
+### 📂 Cómo añadir un proyecto
+
+Los proyectos se generan desde **`src/js/data/projects.js`** — no toques el HTML. Copia un bloque y edítalo:
+
+```js
+{
+    file: "MiApp.jsx",                    // nombre en la barra de la ventana
+    tags: "React • Node.js",              // tecnologías
+    title: { es: "Mi app", en: "My app" },
+    desc:  { es: "Qué hace…", en: "What it does…" },
+    image: "public/img/projects/mi-app.webp", // opcional: captura real
+    links: [
+        { label: "code", url: "https://github.com/..." },
+        { label: "live", url: "https://..." },
+    ],
+},
+```
+
+Si omites `image`, la tarjeta dibuja la ventana de código animada. El orden del array es el orden en pantalla.
+
 ## Resumen del Proyecto
 
 Este portafolio no es solo una carta de presentación, sino una demostración técnica de habilidades en **Frontend Development**. Implementa animaciones avanzadas, componentes personalizados y una gestión de datos dinámica.
