@@ -1,0 +1,27 @@
+name: Release
+
+# Se dispara al empujar un tag de versión (p. ej. v2.1.0).
+# Crea automáticamente un GitHub Release con notas generadas
+# a partir de los PRs y commits desde el tag anterior.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publicar Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Crear GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          name: ${{ github.ref_name }}

@@ -42,6 +42,22 @@ La galería de mascotas (`mascotas.html`) conserva la arquitectura original docu
 - **PWA**: `manifest.webmanifest` + `sw.js` (solo se registra en producción); instalable y con soporte offline básico.
 - **Tests E2E**: `npm test` corre Playwright (`tests/e2e.spec.js`); también corren en CI.
 
+### 🏷 Cómo publicar una versión
+
+El historial de versiones vive en `CHANGELOG.md` y en la pestaña **Releases** de GitHub.
+
+1. Anota los cambios bajo `## [No publicado]` en `CHANGELOG.md` a medida que trabajas.
+2. Cuando quieras publicar, mueve esos cambios a una versión nueva (p. ej. `## [2.2.0]`) y actualiza `v2.1.0` en el footer de `index.html`.
+3. Crea el tag **sobre `main`** (lo que está en producción) y empújalo:
+   ```bash
+   git checkout main && git pull
+   git tag -a v2.2.0 -m "v2.2.0"
+   git push origin v2.2.0
+   ```
+4. El workflow `.github/workflows/release.yml` genera automáticamente el GitHub Release con notas a partir de los PRs mergeados.
+
+Versionado semántico: **MAJOR** (rompe / rediseño), **MINOR** (funcionalidad nueva), **PATCH** (arreglos).
+
 ### 📂 Cómo añadir un proyecto
 
 Los proyectos se generan desde **`src/js/data/projects.js`** — no toques el HTML. Copia un bloque y edítalo:
